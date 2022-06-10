@@ -8,11 +8,8 @@ body {
   background: var(--color-bg);
 }
 
-@media screen and (min-width: 480px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
+.section_container {
+  padding: 25px 15px 82px 15px;
 }
 
 /* @media screen and (min-width: 768px) {

@@ -1,7 +1,8 @@
 .navbar {
   justify-content: space-between;
-  align-items: center;
+  padding: 15px 15px;
   max-width: 100%;
+  align-items: center;
   height: 60px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -9,6 +10,36 @@
 }
 
 .title {
-    color: var(--color-details);
-    padding-left: 15px;
+  color: var(--color-details);
+  font-size: 18px;
 }
+
+.icon {
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+}
+
+.icon_bg {
+  fill: var(--color-details);
+}
+
+.logout_icon {
+  fill: var(--color-avatar);
+  height: 16.05px;
+  width: 21.58px;
+  margin-left: 10px;
+}
+.buttons{
+  display: flex;
+    align-items: center;
+    
+}
+/* .dot{
+  height: 30px;
+  width: 30px;
+  background-color: var(--color-details);
+  border-radius: 50%;
+   display: inline-block;
+   filter: blur(0.5px);
+} */

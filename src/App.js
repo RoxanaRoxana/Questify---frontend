@@ -5,12 +5,14 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="app_container">
       <Navbar />
-      <TodayContainer />
-      
-      <TomorrowContainer />
-      <DoneContainer />
+      <div className="section_container">
+        <TodayContainer />
+
+        <TomorrowContainer />
+        <DoneContainer />
+      </div>
     </div>
   );
 };
