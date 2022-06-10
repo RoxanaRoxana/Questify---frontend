@@ -1,0 +1,14 @@
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 60px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  background-color: var(--color-navbar);
+}
+
+.title {
+    color: var(--color-details);
+    padding-left: 15px;
+}
