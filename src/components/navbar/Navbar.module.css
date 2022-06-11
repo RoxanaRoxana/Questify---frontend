@@ -14,14 +14,19 @@
   font-size: 18px;
 }
 
+.avatar {
+  font-weight: 900;
+}
+
+
 .icon {
   height: 30px;
   width: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-details);
+  box-shadow: 0 0px 5px 0px var(--color-details);
   margin-left: 10px;
-}
-
-.icon_bg {
-  fill: var(--color-details);
 }
 
 .logout_icon {
@@ -30,10 +35,9 @@
   width: 21.58px;
   margin-left: 10px;
 }
-.buttons{
+.buttons {
   display: flex;
-    align-items: center;
-    
+  align-items: center;
 }
 /* .dot{
   height: 30px;

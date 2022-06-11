@@ -1,6 +1,6 @@
 import React from "react";
 import { TodayContainer, TomorrowContainer, DoneContainer } from "./containers";
-import { Navbar } from "./components";
+import { Navbar, NewQuest } from "./components";
 import "./App.css";
 
 const App = () => {
@@ -12,6 +12,8 @@ const App = () => {
 
         <TomorrowContainer />
         <DoneContainer />
+        <NewQuest />
+  
       </div>
     </div>
   );

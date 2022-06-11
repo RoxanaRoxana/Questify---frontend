@@ -1,7 +1,8 @@
 .container {
   padding-top: 50px;
- display: flex;
- align-items: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .title {
@@ -12,7 +13,6 @@
   color: var(--color-font2);
   text-transform: uppercase;
   margin-right: 10px;
- 
 }
 
 .button {
@@ -24,7 +24,21 @@
   margin-right: 10px;
 }
 
+.activ_button {
+  width: 0;
+  height: 0;
+  border-top: 6px solid var(--color-details);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin-right: 10px;
+}
+
+.image {
+  min-width: 100%;
+}
+
 .line {
-  border: 1px dashed #B9C3C8;
   width: 100%;
+  display: flex;
+  align-items: baseline;
 }
