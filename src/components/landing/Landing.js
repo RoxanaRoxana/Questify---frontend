@@ -1,7 +1,7 @@
 import React from "react";
-import LandingInfo from "./LandingInfo";
-import LandingForm from "./LandingForm";
-import Background from "./Background";
+import { LandingInfo } from "../../components";
+import { LandingForm } from "../../components";
+import { Background } from '../../components'
 import styles from "./landing.module.css";
 
 function Landing() {
