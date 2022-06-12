@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   right: 15px;
 }
 
@@ -17,3 +17,14 @@
   width: 15.2px;
   height: 15.2px;
 }
+
+@media screen and (min-width: 768px) {
+  .button{
+    bottom: 42px;
+    right: 33px;
+  }
+}
+
+
+
+

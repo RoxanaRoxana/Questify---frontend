@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./DoneContainer.module.css";
-import image from "../../assets/mobile/LineMobile.png";
 
 const DoneContainer = () => {
   const [isActive, setIsActive] = useState(false);
@@ -20,9 +19,7 @@ const DoneContainer = () => {
         className={isActive ? [styles.activ_button] : [styles.button]}
         onClick={handleClick}
       ></span>
-      <div className={styles.line}>
-        <img src={image} alt="line" className={styles.image} />
-      </div>
+      <div className={styles.line}></div>
     </div>
   );
 };

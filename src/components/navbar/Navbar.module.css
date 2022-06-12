@@ -11,13 +11,11 @@
 
 .title {
   color: var(--color-details);
+  font-weight: 700;
   font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
 }
-
-.avatar {
-  font-weight: 900;
-}
-
 
 .icon {
   height: 30px;
@@ -39,11 +37,27 @@
   display: flex;
   align-items: center;
 }
-/* .dot{
-  height: 30px;
-  width: 30px;
-  background-color: var(--color-details);
-  border-radius: 50%;
-   display: inline-block;
-   filter: blur(0.5px);
-} */
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 70px;
+    position: relative;
+  }
+  .title {
+    font-size: 21px;
+    line-height: 21px;
+  }
+
+  .avatar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .logout_icon {
+    margin-left: 38px;
+  }
+}
