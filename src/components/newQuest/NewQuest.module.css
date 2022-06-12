@@ -25,6 +25,11 @@
   }
 }
 
-
+@media screen and (min-width: 1280px){
+  .button {
+    bottom: 40px;
+    right: 46px;
+  }
+}
 
 

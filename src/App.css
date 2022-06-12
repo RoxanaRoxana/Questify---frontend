@@ -23,10 +23,10 @@ body {
   }
   
 }
-/* 
+
 @media screen and (min-width: 1280px) {
-   .container {
+   .section_container {
     padding-left: 72px;
     padding-right: 72px;
   }
-} */
+}

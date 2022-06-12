@@ -61,3 +61,10 @@
     margin-left: 38px;
   }
 }
+
+@media screen and (min-width: 1280px){
+  .navbar{
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+}
