@@ -23,6 +23,8 @@
 .landingParagraph {
   text-align: left;
   font-size: 18px;
+  line-height: 29px;
+  letter-spacing: 0.015em;
   font-weight: 700;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -100,6 +102,7 @@
   }
 
   .landingParagraph {
+    line-height: 33px;
     font-size: 24px;
   }
 
@@ -156,11 +159,11 @@
   }
 
   .landingHeader {
-    font-size: 24px;
     padding-bottom: 50px;
   }
 
   .landingParagraph {
+    line-height: 45px;
     font-size: 33px;
     max-width: 515px;
   }
@@ -191,14 +194,11 @@
 
   .landingBgImage1 {
     top: 0;
-    right: 0;
     left: auto;
     margin: 0;
   }
 
   .landingBgImage2{
-    bottom: 0;
-    right: 0;
     left: auto;
     margin: 0;
   }
@@ -211,7 +211,6 @@
   .container {
     max-width: 562px;
     margin-left: 229px;
-    padding: 0;
   }
 
   .info {
@@ -225,6 +224,8 @@
   }
 
   .landingParagraph{
+    max-width: 100%;
+
     font-size: 36px;
   }
 
@@ -243,16 +244,10 @@
   }
 
   .landingBgImage1 {
-    top: 0;
-    right: 0;
-    left: auto;
-    margin: 0;
+    bottom: auto;
   }
 
   .landingBgImage2{
-    bottom: 0;
-    right: 0;
-    left: auto;
-    margin: 0;
+  
   }
 }

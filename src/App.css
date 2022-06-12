@@ -4,9 +4,6 @@
   margin: 0;
 }
 
-body {
-  background: var(--color-bg);
-}
 
 @media screen and (min-width: 480px) {
   .container {

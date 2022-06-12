@@ -1,6 +1,7 @@
 import styles from "./landing.module.css";
+import React from "react";
 
-function LandingInfo(props) {
+function LandingInfo() {
   const infoStyles = styles.info;
   const landingHeaderStyles = styles.landingHeader;
   const landingParagraphStyles = styles.landingParagraph;

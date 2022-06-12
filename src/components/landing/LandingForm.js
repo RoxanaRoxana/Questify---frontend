@@ -1,4 +1,5 @@
 import styles from "./landing.module.css";
+import React from "react";
 
 function LandingForm() {
   const landingFormParagraph = styles.landingParagraphForm;

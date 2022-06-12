@@ -2,7 +2,8 @@ import MOBILE_IMAGES from "../../assets/landingImages/mobile/images";
 import TABLET_HORIZONTAL from "../../assets/landingImages/tablet/horizontal/images";
 import TABLET_VERTICAL from "../../assets/landingImages/tablet/vertical/images";
 import DESKTOP_IMAGES from "../../assets/landingImages/desktop/images";
-import styles from "../components/landing.module.css";
+import styles from "./landing.module.css";
+import React from "react";
 
 function Background(props) {
   const mobileImg1 = styles.landingBgImage1;
@@ -21,7 +22,7 @@ function Background(props) {
           media="(min-width: 1200px)"
         />
         <source
-          srcSet={`${TABLET_HORIZONTAL.BgImage1Webp} 1x, ${TABLET_HORIZONTAL.BgImage2Webp2x} 2x`}
+          srcSet={`${TABLET_HORIZONTAL.BgImage1Webp} 1x, ${TABLET_HORIZONTAL.BgImage1Webp2x} 2x`}
           media="(min-width: 1020px)"
           type="image/webp"
         />
