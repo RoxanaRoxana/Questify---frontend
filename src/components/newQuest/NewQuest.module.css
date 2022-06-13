@@ -1,0 +1,35 @@
+.button {
+  border-radius: 50%;
+  height: 52px;
+  width: 52px;
+  background-color: var(--color-button);
+  border: none;
+  box-shadow: 0 0px 5px 0px var(--color-button);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
+  right: 15px;
+}
+
+.icon {
+  width: 15.2px;
+  height: 15.2px;
+}
+
+@media screen and (min-width: 768px) {
+  .button{
+    bottom: 42px;
+    right: 33px;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .button {
+    bottom: 40px;
+    right: 46px;
+  }
+}
+
+

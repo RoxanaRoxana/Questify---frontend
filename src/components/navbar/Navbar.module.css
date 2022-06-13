@@ -1,7 +1,8 @@
 .navbar {
   justify-content: space-between;
-  align-items: center;
+  padding: 15px 15px;
   max-width: 100%;
+  align-items: center;
   height: 60px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -9,6 +10,61 @@
 }
 
 .title {
-    color: var(--color-details);
-    padding-left: 15px;
+  color: var(--color-details);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-details);
+  box-shadow: 0 0px 5px 0px var(--color-details);
+  margin-left: 10px;
+}
+
+.logout_icon {
+  fill: var(--color-avatar);
+  height: 16.05px;
+  width: 21.58px;
+  margin-left: 10px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 70px;
+    position: relative;
+  }
+  .title {
+    font-size: 21px;
+    line-height: 21px;
+  }
+
+  .avatar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .logout_icon {
+    margin-left: 38px;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .navbar{
+    padding-left: 72px;
+    padding-right: 72px;
+  }
 }

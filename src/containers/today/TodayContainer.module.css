@@ -1,0 +1,10 @@
+.title_container {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  color: var(--color-font2);
+  text-transform: uppercase;
+}
+
+
