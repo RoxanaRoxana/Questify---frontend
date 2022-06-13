@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "react-avatar";
+import AvatarIcon from "../avatar/AvatarIcon";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
@@ -9,15 +9,9 @@ const Navbar = () => {
         <h2 className={styles.title}>Questify</h2>
       </div>
       <div className={styles.buttons}>
-        <Avatar
-          className={styles.avatar}
-          name="J"
-          round="50%"
-          size="30"
-          color="#3e4e6c"
-          textSizeRatio={2}
-        />
-
+        <div className={styles.avatar}>
+          <AvatarIcon />
+        </div>
         <svg
           className={styles.icon}
           viewBox="0 0 32 32"
