@@ -1,10 +1,12 @@
 import React from "react";
 import { TodayContainer, TomorrowContainer, DoneContainer } from "./containers";
-import { Navbar, NewQuest } from "./components";
+import { Landing, Navbar, NewQuest } from "./components";
 import "./App.css";
 
 const App = () => {
   return (
+    <div>
+    <Landing/>
     <div className="app_container">
       <Navbar />
       <div className="section_container">
@@ -15,7 +17,8 @@ const App = () => {
         <NewQuest />
   
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
