@@ -1,0 +1,11 @@
+.backdrop{
+  width: 290px;
+  height: 260px;
+  background-color: rgba(21, 57, 90, 0.3);
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
