@@ -1,16 +1,20 @@
 import React from "react";
 import { TodayContainer, TomorrowContainer, DoneContainer } from "./containers";
-import { Navbar } from "./components";
+import { Navbar, NewQuest } from "./components";
 import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="app_container">
       <Navbar />
-      <TodayContainer />
-      
-      <TomorrowContainer />
-      <DoneContainer />
+      <div className="section_container">
+        <TodayContainer />
+
+        <TomorrowContainer />
+        <DoneContainer />
+        <NewQuest />
+  
+      </div>
     </div>
   );
 };

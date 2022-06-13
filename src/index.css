@@ -3,6 +3,9 @@
 :root {
   font-family: "HelveticaNeue", sans-serif ;
 
+  --color-font1: #B9C3C8;
+  --color-font2: #282828;
+
   --color-bg: #F2F3F7;
   --color-details: #00D7FF;
   --color-navbar: #242A37;
