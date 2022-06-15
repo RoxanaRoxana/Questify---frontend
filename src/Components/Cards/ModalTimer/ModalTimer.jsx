@@ -2,18 +2,23 @@ import React from "react";
 import styles from "./ModalTimer.module.css";
 import Flatpickr from "react-flatpickr";
 
-const ModalTimer = ({onClose, setTime, time}) => {
-  const date = new Date();
+const ModalTimer = ({onClose, setTime, cardType}) => {
+  
 
   return (
     <div className={styles.modal}>
       <Flatpickr 
-      options={{
-        minDate: {date},
-        enableTime: true
+      options={cardType === 'quest' ? {
+        enableTime: true,
+        minDate: new Date(),
+        maxDate: new Date().fp_incr(2),
+      } : {
+        enableTime: true,
+        minDate: new Date(),
+        maxDate: new Date().fp_incr(7),
       }}
-      onChange={setTime}
-      onReady={onClose}
+      onChange={(date)=>setTime(date)}
+      onClose={onClose}
       />
     </div>
   );

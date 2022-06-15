@@ -3,19 +3,14 @@ import styles from "./Activities.module.css";
 import { Backdrop } from "../../Utils/Backdrop/Backdrop";
 import { AskQuestion } from "../../Utils/AskQuestion/AskQuestion";
 
-const Activities = ({ activity, onClick, onCreate, onDelete }) => {
+const Activities = ({ activity, onClick, onCreate, onDelete, cardType }) => {
   const [deleteToggle, setDeleteToggle] = useState(false);
-  // const [createToggle, setCreateToggle] = useState(false);
 
   const handleDelete = () => {
     setDeleteToggle(!deleteToggle);
   };
-  // const handleCreate = () => {
-  //   setCreateToggle(!createToggle);
-  // };
   const handleCancel = () => {
     setDeleteToggle(false);
-    // setCreateToggle(false);
   };
 
   return (
@@ -23,23 +18,13 @@ const Activities = ({ activity, onClick, onCreate, onDelete }) => {
       {deleteToggle ? (
         <Backdrop>
           <AskQuestion
-            question="Delete this Quest?"
+            question={cardType === 'quest' ? "Delete this Quest?" : 'Delete this Challenge?'}
             onApproval={handleDelete}
             onCancel={handleCancel}
             onDelete={onDelete}
           />
         </Backdrop>
       ) : null}
-      {/* {createToggle ? (
-        <Backdrop>
-          <AskQuestion
-            question="Create this Quest?"
-            onApproval={handleDelete}
-            onCancel={handleCreate}
-            option="CREATE"
-          />
-        </Backdrop>
-      ) : null} */}
       <div className={styles.card_bottom}>
         <button
           type="button"

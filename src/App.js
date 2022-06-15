@@ -1,5 +1,5 @@
 
-import Card from './Components/Cards/Card';
+import {Card} from './Components/Cards/Card';
 
 function App() {
   return (

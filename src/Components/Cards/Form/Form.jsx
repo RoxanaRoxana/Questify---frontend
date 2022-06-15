@@ -1,41 +1,52 @@
-import React, {useEffect, useState} from 'react';
-import styles from './Form.module.css';
-import {Backdrop} from '../../Utils/Backdrop/Backdrop';
-import {ModalTimer} from '../ModalTimer/ModalTimer';
+import React, { useEffect, useState } from "react";
+import styles from "./Form.module.css";
+import { Backdrop } from "../../Utils/Backdrop/Backdrop";
+import { ModalTimer } from "../ModalTimer/ModalTimer";
 
-const Form = ({calendar, questName, onChange, changeCalendar}) =>{
+const Form = ({ calendar, taskName, onChange, changeCalendar, cardType }) => {
+  // const [time, setTime] = useState('Today')
+  const [modalTimerToggle, setModalTimerToggle] = useState(false);
 
-const [time, setTime] = useState('')
-const [modalTimerToggle, setModalTimerToggle]=useState(false);
+  // useEffect(()=>{
+  //   setTime(new Date().toUTCString())
+  // },[])
+  const handlerTimerToggle = () => {
+    setModalTimerToggle(!modalTimerToggle);
+  };
 
-// useEffect(()=>{
-//   setTime(new Date().toUTCString())
-// },[])
-const handlerTimerToggle=()=>{
-  setModalTimerToggle(!modalTimerToggle)
-}
-
-const handlerTimer=(e)=>{
-  setTime(e.target.value)
-  console.log(e.target)
-}
-
-  return(
+  return (
     <>
-    {modalTimerToggle ? <Backdrop><ModalTimer setTime={handlerTimer} onClose={setModalTimerToggle} /></Backdrop> : null}
-    <div className={styles.card_form}>
-        <label className={styles.card_middle} htmlFor="create new quest">
-          <p className={styles.card_title}>CREATE NEW QUEST</p>
+      {modalTimerToggle ? (
+        <Backdrop>
+          <ModalTimer
+            setTime={changeCalendar}
+            onClose={handlerTimerToggle}
+            cardType={cardType}
+          />
+        </Backdrop>
+      ) : null}
+      <div className={styles.card_form}>
+        <label
+          className={styles.card_middle}
+          htmlFor={
+            cardType === "quest" ? "create new quest" : "create new challenge"
+          }>
+          <p className={styles.card_title}>
+            {cardType === "quest" ? "CREATE NEW QUEST" : "CREATE NEW CHALLENGE"}
+          </p>
           <input
             className={styles.card_task}
             type="text"
-            value={questName}
+            value={taskName}
             onChange={onChange}
           />
         </label>
         <p className={styles.card_time}>
-          {time}{" "}
-          <button type="button" className={styles.card_button} onClick={handlerTimerToggle}>
+          {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
+          <button
+            type="button"
+            className={styles.card_button}
+            onClick={handlerTimerToggle}>
             <svg
               className={styles.calendar_icon}
               viewBox="0 0 27 32"
@@ -45,8 +56,8 @@ const handlerTimer=(e)=>{
           </button>
         </p>
       </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export {Form}
+export { Form };
