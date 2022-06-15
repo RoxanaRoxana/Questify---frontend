@@ -5,11 +5,10 @@ import { Background } from '../../components'
 import styles from "./landing.module.css";
 
 function Landing() {
-  const landingClasses = styles.container;
 
   return (
     <div>
-      <div className={landingClasses}>
+      <div className={styles.container}>
         <LandingInfo></LandingInfo>
         <LandingForm></LandingForm>
       </div>

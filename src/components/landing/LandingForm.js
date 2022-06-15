@@ -3,34 +3,31 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function LandingForm() {
-  const landingFormParagraph = styles.landingParagraphForm;
-  const landingFormContainer = styles.landingFormContainer;
-  const landingFormInput = styles.landingFormInput;
-  const landingFormButton = styles.landingFormButton;
-  const navigate = useNavigate();
-  
+
 
   const handleClick = () => {
    navigate('/main')
   }
   
   return (
-    <div className={landingFormContainer}>
-      <p className={landingFormParagraph}>
+    <div className={styles.landingFormContainer}>
+      <p className={styles.landingParagraphForm}>
         Write your email to sign up or log in
       </p>
       <form>
         <input
-          className={landingFormInput}
+          className={styles.landingFormInput}
           type="text"
           placeholder="Email"
         ></input>
         <input
-          className={landingFormInput}
+          className={styles.landingFormInput}
           type="text"
           placeholder="Password"
         ></input>
-      <button className={landingFormButton} onClick={handleClick}>go!</button>
+
+      <button className={styles.landingFormButton} onClick={handleClick}>go!</button>
+
       </form>
     </div>
   );

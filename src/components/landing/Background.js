@@ -6,8 +6,6 @@ import styles from "./landing.module.css";
 import React from "react";
 
 function Background(props) {
-  const mobileImg1 = styles.landingBgImage1;
-  const mobileImg2 = styles.landingBgImage2;
 
   return (
     <div>
@@ -40,7 +38,7 @@ function Background(props) {
           media="(min-width: 768px)"
         />
         <img
-          className={mobileImg1}
+          className={styles.landingBgImage1}
           src={MOBILE_IMAGES.BgImage1Png}
           alt="BgImage1"
         ></img>
@@ -74,7 +72,7 @@ function Background(props) {
           media="(min-width: 768px)"
         />
         <img
-          className={mobileImg2}
+          className={styles.landingBgImage2}
           src={MOBILE_IMAGES.BgImage2Png}
           alt="BgImage2"
         ></img>
