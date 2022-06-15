@@ -1,8 +1,14 @@
 import styles from "./landing.module.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LandingForm() {
 
+
+  const handleClick = () => {
+   navigate('/main')
+  }
+  
   return (
     <div className={styles.landingFormContainer}>
       <p className={styles.landingParagraphForm}>
@@ -19,7 +25,9 @@ function LandingForm() {
           type="text"
           placeholder="Password"
         ></input>
-        <button className={styles.landingFormButton}>go!</button>
+
+      <button className={styles.landingFormButton} onClick={handleClick}>go!</button>
+
       </form>
     </div>
   );
