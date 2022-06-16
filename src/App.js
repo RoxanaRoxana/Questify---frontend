@@ -1,4 +1,4 @@
-
+import React from 'react';
 import {Card} from './Components/Cards/Card';
 
 function App() {
