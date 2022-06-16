@@ -1,29 +1,25 @@
-
-import React from 'react';
-
+import React, { lazy, Suspense } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
-import { lazy, Suspense } from "react";
 
 
-const Landing = lazy(() => import("./components/Landing/Landing"));
-const Layout = lazy(() => import("./components/Layout/Layout"));
-const NewQuest = lazy(() => import("./components/NewQuest/NewQuest"));
+const Landing = lazy(() => import("./Components/Landing/Landing"));
+const Layout = lazy(() => import("./Components/Layout/Layout"));
+const NewQuest = lazy(() => import("./Components/NewQuest/NewQuest"));
 
 const App = () => {
   return (
-
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route index element={<Landing />} />
-        <Route path="/Questify" element={<Landing />} />
+        <Route index element={<Landing/>} />
+        <Route path="/Questify" element={<Landing/>} />
         <Route
           path="/main"
           element={
             <PrivateRoute>
-              <Layout />
-              <NewQuest />
+              <Layout/>
+              <NewQuest/>
             </PrivateRoute>
           }
         />
@@ -36,21 +32,6 @@ const App = () => {
         />
       </Routes>
     </Suspense>
-    // <div>
-    // <Landing/>
-    // <div className="app_container">
-    //   <Navbar />
-    //   <div className="section_container">
-    //     <TodayContainer />
-
-    //     <TomorrowContainer />
-    //     <DoneContainer />
-    //     <NewQuest />
-
-    //   </div>
-    //   </div>
-    //   </div>
-
   );
 };
 

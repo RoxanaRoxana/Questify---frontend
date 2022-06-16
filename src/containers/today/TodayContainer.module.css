@@ -5,6 +5,10 @@
   letter-spacing: 0.02em;
   color: var(--color-font2);
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
-
+.cart_container{
+  display: flex;
+  justify-content: center;
+}

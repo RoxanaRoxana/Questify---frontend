@@ -158,4 +158,4 @@ const Card = ({ newCard }) => {
   );
 };
 
-export { Card };
+export default  Card ;
