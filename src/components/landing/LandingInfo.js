@@ -1,4 +1,4 @@
-import styles from "./landing.module.css";
+import styles from "./Landing.module.css";
 import React from "react";
 
 function LandingInfo() {

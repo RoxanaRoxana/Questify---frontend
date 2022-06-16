@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 import {
   TodayContainer,
   TomorrowContainer,
@@ -16,7 +16,6 @@ const Layout = (props) => {
         <TomorrowContainer />
         <DoneContainer />
       </div>
-      {/* <main>{ props.children}</main> */}
     </>
   );
 };

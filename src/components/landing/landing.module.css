@@ -28,6 +28,7 @@
   font-weight: 700;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: #15395A;
 }
 
 .landingParagraphForm {
@@ -69,7 +70,7 @@
   color: white;
   background-color: var(--color-button);
   border: none;
-}
+  box-shadow: 0 0px 5px 0px var(--color-button);}
 
 .landingBgImage1 {
   position: absolute;

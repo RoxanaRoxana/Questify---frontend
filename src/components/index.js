@@ -1,7 +1,7 @@
-export { default as Navbar } from './navbar/Navbar';
-export { default as Landing } from './landing/Landing'
-export { default as Background } from './landing/Background'
-export { default as LandingForm } from "./landing/LandingForm";
-export { default as LandingInfo } from "./landing/LandingInfo";
-export { default as NewQuest } from './newQuest/NewQuest';
-export { default as Layout } from './layout/Layout';
+export { default as Navbar } from './Navbar/Navbar';
+export { default as Landing } from './Landing/Landing'
+export { default as Background } from './Landing/Background'
+export { default as LandingForm } from "./Landing/LandingForm";
+export { default as LandingInfo } from "./Landing/LandingInfo";
+export { default as NewQuest } from './NewQuest/NewQuest';
+export { default as Layout } from './Layout/Layout';

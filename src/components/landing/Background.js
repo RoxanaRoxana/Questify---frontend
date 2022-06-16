@@ -2,7 +2,7 @@ import MOBILE_IMAGES from "../../assets/landingImages/mobile/images";
 import TABLET_HORIZONTAL from "../../assets/landingImages/tablet/horizontal/images";
 import TABLET_VERTICAL from "../../assets/landingImages/tablet/vertical/images";
 import DESKTOP_IMAGES from "../../assets/landingImages/desktop/images";
-import styles from "./landing.module.css";
+import styles from "./Landing.module.css";
 import React from "react";
 
 function Background(props) {

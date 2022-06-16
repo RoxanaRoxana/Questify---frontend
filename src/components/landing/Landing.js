@@ -1,8 +1,8 @@
 import React from "react";
-import { LandingInfo } from "../../components";
-import { LandingForm } from "../../components";
-import { Background } from '../../components'
-import styles from "./landing.module.css";
+import { LandingInfo } from "..";
+import { LandingForm } from "..";
+import { Background } from '..'
+import styles from "./Landing.module.css";
 
 function Landing() {
 
@@ -11,7 +11,7 @@ function Landing() {
       <div className={styles.container}>
         <LandingInfo></LandingInfo>
         <LandingForm></LandingForm>
-      </div>
+      </div >
       <Background></Background>
     </div>
   );
