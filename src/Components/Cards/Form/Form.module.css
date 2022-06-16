@@ -1,0 +1,52 @@
+.card_form {
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card_middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card_title {
+  color: #b9c3c8;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.card_task {
+  border: none;
+  border-bottom: 1px solid #00d7ff;
+  margin-bottom: 10px;
+  width: 248px;
+  font-size: 20px;
+}
+
+.card_task:focus {
+  outline: none;
+  caret-color: #00d7ff;
+}
+
+.card_time {
+  margin: 0;
+}
+
+.calendar_icon {
+  width: 12px;
+  height: 14px;
+  fill: #00d7ff;
+}
+
+.card_button {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  max-width: 19px;
+  max-height: 18px;
+  cursor: pointer;
+}

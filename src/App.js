@@ -1,8 +1,11 @@
-import React from "react";
+
+import React from 'react';
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 import { lazy, Suspense } from "react";
+
 
 const Landing = lazy(() => import("./components/Landing/Landing"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
@@ -10,6 +13,7 @@ const NewQuest = lazy(() => import("./components/NewQuest/NewQuest"));
 
 const App = () => {
   return (
+
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route index element={<Landing />} />
@@ -46,6 +50,7 @@ const App = () => {
     //   </div>
     //   </div>
     //   </div>
+
   );
 };
 
