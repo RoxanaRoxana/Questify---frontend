@@ -16,7 +16,6 @@ const Layout = (props) => {
         <TomorrowContainer />
         <DoneContainer />
       </div>
-      {/* <main>{ props.children}</main> */}
     </>
   );
 };

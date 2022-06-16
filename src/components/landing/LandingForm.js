@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function LandingForm() {
-
+  let navigate = useNavigate();
 
   const handleClick = () => {
    navigate('/main')

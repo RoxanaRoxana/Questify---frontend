@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Landing, Layout } from "./components";
+import { Landing, Layout, NewQuest } from "./components";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -15,6 +15,7 @@ const App = () => {
         element={
           <PrivateRoute>
             <Layout />
+            <NewQuest/>
           </PrivateRoute>
         }
       />

@@ -11,7 +11,7 @@ function Landing() {
       <div className={styles.container}>
         <LandingInfo></LandingInfo>
         <LandingForm></LandingForm>
-      </div>
+      </div >
       <Background></Background>
     </div>
   );
