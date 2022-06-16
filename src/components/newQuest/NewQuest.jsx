@@ -4,10 +4,16 @@ import { motion, AnimatePresence } from "framer-motion/dist/framer-motion";
 
 const NewQuest = () => {
   const [show, setShow] = useState(false);
+  const [cardList, setCardList] = useState([]);
 
   const handleClick = () => {
     setShow(!show);
   };
+
+  const addQuest = () => {
+  };
+
+  const addChallenge = () => {};
 
   return (
     <div className={styles.buttons}>
@@ -29,7 +35,11 @@ const NewQuest = () => {
               transition: { duration: 0.5, delay: 0.1 },
             }}
           >
-            <button type="button" className={styles.buttonChallenge}>
+            <button
+              type="button"
+              className={styles.buttonChallenge}
+              onClick={addChallenge}
+            >
               <svg
                 className={styles.icon}
                 viewBox="0 0 32 32"
@@ -65,7 +75,11 @@ const NewQuest = () => {
               transition: { duration: 0.5, delay: 0.1 },
             }}
           >
-            <button type="button" className={styles.buttonQuest}>
+            <button
+              type="button"
+              className={styles.buttonQuest}
+              onClick={addQuest}
+            >
               <svg
                 className={styles.quest_icon}
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,5 +112,3 @@ const NewQuest = () => {
 };
 
 export default NewQuest;
-
-
