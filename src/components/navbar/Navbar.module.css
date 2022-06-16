@@ -40,6 +40,10 @@
   width: 21.58px;
 }
 
+.logout_button:hover{
+  cursor: pointer;
+}
+
 .logout_icon {
   fill: var(--color-avatar);
 }

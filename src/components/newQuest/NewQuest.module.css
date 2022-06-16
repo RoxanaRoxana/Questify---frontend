@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.button:hover{
+  cursor: pointer;
+}
+
 .buttonChallenge {
   height: 52px;
   width: 52px;
@@ -23,6 +27,10 @@
   border: none;
   background-color: var(--color-details);
   box-shadow: 0 0px 5px 0px var(--color-details);
+}
+
+.buttonChallenge:hover{
+  cursor: pointer;
 }
 
 .buttonQuest {
@@ -35,6 +43,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.buttonQuest:hover{
+  cursor: pointer;
 }
 
 .quest_icon {

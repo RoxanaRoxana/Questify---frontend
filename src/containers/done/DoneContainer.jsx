@@ -5,10 +5,15 @@ import styles from "./DoneContainer.module.css";
 
 const DoneContainer = () => {
   const [isActive, setIsActive] = useState(false);
-
-  const handleClick = (e) => {
-    setIsActive((current) => !current);
+  const [show, setShow] = useState(false);
+  
+  const handleClick = () => {
+    setIsActive(!isActive);
+    setShow(!show);
   };
+    
+
+ 
 
   return (
     <>
@@ -24,9 +29,11 @@ const DoneContainer = () => {
           ></span>
           <div className={styles.line}></div>
         </div>
+        {show && (
         <div className={styles.card_container}>
           <Card />
-        </div>
+      </div>
+      )}
       </div>
     </>
   );
