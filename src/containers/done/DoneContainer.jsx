@@ -1,19 +1,15 @@
-import React from "react";
-import { useState } from "react";
-import CardQuest from "../../Components/Cards/CardQuest";
+import React, { useState } from "react";
+import CardQuest from "../../components/Cards/CardQuest";
 import styles from "./DoneContainer.module.css";
 
 const DoneContainer = () => {
   const [isActive, setIsActive] = useState(false);
   const [show, setShow] = useState(false);
-  
+
   const handleClick = () => {
     setIsActive(!isActive);
     setShow(!show);
   };
-    
-
- 
 
   return (
     <>

@@ -181,4 +181,4 @@ const CardQuest = () => {
 };
 
 
-export { CardQuest }
+export default { CardQuest }
