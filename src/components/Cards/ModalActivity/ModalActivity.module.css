@@ -14,7 +14,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .modal_button {
@@ -27,10 +27,10 @@
   background-color: #fff;
 }
 
-.modal_button:hover{
-  color: #B9C3C8;
+.modal_button:hover {
+  color: #b9c3c8;
 }
-.modal_button:focus{
-  color: #B9C3C8;
+.modal_button:focus {
+  color: #b9c3c8;
   outline: none;
 }

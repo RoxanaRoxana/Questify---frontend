@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../Components/Cards/Card";
+import Card from "../../components/Cards/Card";
 import styles from "./TomorrowContainer.module.css";
 
 
