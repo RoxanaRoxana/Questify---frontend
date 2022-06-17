@@ -5,8 +5,7 @@ const apiURL = "https://questify-backend-pl-on-2.herokuapp.com/api/";
 
 export const getAllUsers = createAsyncThunk(
   "getAllUsers",
-  async (accessToken) => {
-    axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
+  async () => {
     try {
       const { data } = await axios.get(`${apiURL}/users`);
       return data;
