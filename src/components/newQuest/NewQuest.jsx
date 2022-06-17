@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./NewQuest.module.css";
-import { motion, AnimatePresence } from "framer-motion/dist/framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NewQuest = () => {
   const [show, setShow] = useState(false);
