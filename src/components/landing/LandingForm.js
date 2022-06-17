@@ -33,9 +33,12 @@ function LandingForm() {
           
         ></input>
 
+
+
         <button className={styles.landingFormButton} onClick={handleClick}>
           go!
         </button>
+
       </form>
     </div>
   );
