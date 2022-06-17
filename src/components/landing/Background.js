@@ -1,5 +1,5 @@
 
-import styles from "./landing.module.css";
+import styles from "./Landing.module.css";
 import React, { useEffect, useState } from "react";
 
 import SVGM1 from "../../assets/landingImages/mobile/RectangleGrey.svg";
