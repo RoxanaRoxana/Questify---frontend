@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AskQuestion.module.css";
 
-const AskQuestion = ({ question, onApproval, onCancel, onDelete }) => {
+const AskQuestion = ({ question, onApproval, onCancel }) => {
   return (
     <div className={styles.bg}>
       <p className={styles.question}>{question}</p>
@@ -18,7 +18,7 @@ const AskQuestion = ({ question, onApproval, onCancel, onDelete }) => {
           className={styles.delete}
           type="button"
           value="DELETE"
-          onClick={()=>{onApproval(); onDelete()}}>
+          onClick={onApproval}>
           DELETE
         </button>
       </div>

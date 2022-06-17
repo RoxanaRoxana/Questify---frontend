@@ -4,6 +4,15 @@
   padding-left: 21px;
   padding-top: 21px;
   padding-right: 21px;
+  margin-bottom: 39px;
+}
+.card_top_edit {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 21px;
+  padding-top: 21px;
+  padding-right: 21px;
+  margin-bottom: 70px;
 }
 
 .card_row {
@@ -29,7 +38,7 @@
   height: 10px;
   border: 0px;
   border-radius: 50%;
-  background-color: #00D7FF;
+  background-color: #00d7ff;
   margin-right: 7px;
 }
 .card_circle_green {
@@ -45,14 +54,22 @@
   height: 10px;
   border: 0px;
   border-radius: 50%;
-  background-color: #DB0837;
+  background-color: #db0837;
   margin-right: 7px;
 }
 
+.card_text_edit {
+  margin: 0;
+  margin-right: 7px;
+  font-size: 16px;
+}
 .card_text {
   margin: 0;
   margin-right: 7px;
   font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #b9c3c8;
 }
 
 .star_icon {

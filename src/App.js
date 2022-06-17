@@ -1,10 +1,10 @@
 
-import {Card} from './Components/Cards/Card';
+import {CardQuest} from './components/Cards/CardQuest';
 
 function App() {
   return (
     <div className="App">
-        <Card />
+        <CardQuest />
     </div>
   );
 }

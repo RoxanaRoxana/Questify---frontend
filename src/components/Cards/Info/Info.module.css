@@ -1,0 +1,25 @@
+.quest_info{
+  padding-left: 21px;
+  padding-right: 21px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quest_task{
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+  color: #282828;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.quest_time{
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #B9C3C8;
+  margin: 0;
+}

@@ -2,6 +2,11 @@ import React from "react";
 import styles from "./ModalActivity.module.css";
 
 const ModalActivity = ({ onClick }) => {
+//   const handleMissClick = (e) =>{
+//     if(e.currentTarget !== e.target) {
+
+//     }
+//   }
   return (
     <div className={styles.modal}>
       <div className={styles.select}>
