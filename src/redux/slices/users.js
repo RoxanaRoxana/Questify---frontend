@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, logoutUser, registerUser } from "../../services/api";
+import {
+  getAllUsers,
+  loginUser,
+  logoutUser,
+  registerUser,
+} from "../../services/api";
 
 const initialAccessToken = localStorage.getItem("accessToken");
 const initialRefreshToken = localStorage.getItem("refreshToken");
@@ -16,6 +21,12 @@ export const usersSlice = createSlice({
   name: "users",
   initialState,
   extraReducers: {
+    [getAllUsers.pending]: (state) => {
+      state.loading = true;
+    },
+    [getAllUsers.fulfilled]: (state) => {
+      state.loading = false;
+    },
     [registerUser.pending]: (state) => {
       state.loading = true;
     },

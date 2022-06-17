@@ -3,6 +3,19 @@ import axios from "axios";
 
 const apiURL = "https://questify-backend-pl-on-2.herokuapp.com/api/";
 
+export const getAllUsers = createAsyncThunk(
+  "getAllUsers",
+  async (accessToken) => {
+    axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    try {
+      const { data } = await axios.get(`${apiURL}/users`);
+      return data;
+    } catch (error) {
+      return error?.response;
+    }
+  }
+);
+
 export const registerUser = createAsyncThunk("users/register", async (user) => {
   try {
     const { data } = await axios.post(`${apiURL}/users/register`, {
