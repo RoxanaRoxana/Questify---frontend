@@ -4,22 +4,23 @@ import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 
 
-const Landing = lazy(() => import("./Components/Landing/Landing"));
-const Layout = lazy(() => import("./Components/Layout/Layout"));
-const NewQuest = lazy(() => import("./Components/NewQuest/NewQuest"));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const UserPage = lazy(() => import("./pages/UserPage"));
+
+
+
 
 const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route index element={<Landing/>} />
-        <Route path="/Questify" element={<Landing/>} />
+        <Route index element={<HomePage />} />
+        <Route path="/Questify" element={<HomePage />} />
         <Route
           path="/main"
           element={
             <PrivateRoute>
-              <Layout/>
-              <NewQuest/>
+              <UserPage />
             </PrivateRoute>
           }
         />
