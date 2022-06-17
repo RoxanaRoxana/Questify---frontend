@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardQuest from "../../components/Cards/CardQuest";
+import { CardQuest } from "../../components/Cards/CardQuest";
 import styles from "./DoneContainer.module.css";
 
 const DoneContainer = () => {

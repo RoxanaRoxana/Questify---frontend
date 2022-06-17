@@ -1,7 +1,6 @@
 import React from "react";
-import CardQuest from "../../components/Cards/CardQuest";
+import { CardQuest } from "../../components/Cards/CardQuest";
 import styles from "./TomorrowContainer.module.css";
-
 
 const TomorrowContainer = () => {
   return (

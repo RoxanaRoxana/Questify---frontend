@@ -20,14 +20,14 @@ const setDay = (now, selectedDay) => {
 
 const CardQuest = () => {
   Notiflix.Notify.init({ timeout: 6000 });
-  
+
   // STORE
 
   const [taskName, setTaskName] = useState("");
   const [calendar, setCalendar] = useState("Today");
   const [level, setLevel] = useState("Normal");
   const [activity, setActivity] = useState("STUFF");
-  
+
   // LOCAL STATE
 
   const [levelToggle, setLevelToggle] = useState(false);
@@ -49,9 +49,9 @@ const CardQuest = () => {
     setDeleteToggle(false);
   };
 
-  const handlerEndUpdate =()=>{
-    setUpdateMode(false)
-  }
+  const handlerEndUpdate = () => {
+    setUpdateMode(false);
+  };
 
   const handlerIsTomorrow = () => {
     const check = calendar.split(",").includes("Tomorrow");
@@ -79,7 +79,7 @@ const CardQuest = () => {
         `Select date in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`,
+          .toLocaleString()}`
       );
     } else if (!taskName) {
       return Notiflix.Notify.info(`Enter quest name`);
@@ -99,7 +99,7 @@ const CardQuest = () => {
         `Ensure, that the time you have chosen is in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`,
+          .toLocaleString()}`
       );
     }
     const now = new Date().getDay();
@@ -137,7 +137,7 @@ const CardQuest = () => {
           <ModalTimer
             setTime={handlerChangeCalendar}
             onClose={handlerTimerToggle}
-            cardType='quest'
+            cardType="quest"
           />
         </Backdrop>
       ) : null}
@@ -149,36 +149,34 @@ const CardQuest = () => {
         createMode={createMode}
         updateMode={updateMode}
       />
-        
-        <div>
 
-      <Form
-        calendar={calendar}
-        taskName={taskName}
-        onChange={handlerInput}
-        openModal={handlerTimerToggle}
-        cardType="quest"
-        createMode={createMode}
-        updateMode={updateMode}
-      />
+      <div>
+        <Form
+          calendar={calendar}
+          taskName={taskName}
+          onChange={handlerInput}
+          openModal={handlerTimerToggle}
+          cardType="quest"
+          createMode={createMode}
+          updateMode={updateMode}
+        />
 
-      {activityToggle ? (
-        <ModalActivity onClick={handlerChangeActivity} />
-      ) : null}
+        {activityToggle ? (
+          <ModalActivity onClick={handlerChangeActivity} />
+        ) : null}
 
-      <Activities
-        activity={activity}
-        onClick={handlerActivityToggle}
-        onCreate={handlerCreate}
-        onDelete={handlerDelete}
-        onAccept={handlerEndUpdate}
-        createMode={createMode}
-        updateMode={updateMode}
-      />
-        </div>
+        <Activities
+          activity={activity}
+          onClick={handlerActivityToggle}
+          onCreate={handlerCreate}
+          onDelete={handlerDelete}
+          onAccept={handlerEndUpdate}
+          createMode={createMode}
+          updateMode={updateMode}
+        />
+      </div>
     </div>
   );
 };
 
-
-export default { CardQuest }
+export { CardQuest };

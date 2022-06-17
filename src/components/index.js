@@ -5,4 +5,4 @@ export { default as LandingForm } from "./Landing/LandingForm";
 export { default as LandingInfo } from "./Landing/LandingInfo";
 export { default as NewQuest } from "./NewQuest/NewQuest";
 export { default as Layout } from "./Layout/Layout";
-export { default as CardQuest } from "./Cards/CardQuest";
+export { CardQuest } from "./Cards/CardQuest";
