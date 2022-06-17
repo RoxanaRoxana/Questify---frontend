@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "../Navbar/Navbar";
 import {
   TodayContainer,
@@ -7,7 +7,14 @@ import {
 } from "../../containers";
 import styles from './Layout.module.css'
 
-const Layout = (props) => {
+const Layout = () => {
+  useEffect(() => {
+    document.body.style.backgroundColor = "var(--color-bg)";
+  }, []);
+
+
+
+ 
   return (
     <>
       <Navbar />
