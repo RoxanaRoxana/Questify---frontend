@@ -1,4 +1,3 @@
-import Landing from '../src/Components/landing/Landing'
 import React, { lazy, Suspense } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
