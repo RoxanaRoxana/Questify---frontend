@@ -1,13 +1,13 @@
-import React from 'react';
-import { Layout, NewQuest } from '../components';
+import React from "react";
+import { Layout, NewQuest } from "../components";
 
 const UserPage = () => {
-    return (
-      <>
-        <Layout />
-        <NewQuest />
-      </>
-    );
-}
+  return (
+    <>
+      <Layout />
+      <NewQuest />
+    </>
+  );
+};
 
-export default UserPage
+export default UserPage;

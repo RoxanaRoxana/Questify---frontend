@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Card from "../../Components/Cards/Card";
+import Card from "../../components/Cards/Card";
 import styles from "./DoneContainer.module.css";
 
 const DoneContainer = () => {

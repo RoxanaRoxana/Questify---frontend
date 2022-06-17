@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./TodayContainer.module.css";
-import Card from '../../Components/Cards/Card';
+import Card from '../../components/Cards/Card';
 
 
 
