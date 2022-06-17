@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import  LandingInfo  from "../landing/LandingInfo";
 import LandingForm  from "../landing/LandingForm";
@@ -8,8 +8,15 @@ import styles from "./landing.module.css";
 
 
 
-function Landing() {
+import React, {useEffect} from "react";
 
+import styles from "./Landing.module.css";
+
+
+function Landing() {
+ useEffect(() => {
+   document.body.style.backgroundColor = "white";
+ }, []);
   return (
     <div className={styles.wrap}>
       <div className={styles.container}>
