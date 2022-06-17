@@ -20,6 +20,7 @@ function LandingForm() {
           placeholder="Password"
         ></input>
         <button className={styles.landingFormButton}>go!</button>
+        <div className={styles.test}></div>
       </form>
     </div>
   );

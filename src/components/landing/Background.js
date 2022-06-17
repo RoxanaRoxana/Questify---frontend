@@ -1,82 +1,46 @@
-import MOBILE_IMAGES from "../../assets/landingImages/mobile/images";
-import TABLET_HORIZONTAL from "../../assets/landingImages/tablet/horizontal/images";
-import TABLET_VERTICAL from "../../assets/landingImages/tablet/vertical/images";
-import DESKTOP_IMAGES from "../../assets/landingImages/desktop/images";
 import styles from "./landing.module.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import SVGM1 from "../../assets/landingImages/mobile/RectangleGrey.svg";
+import SVGM2 from "../../assets/landingImages/mobile/RectangleBlue.svg";
+import SVGTV1 from "../../assets/landingImages/tablet/vertical/TabletVertical1.svg";
+import SVGTV2 from "../../assets/landingImages/tablet/vertical/TabletVertical2.svg";
+import SVGTH1 from "../../assets/landingImages/tablet/horizontal/TabletHorizontal1.svg";
+import SVGTH2 from "../../assets/landingImages/tablet/horizontal/TabletHorizontal2.svg";
+import SVGD1 from "../../assets/landingImages/desktop/Desktop1.svg";
+import SVGD2 from "../../assets/landingImages/desktop/Desktop2.svg";
 
 function Background(props) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  let image1 = SVGM1;
+  let image2 = SVGM2;
+  if (windowWidth >= 768 && windowWidth<1020) {
+    image1 = SVGTV1;
+    image2 = SVGTV2;
+  } else if (windowWidth >= 1020 && windowWidth < 1999) {
+    image1 = SVGTH1;
+    image2 = SVGTH2;
+  } else if (windowWidth >= 1200) {
+    image1 = SVGD1;
+    image2 = SVGD2;
+  }
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   return (
     <div>
-      <picture>
-        <source
-          srcSet={`${DESKTOP_IMAGES.BgImage1Webp} 1x, ${DESKTOP_IMAGES.BgImage1Webp2x} 2x`}
-          media="(min-width: 1200px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${DESKTOP_IMAGES.BgImage1Png} 1x, ${DESKTOP_IMAGES.BgImage1Png2x} 2x`}
-          media="(min-width: 1200px)"
-        />
-        <source
-          srcSet={`${TABLET_HORIZONTAL.BgImage1Webp} 1x, ${TABLET_HORIZONTAL.BgImage1Webp2x} 2x`}
-          media="(min-width: 1020px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${TABLET_HORIZONTAL.BgImage1Png} 1x, ${TABLET_HORIZONTAL.BgImage1Png2x} 2x`}
-          media="(min-width: 1020px)"
-        />
-        <source
-          srcSet={`${TABLET_VERTICAL.BgImage1Webp} 1x, ${TABLET_VERTICAL.BgImage1Webp2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${TABLET_VERTICAL.BgImage1Png} 1x, ${TABLET_VERTICAL.BgImage1Png2x} 2x`}
-          media="(min-width: 768px)"
-        />
-        <img
-          className={styles.landingBgImage1}
-          src={MOBILE_IMAGES.BgImage1Png}
-          alt="BgImage1"
-        ></img>
-      </picture>
-      <picture>
-        <source
-          srcSet={`${DESKTOP_IMAGES.BgImage2Webp} 1x, ${DESKTOP_IMAGES.BgImage2Webp2x} 2x`}
-          media="(min-width: 1200px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${DESKTOP_IMAGES.BgImage2Png} 1x, ${DESKTOP_IMAGES.BgImage2Png2x} 2x`}
-          media="(min-width: 1200px)"
-        />
-        <source
-          srcSet={`${TABLET_HORIZONTAL.BgImage2Webp} 1x, ${TABLET_HORIZONTAL.BgImage2Webp2x} 2x`}
-          media="(min-width: 1020px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${TABLET_HORIZONTAL.BgImage2Png} 1x, ${TABLET_HORIZONTAL.BgImage2Png2x} 2x`}
-          media="(min-width: 1020px)"
-        />
-        <source
-          srcSet={`${TABLET_VERTICAL.BgImage2Webp} 1x, ${TABLET_VERTICAL.BgImage2Webp2x} 2x`}
-          media="(min-width: 768px)"
-          type="image/webp"
-        />
-        <source
-          srcSet={`${TABLET_VERTICAL.BgImage2Png} 1x, ${TABLET_VERTICAL.BgImage2Png2x} 2x`}
-          media="(min-width: 768px)"
-        />
-        <img
-          className={styles.landingBgImage2}
-          src={MOBILE_IMAGES.BgImage2Png}
-          alt="BgImage2"
-        ></img>
-      </picture>
+      <img src={`${image1}`} alt="line" className={styles.landingBgImage1} />
+      <img src={`${image2}`} alt="line" className={styles.landingBgImage2} />
     </div>
   );
 }
