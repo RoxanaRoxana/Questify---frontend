@@ -1,11 +1,14 @@
 .card_bottom {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-right: 21px;
-  margin-bottom: 33px;
 }
 
 .card_stuff {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -18,6 +21,10 @@
   cursor: pointer;
 }
 .card_family {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -30,6 +37,10 @@
   cursor: pointer;
 }
 .card_health {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -42,6 +53,10 @@
   cursor: pointer;
 }
 .card_learning {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -54,6 +69,10 @@
   cursor: pointer;
 }
 .card_leisure {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -66,6 +85,10 @@
   cursor: pointer;
 }
 .card_work {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #282828;
   padding: 0;
   padding-left: 21px;
   width: 120px;
@@ -94,6 +117,23 @@
   align-items: center;
 }
 
+.card_save{
+  background-color: transparent;
+  padding: 0;
+  padding-top: 2px;
+  border: none;
+  max-width: 19px;
+  max-height: 18px;
+  cursor: pointer;
+  margin-right: 7px;
+}
+
+.save_icon{
+ width: 12px;
+ height: 12px;
+ fill: #00D7FF;
+}
+
 .card_clear {
   background-color: transparent;
   padding: 0;
@@ -111,12 +151,31 @@
   margin-right: 7px;
 }
 
+.card_accept {
+  background-color: transparent;
+  padding: 0;
+  padding-top: 2px;
+  border: none;
+  max-width: 19px;
+  max-height: 18px;
+  cursor: pointer;
+}
+
+.accept_icon {
+  width: 14px;
+  height: 10px;
+  fill: #24D40C;
+  margin-right: 7px;
+}
+
+
 .card_wall {
   height: 16px;
   width: 1px;
   border: none;
   background-color: #b9c3c8;
   margin-bottom: 1px;
+  margin-right: 7px;
 }
 
 .card_create {
@@ -126,5 +185,4 @@
   border: none;
   outline: none;
   cursor: pointer;
-  margin-left: 7px;
 }

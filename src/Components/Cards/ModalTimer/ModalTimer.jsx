@@ -7,7 +7,7 @@ const ModalTimer = ({onClose, setTime, cardType}) => {
 
   return (
     <div className={styles.modal}>
-      <Flatpickr 
+      <Flatpickr className={styles.input}
       options={cardType === 'quest' ? {
         enableTime: true,
         minDate: new Date(),
