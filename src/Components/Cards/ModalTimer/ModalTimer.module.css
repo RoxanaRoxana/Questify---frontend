@@ -1,0 +1,12 @@
+.modal {
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 77px;
+  padding: 20px 10px;
+}
+

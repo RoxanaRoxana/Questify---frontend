@@ -1,8 +1,12 @@
 import React from "react";
+
 import  LandingInfo  from "../landing/LandingInfo";
 import LandingForm  from "../landing/LandingForm";
 import  Background  from "../landing/Background";
 import styles from "./landing.module.css";
+
+
+
 
 function Landing() {
 
@@ -11,7 +15,7 @@ function Landing() {
       <div className={styles.container}>
         <LandingInfo></LandingInfo>
         <LandingForm></LandingForm>
-      </div>
+      </div >
       <Background></Background>
     </div>
   );

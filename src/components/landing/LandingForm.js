@@ -1,26 +1,44 @@
-import styles from "./landing.module.css";
+import styles from "./Landing.module.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LandingForm() {
+
+  const navigate = useNavigate();
+
+
+  const handleClick = () => {
+   navigate('/main')
+  }
+
 
   return (
     <div className={styles.landingFormContainer}>
       <p className={styles.landingParagraphForm}>
         Write your email to sign up or log in
       </p>
-      <form>
+      <form >
         <input
           className={styles.landingFormInput}
-          type="text"
+          type="email"
           placeholder="Email"
+         
+          required
         ></input>
         <input
           className={styles.landingFormInput}
-          type="text"
+          type="password"
           placeholder="Password"
+          required
+          
         ></input>
-        <button className={styles.landingFormButton}>go!</button>
-        <div className={styles.test}></div>
+
+
+
+        <button className={styles.landingFormButton} onClick={handleClick}>
+          go!
+        </button>
+
       </form>
     </div>
   );

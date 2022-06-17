@@ -1,24 +1,39 @@
-import React from "react";
-// import { TodayContainer, TomorrowContainer, DoneContainer } from "./containers";
 import Landing from '../src/Components/landing/Landing'
+import React, { lazy, Suspense } from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "./routes/PrivateRoute";
+
+
+const Landing = lazy(() => import("./Components/Landing/Landing"));
+const Layout = lazy(() => import("./Components/Layout/Layout"));
+const NewQuest = lazy(() => import("./Components/NewQuest/NewQuest"));
 
 const App = () => {
   return (
-    <div>
-    <Landing/>
-    {/* <div className="app_container">
-      <Navbar />
-      <div className="section_container">
-        <TodayContainer />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route index element={<Landing/>} />
+        <Route path="/Questify" element={<Landing/>} />
+        <Route
+          path="/main"
+          element={
+            <PrivateRoute>
+              <Layout/>
+              <NewQuest/>
+            </PrivateRoute>
+          }
+        />
 
-        <TomorrowContainer />
-        <DoneContainer />
-        <NewQuest />
-  
-      </div>
-      </div> */}
-      </div>
+        <Route
+          path="*"
+          element={
+            <h1 className="wrong-address">There's nothing here: 404!</h1>
+          }
+        />
+      </Routes>
+    </Suspense>
+
   );
 };
 

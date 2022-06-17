@@ -36,6 +36,7 @@
   font-weight: 700;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: #15395A;
 }
 
 .landingParagraphForm {
@@ -47,6 +48,7 @@
 
 .landingFormContainer {
   text-align: left;
+  
 }
 
 .landingFormInput {
@@ -77,7 +79,7 @@
   background-color: var(--color-button);
   box-shadow: 0 0px 5px 0px var(--color-button);
   border: none;
-}
+  box-shadow: 0 0px 5px 0px var(--color-button);}
 
 .landingBgImage1 {
   position: absolute;
@@ -103,6 +105,7 @@
     margin-bottom: 181px;
   }
 }
+
 
 /*----------------------TABLET VERTICAL------------------------- */
 

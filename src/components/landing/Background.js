@@ -1,3 +1,4 @@
+
 import styles from "./landing.module.css";
 import React, { useEffect, useState } from "react";
 
@@ -9,6 +10,7 @@ import SVGTH1 from "../../assets/landingImages/tablet/horizontal/TabletHorizonta
 import SVGTH2 from "../../assets/landingImages/tablet/horizontal/TabletHorizontal2.svg";
 import SVGD1 from "../../assets/landingImages/desktop/Desktop1.svg";
 import SVGD2 from "../../assets/landingImages/desktop/Desktop2.svg";
+
 
 function Background(props) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
