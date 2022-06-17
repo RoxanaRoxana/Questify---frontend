@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import LandingInfo from "../Landing/LandingInfo";
-import LandingForm from "../Landing/LandingForm";
-import Background from "../Landing/Background";
+import LandingInfo from "./LandingInfo";
+import LandingForm from "./LandingForm";
+import Background from "./Background";
 import styles from "./Landing.module.css";
 
 function Landing() {
