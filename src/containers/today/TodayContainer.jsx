@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./TodayContainer.module.css";
-import Card from '../../components/Cards/Card';
+import CardQuest from "../../components/Cards/CardQuest";
 
 
 
@@ -13,7 +13,7 @@ const TodayContainer = () => {
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
       <div className={styles.cart_container}>
-        <Card/>
+        <CardQuest />
       </div>
     </div>
   );

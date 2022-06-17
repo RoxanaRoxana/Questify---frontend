@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Card from "../../components/Cards/Card";
+import CardQuest from "../../Components/Cards/CardQuest";
 import styles from "./DoneContainer.module.css";
 
 const DoneContainer = () => {
@@ -30,10 +30,10 @@ const DoneContainer = () => {
           <div className={styles.line}></div>
         </div>
         {show && (
-        <div className={styles.card_container}>
-          <Card />
-      </div>
-      )}
+          <div className={styles.card_container}>
+            <CardQuest />
+          </div>
+        )}
       </div>
     </>
   );
