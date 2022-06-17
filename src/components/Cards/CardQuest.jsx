@@ -180,4 +180,5 @@ const CardQuest = () => {
   );
 };
 
-export { CardQuest };
+
+export { CardQuest }
