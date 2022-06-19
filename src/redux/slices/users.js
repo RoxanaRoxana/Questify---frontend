@@ -35,10 +35,6 @@ export const usersSlice = createSlice({
       }
       state.allUsers = usersEmails;
     },
-    [getAllUsers.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.payload.message;
-    },
     [registerUser.pending]: (state) => {
       state.loading = true;
     },
