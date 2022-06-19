@@ -41,8 +41,9 @@ export const cardsSlice = createSlice({
     [editCard.pending]: (state) => {
       state.loading = true;
     },
-    [editCard.fulfilled]: (state) => {
+    [editCard.fulfilled]: (state, action) => {
       state.loading = false;
+      state.cardsList = action.payload;
     },
     [editCard.rejected]: (state, action) => {
       state.loading = false;
