@@ -3,6 +3,7 @@ import { createCard, deleteCard, getAllCards } from "../../services/api";
 
 const initialState = {
   loading: false,
+  cardsList: null,
 };
 
 export const cardsSlice = createSlice({
@@ -16,11 +17,24 @@ export const cardsSlice = createSlice({
       state.cardsList = action.payload;
       state.loading = false;
     },
+    [getAllCards.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     [createCard.fulfilled]: (state, action) => {
-      state.cardsList.push(action.payload);
+      state.loading = false;
+      state.cardsList.cards.push(action.payload);
+    },
+    [createCard.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
     [deleteCard.fulfilled]: (state, action) => {
       state.cardsList = action.payload;
+    },
+    [deleteCard.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
   },
 });
