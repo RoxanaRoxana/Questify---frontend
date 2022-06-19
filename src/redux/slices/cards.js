@@ -20,7 +20,7 @@ export const cardsSlice = createSlice({
     },
     [getAllCards.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
     [createCard.fulfilled]: (state, action) => {
       state.loading = false;
@@ -28,14 +28,14 @@ export const cardsSlice = createSlice({
     },
     [createCard.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
     [deleteCard.fulfilled]: (state, action) => {
       state.cardsList = action.payload;
     },
     [deleteCard.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
   },
 });
