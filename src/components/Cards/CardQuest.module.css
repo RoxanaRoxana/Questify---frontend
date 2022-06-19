@@ -8,5 +8,8 @@
   font-size: 16px;
   font-size: 20px;
   position: relative;
+}
 
+.pointer_on{
+  cursor: pointer;
 }

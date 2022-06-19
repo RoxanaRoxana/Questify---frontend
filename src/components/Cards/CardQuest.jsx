@@ -18,24 +18,54 @@ const setDay = (now, selectedDay) => {
   }
 };
 
-const CardQuest = () => {
+const setMonth = (monthNumber) => {
+  if(monthNumber === 0) {
+    return 'January'
+  } else if (monthNumber === 1) {
+    return 'February'
+  } else if (monthNumber === 2) {
+    return 'March'
+  } else if (monthNumber === 3) {
+    return 'April'
+  } else if (monthNumber === 4) {
+    return 'May'
+  } else if (monthNumber === 5) {
+    return 'June'
+  } else if (monthNumber === 6) {
+    return 'July'
+  } else if (monthNumber === 7) {
+    return 'August'
+  } else if (monthNumber === 8) {
+    return 'September'
+  } else if (monthNumber === 9) {
+    return 'October'
+  } else if (monthNumber === 10) {
+    return 'November'
+  } else {
+    return 'December'
+  }
+}
+
+const CardQuest = ({ onCreate }) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
   // STORE
 
-  const [taskName, setTaskName] = useState("");
+  const [title, setTitle] = useState("");
   const [calendar, setCalendar] = useState("Today");
   const [level, setLevel] = useState("Normal");
   const [activity, setActivity] = useState("STUFF");
+  const [doneDate, setDoneDate] = useState("no date");
 
   // LOCAL STATE
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
   const [createMode, setCreateMode] = useState(false);
-  const [updateMode, setUpdateMode] = useState(true);
+  const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
+  const [updatedTime, setUpdatedTime] = useState('');
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
@@ -49,13 +79,25 @@ const CardQuest = () => {
     setDeleteToggle(false);
   };
 
-  const handlerEndUpdate = () => {
+  const handlerStartUpdate = (e) => {
+    if (
+      e.target.nodeName !== "path"
+       && e.target.nodeName !== "svg" &&
+      e.target.nodeName !== "BUTTON"
+      ) {
+      setUpdateMode(true);
+    } else {
+    }
+  };
+
+  const handlerEndUpdate = (e) => {
     setUpdateMode(false);
   };
 
   const handlerIsTomorrow = () => {
     const check = calendar.split(",").includes("Tomorrow");
     console.log(check);
+    console.log(doneDate)
   };
 
   useEffect(() => {
@@ -64,6 +106,13 @@ const CardQuest = () => {
     }
     handlerIsTomorrow();
   }, [calendar]);
+
+  useEffect(() => {
+    if (calendar === "Today") {
+      return;
+    }
+    handlerChangeCalendar([updatedTime]);
+  },);
 
   const handlerLevelToggle = () => {
     setLevelToggle(!levelToggle);
@@ -79,9 +128,9 @@ const CardQuest = () => {
         `Select date in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`
+          .toLocaleString()}`,
       );
-    } else if (!taskName) {
+    } else if (!title) {
       return Notiflix.Notify.info(`Enter quest name`);
     }
     setCreateMode(false);
@@ -99,7 +148,7 @@ const CardQuest = () => {
         `Ensure, that the time you have chosen is in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`
+          .toLocaleString()}`,
       );
     }
     const now = new Date().getDay();
@@ -110,6 +159,14 @@ const CardQuest = () => {
       .toString()
       .padStart(2, "0")}`;
     setCalendar(`${selectedDay}, ${selectedTime}`);
+    // Updated time for auto-rendering actual time on calendar
+    setUpdatedTime(date);
+    // Estimated time string to display on "done" cards
+    const timeMonth=date.getMonth()
+    const timeDay=date.getDate()
+    const timeString=`${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
+    setDoneDate(timeString);
+    console.log(timeString)
   };
 
   const handlerChangeActivity = (e) => {
@@ -118,11 +175,13 @@ const CardQuest = () => {
   };
 
   const handlerInput = (e) => {
-    setTaskName(e.target.value);
+    setTitle(e.target.value);
   };
 
   return (
-    <div className={styles.card}>
+    <div
+      className={!createMode && !updateMode ? `${styles.card} ${styles.pointer_on}` : styles.card}
+      onClick={!createMode && !updateMode ? handlerStartUpdate : null}>
       {deleteToggle ? (
         <Backdrop>
           <AskQuestion
@@ -153,7 +212,7 @@ const CardQuest = () => {
       <div>
         <Form
           calendar={calendar}
-          taskName={taskName}
+          title={title}
           onChange={handlerInput}
           openModal={handlerTimerToggle}
           cardType="quest"

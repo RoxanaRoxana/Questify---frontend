@@ -7,6 +7,7 @@
 }
 
 .quest_task{
+  width: 230px;
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
@@ -14,6 +15,7 @@
   color: #282828;
   margin: 0;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .quest_time{

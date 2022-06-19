@@ -34,7 +34,7 @@ const Level = ({ level, onClick, createMode, updateMode }) => {
         </div>
       ) : (
         <div className={styles.card_top_edit}>
-          <div className={styles.card_row}>
+          <div className={`${styles.card_row} ${styles.pointer_off}`}>
             <div
               className={
                 level === "Normal"
