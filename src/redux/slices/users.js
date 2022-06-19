@@ -37,7 +37,7 @@ export const usersSlice = createSlice({
     },
     [getAllUsers.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
     [registerUser.pending]: (state) => {
       state.loading = true;
@@ -47,7 +47,7 @@ export const usersSlice = createSlice({
     },
     [registerUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
     [loginUser.pending]: (state) => {
       state.loading = true;
@@ -63,7 +63,7 @@ export const usersSlice = createSlice({
     },
     [loginUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
     [logoutUser.pending]: (state) => {
       state.loading = true;
@@ -78,7 +78,7 @@ export const usersSlice = createSlice({
     },
     [logoutUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.message;
     },
   },
 });
