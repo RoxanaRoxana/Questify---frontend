@@ -13,7 +13,6 @@ const appReducers = combineReducers({
 });
 
 const reducers = (state, action) => {
-  console.log(action.type);
   if (action.type === "users/logout/pending") {
     storage.removeItem("persist:root");
     return appReducers(undefined, action);
