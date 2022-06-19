@@ -4,6 +4,7 @@ import { createCard, deleteCard, getAllCards } from "../../services/api";
 const initialState = {
   loading: false,
   cardsList: null,
+  error: {},
 };
 
 export const cardsSlice = createSlice({
@@ -19,7 +20,7 @@ export const cardsSlice = createSlice({
     },
     [getAllCards.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
     [createCard.fulfilled]: (state, action) => {
       state.loading = false;
@@ -27,14 +28,14 @@ export const cardsSlice = createSlice({
     },
     [createCard.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
     [deleteCard.fulfilled]: (state, action) => {
       state.cardsList = action.payload;
     },
     [deleteCard.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
   },
 });

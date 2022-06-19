@@ -16,6 +16,7 @@ const initialState = {
   isLoggedIn: false,
   userData: {},
   allUsers: [],
+  error: {},
 };
 
 export const usersSlice = createSlice({
@@ -36,7 +37,7 @@ export const usersSlice = createSlice({
     },
     [getAllUsers.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
     [registerUser.pending]: (state) => {
       state.loading = true;
@@ -46,7 +47,7 @@ export const usersSlice = createSlice({
     },
     [registerUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
     [loginUser.pending]: (state) => {
       state.loading = true;
@@ -62,7 +63,7 @@ export const usersSlice = createSlice({
     },
     [loginUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
     [logoutUser.pending]: (state) => {
       state.loading = true;
@@ -77,7 +78,7 @@ export const usersSlice = createSlice({
     },
     [logoutUser.rejected]: (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     },
   },
 });
