@@ -5,11 +5,21 @@ import cardsReducer from "../slices/cards";
 import { persistReducer } from "redux-persist";
 import { getPersistConfig } from "redux-deep-persist";
 import localStorage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage";
 
-const reducers = combineReducers({
+const appReducers = combineReducers({
   users: usersReducer,
   cards: cardsReducer,
 });
+
+const reducers = (state, action) => {
+  console.log(action.type);
+  if (action.type === "users/logout/pending") {
+    storage.removeItem("persist:root");
+    return appReducers(undefined, action);
+  }
+  return appReducers(state, action);
+};
 
 const persistConfig = getPersistConfig({
   key: "root",
