@@ -4,7 +4,7 @@ import { createCard, deleteCard, getAllCards } from "../../services/api";
 const initialState = {
   loading: false,
   cardsList: null,
-  error: {},
+  error: null,
 };
 
 export const cardsSlice = createSlice({

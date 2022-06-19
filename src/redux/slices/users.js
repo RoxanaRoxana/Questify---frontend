@@ -16,7 +16,7 @@ const initialState = {
   isLoggedIn: false,
   userData: {},
   allUsers: [],
-  error: {},
+  error: null,
 };
 
 export const usersSlice = createSlice({
@@ -38,8 +38,11 @@ export const usersSlice = createSlice({
     [registerUser.pending]: (state) => {
       state.loading = true;
     },
-    [registerUser.fulfilled]: (state) => {
+    [registerUser.fulfilled]: (state, action) => {
       state.loading = false;
+      const { userData } = action.payload;
+      const userEmail = userData.email;
+      state.allUsers.push(userEmail);
     },
     [registerUser.rejected]: (state, action) => {
       state.loading = false;
