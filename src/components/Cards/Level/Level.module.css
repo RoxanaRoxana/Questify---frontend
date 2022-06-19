@@ -83,3 +83,7 @@
   height: 4px;
   fill: #00d7ff;
 }
+
+.pointer_off{
+  cursor: auto;
+}

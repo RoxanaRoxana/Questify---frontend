@@ -43,16 +43,16 @@ const Activities = ({
           <div
             className={
               activity === "STUFF"
-                ? styles.card_stuff
+                ? `${styles.card_stuff} ${styles.pointer_off}`
                 : activity === "FAMILY"
-                ? styles.card_family
+                ? `${styles.card_family} ${styles.pointer_off}`
                 : activity === "HEALTH"
-                ? styles.card_health
+                ? `${styles.card_health} ${styles.pointer_off}`
                 : activity === "LEARNING"
-                ? styles.card_learning
+                ? `${styles.card_learning} ${styles.pointer_off}`
                 : activity === "LEISURE"
-                ? styles.card_leisure
-                : styles.card_work
+                ? `${styles.card_leisure} ${styles.pointer_off}`
+                : `${styles.card_work} ${styles.pointer_off}`
             }>
             <p className={styles.card_activity}>{activity}</p>
           </div>

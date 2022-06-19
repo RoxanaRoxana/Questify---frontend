@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import stylesQuest from "./Form.module.css";
 import { Info } from "../Info/Info";
 
 const Form = ({
   calendar,
-  taskName,
+  title,
   onChange,
   openModal,
   cardType,
@@ -38,7 +38,7 @@ const Form = ({
             <input
               className={stylesQuest.card_task}
               type="text"
-              value={taskName}
+              value={title}
               onChange={onChange}
               maxLength={40}
             />
@@ -59,7 +59,7 @@ const Form = ({
           </p>
         </div>
       ) : (
-        <Info calendar={calendar} taskName={taskName} cardType={cardType} />
+        <Info calendar={calendar} title={title} cardType={cardType} />
       )}
     </>
   );
