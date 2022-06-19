@@ -5,12 +5,12 @@ const apiURL = "https://questify-backend-pl-on-2.herokuapp.com/api/";
 
 export const getAllUsers = createAsyncThunk(
   "getAllUsers",
-  async ({ rejectWithValue }) => {
+  async () => {
     try {
       const { data } = await axios.get(`${apiURL}/users`);
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return error?.response;
     }
   }
 );
