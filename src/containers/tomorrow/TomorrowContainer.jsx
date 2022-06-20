@@ -6,7 +6,6 @@ import { getAllCards } from "../../services/api";
 
 const TomorrowContainer = () => {
   const { cardsList } = useSelector((state) => state.cards);
-  //const cards = useSelector((state) => state.cards.cardsList.cards);
   const { accessToken } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const date = new Date();
@@ -33,7 +32,7 @@ const TomorrowContainer = () => {
   }
 
   if (cardsList === null) {
-    console.log("lol");
+    return;
   } else {
     for (let card of cardsList.cards) {
       if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
@@ -41,8 +40,6 @@ const TomorrowContainer = () => {
       }
     }
   }
-
-  console.log(tomorrowCards);
 
   return (
     <div className={styles.container}>
