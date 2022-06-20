@@ -12,6 +12,7 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "react": "^18.1.0",
+    "react-animated-css": "^1.2.1",
     "react-avatar": "^5.0.1",
     "react-dom": "^18.1.0",
     "react-flatpickr": "^3.10.12",

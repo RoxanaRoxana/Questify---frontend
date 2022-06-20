@@ -10,6 +10,10 @@ import { Backdrop } from "../Utils/Backdrop/Backdrop";
 import { AskQuestion } from "../Utils/AskQuestion/AskQuestion";
 import { ModalTimer } from "./ModalTimer/ModalTimer";
 import { Info } from "./Info/Info";
+import CompleteTask from "./CompleteTask/CompleteTask"
+import Challange from "../Cards/Challange/Challange"
+import { Animated } from "react-animated-css";
+
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -47,7 +51,7 @@ const setMonth = (monthNumber) => {
   }
 }
 
-const CardQuest = ({ onCreate, cardId }) => {
+const CardQuest = ({ onCreate, cardId, type}) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
   // STORE
@@ -67,10 +71,20 @@ const CardQuest = ({ onCreate, cardId }) => {
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
   const [updatedTime, setUpdatedTime] = useState('');
+  const [isCompleted, setCompleted] = useState(false);
+  const [visable, setVisable] = useState(true);
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
   };
+
+  const completeQuest = () => {
+    setVisable(false);
+    // let type = cardsList.cards[cardsList.cards.length - 1].type;
+     setInterval(() => {
+       setCompleted(true);
+     }, 1000);
+   };
 
   const handlerDelete = () => {
     setDeleteToggle(!deleteToggle);
@@ -178,63 +192,101 @@ const CardQuest = ({ onCreate, cardId }) => {
   };
 
   return (
-    <div
-      className={!createMode && !updateMode ? `${styles.card} ${styles.pointer_on}` : styles.card}
-      onClick={!createMode && !updateMode ? handlerStartUpdate : null}>
-      {deleteToggle ? (
-        <Backdrop>
-          <AskQuestion
-            question="Delete this Quest?"
-            onApproval={handlerDelete}
-            onCancel={handlerCancel}
-            cardId={cardId}
-          />
-        </Backdrop>
-      ) : null}
-      {modalTimerToggle ? (
-        <Backdrop>
-          <ModalTimer
-            setTime={handlerChangeCalendar}
-            onClose={handlerTimerToggle}
-            cardType="quest"
-          />
-        </Backdrop>
-      ) : null}
-      {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
+    <div>
+      {type === "Challenge" ? (
+        <Challange />
+      ) : (
+        <div>
+          {!isCompleted && (
+            <Animated
+              animationIn="fadeIn"
+              animationOut="fadeOut"
+              isVisible={visable}
+            >
+              <div
+                className={
+                  !createMode && !updateMode
+                    ? `${styles.card} ${styles.pointer_on}`
+                    : styles.card
+                }
+                onClick={!createMode && !updateMode ? handlerStartUpdate : null}
+              >
+                {deleteToggle ? (
+                  <Backdrop>
+                    <AskQuestion
+                      question="Delete this Quest?"
+                      onApproval={handlerDelete}
+                      onCancel={handlerCancel}
+                      cardId={cardId}
+                    />
+                  </Backdrop>
+                ) : null}
+                {modalTimerToggle ? (
+                  <Backdrop>
+                    <ModalTimer
+                      setTime={handlerChangeCalendar}
+                      onClose={handlerTimerToggle}
+                      cardType="quest"
+                    />
+                  </Backdrop>
+                ) : null}
+                {levelToggle ? (
+                  <ModalLevel onClick={handlerChangeLevel} />
+                ) : null}
 
-      <Level
-        level={level}
-        onClick={handlerLevelToggle}
-        createMode={createMode}
-        updateMode={updateMode}
-      />
+                <Level
+                  level={level}
+                  onClick={handlerLevelToggle}
+                  createMode={createMode}
+                  updateMode={updateMode}
+                  endQuest={completeQuest}
+                />
 
-      <div>
-        {createMode || updateMode ? (<Form
-          calendar={calendar}
-          title={title}
-          onChange={handlerInput}
-          openModal={handlerTimerToggle}
-          cardType="quest"
-          updateMode={updateMode}
-        />) : (
-        <Info calendar={calendar} title={title} updatedTime={updatedTime} cardType='quest' />
+                <div>
+                  {createMode || updateMode ? (
+                    <Form
+                      calendar={calendar}
+                      title={title}
+                      onChange={handlerInput}
+                      openModal={handlerTimerToggle}
+                      cardType="quest"
+                      updateMode={updateMode}
+                    />
+                  ) : (
+                    <Info
+                      calendar={calendar}
+                      title={title}
+                      updatedTime={updatedTime}
+                      cardType="quest"
+                    />
+                  )}
+
+                  {activityToggle ? (
+                    <ModalActivity onClick={handlerChangeActivity} />
+                  ) : null}
+
+                  <Activities
+                    activity={activity}
+                    onClick={handlerActivityToggle}
+                    onCreate={handlerCreate}
+                    onDelete={handlerDelete}
+                    onAccept={handlerEndUpdate}
+                    createMode={createMode}
+                    updateMode={updateMode}
+                  />
+                </div>
+              </div>
+            </Animated>
+          )}
+          {isCompleted && (
+            <Animated>
+              <div className={styles.cardComplete}>
+                <CompleteTask></CompleteTask>
+              </div>
+            </Animated>
+          )}
+        </div>
       )}
-
-        {activityToggle ? (
-          <ModalActivity onClick={handlerChangeActivity} />
-        ) : null}
-
-        <Activities
-          activity={activity}
-          onClick={handlerActivityToggle}
-          onCreate={handlerCreate}
-          onDelete={handlerDelete}
-          onAccept={handlerEndUpdate}
-          createMode={createMode}
-          updateMode={updateMode}
-        />
-      </div>
     </div>
   );
 };
