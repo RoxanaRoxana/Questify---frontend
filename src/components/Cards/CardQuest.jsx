@@ -47,7 +47,7 @@ const setMonth = (monthNumber) => {
   }
 }
 
-const CardQuest = ({ onCreate }) => {
+const CardQuest = ({ onCreate, cardId }) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
   // STORE
@@ -187,6 +187,7 @@ const CardQuest = ({ onCreate }) => {
             question="Delete this Quest?"
             onApproval={handlerDelete}
             onCancel={handlerCancel}
+            cardId={cardId}
           />
         </Backdrop>
       ) : null}

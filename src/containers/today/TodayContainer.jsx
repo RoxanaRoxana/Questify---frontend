@@ -39,7 +39,7 @@ const TodayContainer = () => {
               }) => (
                 <li key={_id}>
                   <CardQuest
-                    _id={_id}
+                    cardId={_id}
                     title={title}
                     difficulty={difficulty}
                     category={category}

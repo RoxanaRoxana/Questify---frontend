@@ -32,7 +32,7 @@ export const cardsSlice = createSlice({
     },
     [createCard.fulfilled]: (state, action) => {
       state.loading = false;
-      state.cardsList.cards.push(action.payload);
+      state.cardsList.cards.push(action.payload.createdCard);
     },
     [createCard.rejected]: (state, action) => {
       state.loading = false;
