@@ -1,4 +1,4 @@
-.quest_info{
+.quest_info {
   padding-left: 21px;
   padding-right: 21px;
   display: flex;
@@ -6,7 +6,11 @@
   align-items: center;
 }
 
-.quest_task{
+.quest_row {
+  display: flex;
+}
+
+.quest_task {
   width: 230px;
   font-weight: 700;
   font-size: 20px;
@@ -18,10 +22,29 @@
   word-wrap: break-word;
 }
 
-.quest_time{
+.quest_time {
   font-size: 18px;
   line-height: 1;
   letter-spacing: 0.02em;
-  color: #B9C3C8;
+  color: #b9c3c8;
   margin: 0;
+}
+
+.icon_fire {
+  width: 12px;
+  height: 18px;
+  margin-left: 7px;
+  fill: #ff851c;
+}
+
+@media screen and (min-width: 768px) {
+  .quest_task {
+    width: 163px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .quest_time {
+    font-size: 14px;
+  }
 }

@@ -4,7 +4,7 @@
   padding-left: 21px;
   padding-top: 21px;
   padding-right: 21px;
-  margin-bottom: 39px;
+  margin-bottom: 41px;
 }
 .card_top_edit {
   display: flex;
@@ -12,7 +12,7 @@
   padding-left: 21px;
   padding-top: 21px;
   padding-right: 21px;
-  margin-bottom: 70px;
+  margin-bottom: 71px;
 }
 
 .card_row {
@@ -86,4 +86,39 @@
 
 .pointer_off{
   cursor: auto;
+}
+
+@media screen and (min-width: 768px){
+  .card_top {
+    padding-right: 21px;
+    margin-bottom: 20px;
+  }
+  .card_top_edit {
+    padding-right: 21px;
+    margin-bottom: 42px;
+  }
+  .card_circle_blue {
+    width: 8px;
+    height: 8px;
+  }
+  .card_circle_green {
+    width: 8px;
+    height: 8px;
+  }
+  .card_circle_red {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .card_text_edit {
+    font-size: 14px;
+  }
+  .card_text {
+    font-size: 14px;
+  }
+  
+  .star_icon {
+    width: 15px;
+    height: 14px;
+  }
 }

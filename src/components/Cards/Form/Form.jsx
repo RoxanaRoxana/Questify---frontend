@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import stylesQuest from "./Form.module.css";
-import { Info } from "../Info/Info";
 
 const Form = ({
   calendar,
@@ -8,12 +7,11 @@ const Form = ({
   onChange,
   openModal,
   cardType,
-  createMode,
   updateMode,
 }) => {
   return (
     <>
-      {createMode || updateMode ? (
+      
         <div className={stylesQuest.card_form}>
           <label
             className={stylesQuest.card_middle}
@@ -58,9 +56,7 @@ const Form = ({
             </button>
           </p>
         </div>
-      ) : (
-        <Info calendar={calendar} title={title} cardType={cardType} />
-      )}
+      
     </>
   );
 };

@@ -1,7 +1,11 @@
 import React from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteCard} from '../../../services/api'
 import styles from "./AskQuestion.module.css";
 
-const AskQuestion = ({ question, onApproval, onCancel }) => {
+const AskQuestion = ({ question, onCancel, cardId }) => {
+  const dispatch = useDispatch();
+  const {accessToken} =useSelector((state)=>state.users)
   return (
     <div className={styles.bg}>
       <p className={styles.question}>{question}</p>
@@ -18,7 +22,7 @@ const AskQuestion = ({ question, onApproval, onCancel }) => {
           className={styles.delete}
           type="button"
           value="DELETE"
-          onClick={onApproval}>
+          onClick={()=>dispatch(deleteCard({accessToken, cardId}))}>
           DELETE
         </button>
       </div>
