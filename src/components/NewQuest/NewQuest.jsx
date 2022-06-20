@@ -10,8 +10,7 @@ const NewQuest = () => {
     setShow(!show);
   };
 
-  const addQuest = () => {
-  };
+  const addQuest = () => {};
 
   const addChallenge = () => {};
 

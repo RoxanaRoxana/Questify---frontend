@@ -2,14 +2,21 @@ import React from "react";
 import AvatarIcon from "../Avatar/AvatarIcon";
 import styles from "./Navbar.module.css";
 import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../services/api";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import Notiflix from "notiflix";
 
 const Navbar = () => {
+  Notiflix.Notify.init({ timeout: 3000 });
+  const { accessToken } = useSelector((state) => state.users);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-  navigate("/Questify");
-  }
-// TU useDispatch -> funkcja ze stora na logout
+    dispatch(logoutUser(accessToken));
+    navigate("/Questify");
+    Notiflix.Notify.success("Logged out");
+  };
 
   return (
     <div className={styles.navbar}>
@@ -32,8 +39,11 @@ const Navbar = () => {
           ></path>
         </svg>
 
-
-        <button type="button" className={styles.logout_button} onClick={handleClick}>
+        <button
+          type="button"
+          className={styles.logout_button}
+          onClick={handleClick}
+        >
           <svg
             className={styles.logout_icon}
             xmlns="http://www.w3.org/2000/svg"
