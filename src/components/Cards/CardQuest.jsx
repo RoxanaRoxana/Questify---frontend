@@ -9,6 +9,7 @@ import Notiflix from "notiflix";
 import { Backdrop } from "../Utils/Backdrop/Backdrop";
 import { AskQuestion } from "../Utils/AskQuestion/AskQuestion";
 import { ModalTimer } from "./ModalTimer/ModalTimer";
+import { Info } from "./Info/Info";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -97,7 +98,6 @@ const CardQuest = ({ onCreate }) => {
   const handlerIsTomorrow = () => {
     const check = calendar.split(",").includes("Tomorrow");
     console.log(check);
-    console.log(doneDate)
   };
 
   useEffect(() => {
@@ -112,7 +112,7 @@ const CardQuest = ({ onCreate }) => {
       return;
     }
     handlerChangeCalendar([updatedTime]);
-  },);
+  });
 
   const handlerLevelToggle = () => {
     setLevelToggle(!levelToggle);
@@ -166,7 +166,6 @@ const CardQuest = ({ onCreate }) => {
     const timeDay=date.getDate()
     const timeString=`${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
-    console.log(timeString)
   };
 
   const handlerChangeActivity = (e) => {
@@ -210,15 +209,16 @@ const CardQuest = ({ onCreate }) => {
       />
 
       <div>
-        <Form
+        {createMode || updateMode ? (<Form
           calendar={calendar}
           title={title}
           onChange={handlerInput}
           openModal={handlerTimerToggle}
           cardType="quest"
-          createMode={createMode}
           updateMode={updateMode}
-        />
+        />) : (
+        <Info calendar={calendar} title={title} updatedTime={updatedTime} cardType='quest' />
+      )}
 
         {activityToggle ? (
           <ModalActivity onClick={handlerChangeActivity} />

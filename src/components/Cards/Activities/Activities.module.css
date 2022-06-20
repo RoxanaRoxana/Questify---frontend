@@ -116,3 +116,44 @@
   height: 4px;
   fill: #00d7ff;
 }
+
+@media screen and (min-width: 768px){
+  .card_bottom {
+    bottom: 21px;
+  }
+  
+  .card_stuff {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  .card_family {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  .card_health {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  .card_learning {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  .card_leisure {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  .card_work {
+    font-size: 11px;
+    width: 88px;
+    height: 25px;
+  }
+  
+  .pointer_off{
+    cursor: auto;
+  }
+}
