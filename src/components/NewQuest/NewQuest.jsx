@@ -15,7 +15,7 @@ const NewQuest = () => {
 
   const addQuest = () => {
     const cardData = {
-      title: "Enter title 2",
+      title: "jkl",
       difficulty: "Easy",
       category: "Stuff",
       date: "2022-06-20",
