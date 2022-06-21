@@ -6,8 +6,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 77px;
-  padding: 20px 10px;
+  height: 60px;
+  padding: 18px 5px;
+  transition: 2s;
 }
 
 .input{
@@ -16,5 +17,27 @@
   padding: 0;
   font-size: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  
+  transition: 1s;
+}
+
+@media screen and (min-Width: 768px){
+  .modal {
+    background: #ffffff;
+    box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+      3px 4px 4px rgba(21, 57, 90, 0.03);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 18px 5px;
+  }
+
+  .input{
+    border-radius: 20px;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
 }

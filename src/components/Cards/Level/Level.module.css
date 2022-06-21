@@ -5,6 +5,7 @@
   padding-top: 21px;
   padding-right: 21px;
   margin-bottom: 41px;
+  transition: 1s;
 }
 .card_top_edit {
   display: flex;
@@ -13,6 +14,7 @@
   padding-top: 21px;
   padding-right: 21px;
   margin-bottom: 71px;
+  transition: 1s;
 }
 
 .card_row {
@@ -40,6 +42,7 @@
   border-radius: 50%;
   background-color: #00d7ff;
   margin-right: 7px;
+  transition: 1s;
 }
 .card_circle_green {
   width: 10px;
@@ -48,6 +51,7 @@
   border-radius: 50%;
   background-color: #24d40c;
   margin-right: 7px;
+  transition: 1s;
 }
 .card_circle_red {
   width: 10px;
@@ -56,6 +60,7 @@
   border-radius: 50%;
   background-color: #db0837;
   margin-right: 7px;
+  transition: 1s;
 }
 
 .card_text_edit {
@@ -76,6 +81,7 @@
   width: 19px;
   height: 18px;
   fill: #00d7ff;
+  transition: 1s;
 }
 
 .arrow_icon {
@@ -88,14 +94,21 @@
   cursor: auto;
 }
 
+.star_off{
+  fill: #B9C3C8;
+  transition: 1s;
+}
+
 @media screen and (min-width: 768px){
   .card_top {
     padding-right: 21px;
     margin-bottom: 20px;
+    transition: 1s;
   }
   .card_top_edit {
     padding-right: 21px;
     margin-bottom: 42px;
+    transition: 1s;
   }
   .card_circle_blue {
     width: 8px;
