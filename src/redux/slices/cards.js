@@ -43,7 +43,7 @@ export const cardsSlice = createSlice({
     },
     [editCard.fulfilled]: (state, action) => {
       state.loading = false;
-      state.cardsList = action.payload;
+      state.cardsList.cards = [action.payload.editedCard];
     },
     [editCard.rejected]: (state, action) => {
       state.loading = false;
