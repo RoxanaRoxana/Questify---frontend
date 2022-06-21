@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createCard, deleteCard, getAllCards } from "../../services/api";
+import {
+  createCard,
+  deleteCard,
+  editCard,
+  getAllCards,
+} from "../../services/api";
 
 const initialState = {
   loading: false,
@@ -22,13 +27,30 @@ export const cardsSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    [createCard.pending]: (state) => {
+      state.loading = true;
+    },
     [createCard.fulfilled]: (state, action) => {
       state.loading = false;
-      state.cardsList.cards.push(action.payload);
+      state.cardsList.cards.push(action.payload.createdCard);
     },
     [createCard.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
+    },
+    [editCard.pending]: (state) => {
+      state.loading = true;
+    },
+    [editCard.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.cardsList.cards = [action.payload.editedCard];
+    },
+    [editCard.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [deleteCard.pending]: (state) => {
+      state.loading = true;
     },
     [deleteCard.fulfilled]: (state, action) => {
       state.cardsList = action.payload;

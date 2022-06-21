@@ -1,15 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CardQuest } from "../../components/Cards/CardQuest";
 import styles from "./DoneContainer.module.css";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+import { getAllCards } from "../../services/api";
 
 const DoneContainer = () => {
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
   const [show, setShow] = useState(false);
+  const { cardsList } = useSelector((state) => state.cards);
+  const { accessToken } = useSelector((state) => state.users);
+  let doneCards = [];
+
+  useEffect(() => {
+    dispatch(getAllCards(accessToken));
+  }, [dispatch, accessToken]);
 
   const handleClick = () => {
     setIsActive(!isActive);
     setShow(!show);
   };
+
+  let errorMessage;
+  if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
+    errorMessage = "No cards in database";
+  } else {
+    errorMessage = "Your session has expired";
+  }
+
+  if (cardsList === null) {
+    return;
+  } else {
+    for (let card of cardsList.cards) {
+      if (card.isCompleted === true) {
+        doneCards.push(card);
+      }
+    }
+  }
 
   return (
     <>
@@ -27,7 +54,37 @@ const DoneContainer = () => {
         </div>
         {show && (
           <div className={styles.card_container}>
-            <CardQuest />
+            {cardsList && cardsList.status === undefined ? (
+              <ul>
+                {doneCards.map(
+                  ({
+                    _id,
+                    title,
+                    difficulty,
+                    category,
+                    date,
+                    time,
+                    type,
+                    owner,
+                  }) => (
+                    <li key={_id}>
+                      <CardQuest
+                        cardId={_id}
+                        title={title}
+                        difficulty={difficulty}
+                        category={category}
+                        date={date}
+                        time={time}
+                        type={type}
+                        owner={owner}
+                      />
+                    </li>
+                  )
+                )}
+              </ul>
+            ) : (
+              <h2>{errorMessage}</h2>
+            )}
           </div>
         )}
       </div>

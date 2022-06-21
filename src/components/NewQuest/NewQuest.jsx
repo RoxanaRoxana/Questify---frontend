@@ -1,19 +1,43 @@
 import React, { useState } from "react";
 import styles from "./NewQuest.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { createCard } from "../../services/api";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 
 const NewQuest = () => {
   const [show, setShow] = useState(false);
-  const [cardList, setCardList] = useState([]);
+  const dispatch = useDispatch();
+  const { accessToken } = useSelector((state) => state.users);
 
   const handleClick = () => {
     setShow(!show);
   };
 
   const addQuest = () => {
+    const cardData = {
+      title: "jkl",
+      difficulty: "Easy",
+      category: "Stuff",
+      date: "2022-06-20",
+      time: "20:00",
+      type: "Task",
+    };
+
+    dispatch(createCard({ accessToken, cardData }));
   };
 
-  const addChallenge = () => {};
+  const addChallenge = () => {
+    const cardData = {
+      title: "Enter title 2",
+      difficulty: "Easy",
+      category: "Stuff",
+      date: "2022-06-20",
+      time: "20:00",
+      type: "Challenge",
+    };
+
+    dispatch(createCard({ accessToken, cardData }));
+  };
 
   return (
     <div className={styles.buttons}>
