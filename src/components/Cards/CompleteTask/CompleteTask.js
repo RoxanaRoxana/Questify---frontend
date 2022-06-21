@@ -7,7 +7,8 @@ import { ReactComponent as Clouds } from "../../../images/completeTask/clouds.sv
 import { ReactComponent as Trophy } from "../../../images/completeTask/trophy.svg";
 import { Animated } from "react-animated-css";
 
-function CompleteTask({ type,title }) {
+function CompleteTask({ type, title }) {
+  console.log(title)
   return (
     <div className={styles.completeWrap}>
       <div className={styles.complete}>

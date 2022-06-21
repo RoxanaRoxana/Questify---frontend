@@ -273,7 +273,7 @@ const CardQuest = ({ onCreate, cardId, type }) => {
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask></CompleteTask>
+            <CompleteTask title={title}></CompleteTask>
           </div>
         </Animated>
       )}
