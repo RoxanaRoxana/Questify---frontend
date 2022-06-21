@@ -4,6 +4,7 @@ import {
   deleteCard,
   editCard,
   getAllCards,
+  updateCardStatus,
 } from "../../services/api";
 
 const initialState = {
@@ -53,9 +54,21 @@ export const cardsSlice = createSlice({
       state.loading = true;
     },
     [deleteCard.fulfilled]: (state, action) => {
+      state.loading = false;
       state.cardsList = action.payload;
     },
     [deleteCard.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [updateCardStatus.pending]: (state) => {
+      state.loading = true;
+    },
+    [updateCardStatus.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.cardsList.cards = [action.payload.editedCard];
+    },
+    [updateCardStatus.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
