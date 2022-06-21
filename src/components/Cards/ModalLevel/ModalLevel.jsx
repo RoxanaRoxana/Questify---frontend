@@ -1,9 +1,17 @@
 import React from "react";
 import styles from "./ModalLevel.module.css";
+import { motion } from "framer-motion";
 
 const ModalLevel = ({onClick}) => {
   return (
-    <div className={styles.modal}>
+    <motion.div animate={{
+      top: '-20px',
+      opacity: 1
+    }}
+    transition={{
+      duration: '2s',
+    }}
+    className={styles.modal}>
       <div className={styles.select} >
         <div className={styles.modal_circle_blue}></div>
         <button type='button' value='Easy' className={styles.modal_button} onClick={onClick}>
@@ -22,7 +30,7 @@ const ModalLevel = ({onClick}) => {
           Hard
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

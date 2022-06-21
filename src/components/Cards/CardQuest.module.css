@@ -6,6 +6,7 @@
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
   position: relative;
+  transition: 1s;
 }
 
 .pointer_on{
