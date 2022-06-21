@@ -8,6 +8,7 @@ const NewQuest = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.users);
+  
 
   const handleClick = () => {
     setShow(!show);
@@ -15,11 +16,11 @@ const NewQuest = () => {
 
   const addQuest = () => {
     const cardData = {
-      title: "jkl",
+      title: "injk",
       difficulty: "Easy",
       category: "Stuff",
-      date: "2022-06-20",
-      time: "20:00",
+      date: "2022-06-21",
+      time: "22:00",
       type: "Task",
     };
 
