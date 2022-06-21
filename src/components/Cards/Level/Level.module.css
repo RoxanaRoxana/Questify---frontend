@@ -6,6 +6,16 @@
   padding-right: 21px;
   margin-bottom: 41px;
 }
+
+.challenge_top{
+ display: flex;
+  justify-content: space-between;
+  padding-left: 21px;
+  padding-top: 21px;
+  padding-right: 21px;
+  margin-bottom: 25px;
+
+}
 .card_top_edit {
   display: flex;
   justify-content: space-between;

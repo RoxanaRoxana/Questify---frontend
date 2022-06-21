@@ -15,7 +15,7 @@ const NewQuest = () => {
 
   const addQuest = () => {
     const cardData = {
-      title: "Enter title 5",
+      title: "Enter title 8",
       difficulty: "Easy",
       category: "Stuff",
       date: "2022-06-20",
@@ -28,7 +28,7 @@ const NewQuest = () => {
 
   const addChallenge = () => {
     const cardData = {
-      title: "Enter title 4",
+      title: "Enter title 9",
       difficulty: "Easy",
       category: "Stuff",
       date: "2022-06-20",

@@ -1,58 +1,181 @@
-import { useState } from "react";
-import { Level } from "../Level/Level";
-import { ModalLevel } from "../ModalLevel/ModalLevel";
-import { Form } from "../Form/Form";
-import { ModalTimer } from "../ModalTimer/ModalTimer";
-import { ModalActivity } from "../ModalActivity/ModalActivity";
-import { Activities } from "../Activities/Activities";
+import React, { useState, useEffect } from "react";
 import styles from "./Challange.module.css";
-import { Animated } from "react-animated-css";
+import { ModalLevel } from "../ModalLevel/ModalLevel";
+import { ModalActivity } from "../ModalActivity/ModalActivity";
+import { Level } from "../Level/Level";
+import { Form } from "../Form/Form";
+import { Activities } from "../Activities/Activities";
+import Notiflix from "notiflix";
+import { Backdrop } from "../../Utils/Backdrop/Backdrop";
+import { AskQuestion } from "../../Utils/AskQuestion/AskQuestion";
+import { ModalTimer } from "../ModalTimer/ModalTimer";
+import { Info } from "../Info/Info";
 import CompleteTask from "../CompleteTask/CompleteTask";
-import completeStyles from "../../NewQuest/NewQuest.module.css";
+import { Animated } from "react-animated-css";
 
-function Challange(props) {
-  const [questName, setQuestName] = useState("");
+const setDay = (now, selectedDay) => {
+  if (now === selectedDay) {
+    return "Today";
+  } else {
+    return "Tomorrow";
+  }
+};
+
+const setMonth = (monthNumber) => {
+  if (monthNumber === 0) {
+    return "January";
+  } else if (monthNumber === 1) {
+    return "February";
+  } else if (monthNumber === 2) {
+    return "March";
+  } else if (monthNumber === 3) {
+    return "April";
+  } else if (monthNumber === 4) {
+    return "May";
+  } else if (monthNumber === 5) {
+    return "June";
+  } else if (monthNumber === 6) {
+    return "July";
+  } else if (monthNumber === 7) {
+    return "August";
+  } else if (monthNumber === 8) {
+    return "September";
+  } else if (monthNumber === 9) {
+    return "October";
+  } else if (monthNumber === 10) {
+    return "November";
+  } else {
+    return "December";
+  }
+};
+
+function Challange({cardId,type}) {
+  // STORE
+
+  const [title, setTitle] = useState("");
   const [calendar, setCalendar] = useState("Today");
   const [level, setLevel] = useState("Normal");
   const [activity, setActivity] = useState("STUFF");
+  const [doneDate, setDoneDate] = useState("no date");
+
+  // LOCAL STATE
+
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(true);
+  const [createMode, setCreateMode] = useState(false);
   const [updateMode, setUpdateMode] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [deleteToggle, setDeleteToggle] = useState(false);
+  const [modalTimerToggle, setModalTimerToggle] = useState(false);
+  const [updatedTime, setUpdatedTime] = useState("");
   const [isCompleted, setCompleted] = useState(false);
   const [visable, setVisable] = useState(true);
+
+  const handlerTimerToggle = () => {
+    setModalTimerToggle(!modalTimerToggle);
+  };
+
+  const completeQuest = () => {
+    setVisable(false);
+    // let type = cardsList.cards[cardsList.cards.length - 1].type;
+    setInterval(() => {
+      setCompleted(true);
+    }, 1000);
+  };
+
+  const handlerDelete = () => {
+    setDeleteToggle(!deleteToggle);
+  };
+
+  const handlerCancel = () => {
+    setDeleteToggle(false);
+  };
+
+  const handlerStartUpdate = (e) => {
+    if (
+      e.target.nodeName !== "path" &&
+      e.target.nodeName !== "svg" &&
+      e.target.nodeName !== "BUTTON"
+    ) {
+      setUpdateMode(true);
+    } else {
+    }
+  };
+
+  const handlerEndUpdate = (e) => {
+    setUpdateMode(false);
+  };
+
+  const handlerIsTomorrow = () => {
+    const check = calendar.split(",").includes("Tomorrow");
+    console.log(check);
+  };
+
+  useEffect(() => {
+    if (calendar === "Today") {
+      return;
+    }
+    handlerIsTomorrow();
+  }, [calendar]);
+
+  useEffect(() => {
+    if (calendar === "Today") {
+      return;
+    }
+    handlerChangeCalendar([updatedTime]);
+  });
+
+  const handlerLevelToggle = () => {
+    setLevelToggle(!levelToggle);
+  };
+
+  const handlerActivityToggle = () => {
+    setActivityToggle(!activityToggle);
+  };
+
+  const handlerCreate = () => {
+    if (calendar === "Today") {
+      return Notiflix.Notify.info(
+        `Select date in range:
+         ${new Date().toLocaleString()} to ${new Date()
+          .fp_incr(2)
+          .toLocaleString()}`
+      );
+    } else if (!title) {
+      return Notiflix.Notify.info(`Enter quest name`);
+    }
+    setCreateMode(false);
+    setUpdateMode(false);
+  };
 
   const handlerChangeLevel = (e) => {
     setLevel(e.target.value);
     handlerLevelToggle();
   };
 
-  const handlerLevelToggle = () => {
-    setLevelToggle(!levelToggle);
-  };
-
-  const completeQuest = () => {
-    setVisable(false);
-    setInterval(() => {
-      setCompleted(true);
-    }, 1000);
-  };
-
-  const handlerCreate = () => {
-    setCreateMode(!createMode);
-  };
-
-  const handlerDelete = () => {
-    setIsDeleted(true);
-  };
-
-  const handlerInput = (e) => {
-    setQuestName(e.target.value);
-  };
-
-  const handlerChangeCalendar = (e) => {
-    setCalendar(e.target.value);
+  const handlerChangeCalendar = ([date]) => {
+    if (!date) {
+      return Notiflix.Notify.failure(
+        `Ensure, that the time you have chosen is in range:
+         ${new Date().toLocaleString()} to ${new Date()
+          .fp_incr(2)
+          .toLocaleString()}`
+      );
+    }
+    const now = new Date().getDay();
+    const future = date.getDay();
+    const selectedDay = setDay(now, future);
+    const selectedTime = `${date.getHours()}:${date
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+    setCalendar(`${selectedDay}, ${selectedTime}`);
+    // Updated time for auto-rendering actual time on calendar
+    setUpdatedTime(date);
+    // Estimated time string to display on "done" cards
+    const timeMonth = date.getMonth();
+    const timeDay = date.getDate();
+    const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
+    setDoneDate(timeString);
   };
 
   const handlerChangeActivity = (e) => {
@@ -60,35 +183,74 @@ function Challange(props) {
     handlerActivityToggle();
   };
 
-  const handlerActivityToggle = () => {
-    setActivityToggle(!activityToggle);
+  const handlerInput = (e) => {
+    setTitle(e.target.value);
   };
 
-    return (
-      <div>
-        {!isCompleted && (
-          <Animated
-            animationIn="fadeIn"
-            animationOut="fadeOut"
-            isVisible={visable}
+  return (
+    <div>
+      {!isCompleted && (
+        <Animated
+          animationIn="fadeIn"
+          animationOut="fadeOut"
+          isVisible={visable}
+        >
+          <div
+            className={
+              !createMode && !updateMode
+                ? `${styles.card} ${styles.pointer_on}`
+                : styles.card
+            }
+            onClick={!createMode && !updateMode ? handlerStartUpdate : null}
           >
-            <div className={styles.card}>
-              {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
+            {deleteToggle ? (
+              <Backdrop>
+                <AskQuestion
+                  question="Delete this Quest?"
+                  onApproval={handlerDelete}
+                  onCancel={handlerCancel}
+                  cardId={cardId}
+                />
+              </Backdrop>
+            ) : null}
+            {modalTimerToggle ? (
+              <Backdrop>
+                <ModalTimer
+                  setTime={handlerChangeCalendar}
+                  onClose={handlerTimerToggle}
+                  cardType="quest"
+                />
+              </Backdrop>
+            ) : null}
+            {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
 
-              <Level
-                type="Challange"
-                level={level}
-                onClick={handlerLevelToggle}
-                endQuest={completeQuest}
-              />
+            <Level
+              level={level}
+              onClick={handlerLevelToggle}
+              createMode={createMode}
+              updateMode={updateMode}
+              endQuest={completeQuest}
+              type={type}
+            />
 
-              <Form
-                type="Challange"
-                calendar={calendar}
-                questName={questName}
-                onChange={handlerInput}
-                changeCalendar={handlerChangeCalendar}
-              />
+            <div>
+              {createMode || updateMode ? (
+                <Form
+                  calendar={calendar}
+                  title={title}
+                  onChange={handlerInput}
+                  openModal={handlerTimerToggle}
+                  cardType={type}
+                  updateMode={updateMode}
+                />
+              ) : (
+                <Info
+                  calendar={calendar}
+                  title={title}
+                  updatedTime={updatedTime}
+                  cardType="quest"
+                />
+              )}
 
               {activityToggle ? (
                 <ModalActivity onClick={handlerChangeActivity} />
@@ -99,22 +261,23 @@ function Challange(props) {
                 onClick={handlerActivityToggle}
                 onCreate={handlerCreate}
                 onDelete={handlerDelete}
+                onAccept={handlerEndUpdate}
+                createMode={createMode}
+                updateMode={updateMode}
               />
             </div>
-          </Animated>
-        )}
-        {isCompleted && (
-          <Animated>
-            <div
-              style={{ background: '#15395A' }}
-              className={completeStyles.cardComplete}
-            >
-              <CompleteTask type="Challange"></CompleteTask>
-            </div>
-          </Animated>
-        )}
-      </div>
-    );
+          </div>
+        </Animated>
+      )}
+      {isCompleted && (
+        <Animated>
+          <div className={styles.cardComplete}>
+            <CompleteTask></CompleteTask>
+          </div>
+        </Animated>
+      )}
+    </div>
+  );
 }
 
 export default Challange;

@@ -10,10 +10,8 @@ import { Backdrop } from "../Utils/Backdrop/Backdrop";
 import { AskQuestion } from "../Utils/AskQuestion/AskQuestion";
 import { ModalTimer } from "./ModalTimer/ModalTimer";
 import { Info } from "./Info/Info";
-import CompleteTask from "./CompleteTask/CompleteTask"
-import Challange from "../Cards/Challange/Challange"
+import CompleteTask from "./CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
-
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -24,34 +22,34 @@ const setDay = (now, selectedDay) => {
 };
 
 const setMonth = (monthNumber) => {
-  if(monthNumber === 0) {
-    return 'January'
+  if (monthNumber === 0) {
+    return "January";
   } else if (monthNumber === 1) {
-    return 'February'
+    return "February";
   } else if (monthNumber === 2) {
-    return 'March'
+    return "March";
   } else if (monthNumber === 3) {
-    return 'April'
+    return "April";
   } else if (monthNumber === 4) {
-    return 'May'
+    return "May";
   } else if (monthNumber === 5) {
-    return 'June'
+    return "June";
   } else if (monthNumber === 6) {
-    return 'July'
+    return "July";
   } else if (monthNumber === 7) {
-    return 'August'
+    return "August";
   } else if (monthNumber === 8) {
-    return 'September'
+    return "September";
   } else if (monthNumber === 9) {
-    return 'October'
+    return "October";
   } else if (monthNumber === 10) {
-    return 'November'
+    return "November";
   } else {
-    return 'December'
+    return "December";
   }
-}
+};
 
-const CardQuest = ({ onCreate, cardId, type}) => {
+const CardQuest = ({ onCreate, cardId, type }) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
   // STORE
@@ -70,7 +68,7 @@ const CardQuest = ({ onCreate, cardId, type}) => {
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
-  const [updatedTime, setUpdatedTime] = useState('');
+  const [updatedTime, setUpdatedTime] = useState("");
   const [isCompleted, setCompleted] = useState(false);
   const [visable, setVisable] = useState(true);
 
@@ -81,10 +79,10 @@ const CardQuest = ({ onCreate, cardId, type}) => {
   const completeQuest = () => {
     setVisable(false);
     // let type = cardsList.cards[cardsList.cards.length - 1].type;
-     setInterval(() => {
-       setCompleted(true);
-     }, 1000);
-   };
+    setInterval(() => {
+      setCompleted(true);
+    }, 1000);
+  };
 
   const handlerDelete = () => {
     setDeleteToggle(!deleteToggle);
@@ -96,10 +94,10 @@ const CardQuest = ({ onCreate, cardId, type}) => {
 
   const handlerStartUpdate = (e) => {
     if (
-      e.target.nodeName !== "path"
-       && e.target.nodeName !== "svg" &&
+      e.target.nodeName !== "path" &&
+      e.target.nodeName !== "svg" &&
       e.target.nodeName !== "BUTTON"
-      ) {
+    ) {
       setUpdateMode(true);
     } else {
     }
@@ -142,7 +140,7 @@ const CardQuest = ({ onCreate, cardId, type}) => {
         `Select date in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`,
+          .toLocaleString()}`
       );
     } else if (!title) {
       return Notiflix.Notify.info(`Enter quest name`);
@@ -162,7 +160,7 @@ const CardQuest = ({ onCreate, cardId, type}) => {
         `Ensure, that the time you have chosen is in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`,
+          .toLocaleString()}`
       );
     }
     const now = new Date().getDay();
@@ -176,9 +174,9 @@ const CardQuest = ({ onCreate, cardId, type}) => {
     // Updated time for auto-rendering actual time on calendar
     setUpdatedTime(date);
     // Estimated time string to display on "done" cards
-    const timeMonth=date.getMonth()
-    const timeDay=date.getDate()
-    const timeString=`${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
+    const timeMonth = date.getMonth();
+    const timeDay = date.getDate();
+    const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
   };
 
@@ -193,99 +191,91 @@ const CardQuest = ({ onCreate, cardId, type}) => {
 
   return (
     <div>
-      {type === "Challenge" ? (
-        <Challange />
-      ) : (
-        <div>
-          {!isCompleted && (
-            <Animated
-              animationIn="fadeIn"
-              animationOut="fadeOut"
-              isVisible={visable}
-            >
-              <div
-                className={
-                  !createMode && !updateMode
-                    ? `${styles.card} ${styles.pointer_on}`
-                    : styles.card
-                }
-                onClick={!createMode && !updateMode ? handlerStartUpdate : null}
-              >
-                {deleteToggle ? (
-                  <Backdrop>
-                    <AskQuestion
-                      question="Delete this Quest?"
-                      onApproval={handlerDelete}
-                      onCancel={handlerCancel}
-                      cardId={cardId}
-                    />
-                  </Backdrop>
-                ) : null}
-                {modalTimerToggle ? (
-                  <Backdrop>
-                    <ModalTimer
-                      setTime={handlerChangeCalendar}
-                      onClose={handlerTimerToggle}
-                      cardType="quest"
-                    />
-                  </Backdrop>
-                ) : null}
-                {levelToggle ? (
-                  <ModalLevel onClick={handlerChangeLevel} />
-                ) : null}
-
-                <Level
-                  level={level}
-                  onClick={handlerLevelToggle}
-                  createMode={createMode}
-                  updateMode={updateMode}
-                  endQuest={completeQuest}
+      {!isCompleted && (
+        <Animated
+          animationIn="fadeIn"
+          animationOut="fadeOut"
+          isVisible={visable}
+        >
+          <div
+            className={
+              !createMode && !updateMode
+                ? `${styles.card} ${styles.pointer_on}`
+                : styles.card
+            }
+            onClick={!createMode && !updateMode ? handlerStartUpdate : null}
+          >
+            {deleteToggle ? (
+              <Backdrop>
+                <AskQuestion
+                  question="Delete this Quest?"
+                  onApproval={handlerDelete}
+                  onCancel={handlerCancel}
+                  cardId={cardId}
                 />
+              </Backdrop>
+            ) : null}
+            {modalTimerToggle ? (
+              <Backdrop>
+                <ModalTimer
+                  setTime={handlerChangeCalendar}
+                  onClose={handlerTimerToggle}
+                  cardType="quest"
+                />
+              </Backdrop>
+            ) : null}
+            {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
 
-                <div>
-                  {createMode || updateMode ? (
-                    <Form
-                      calendar={calendar}
-                      title={title}
-                      onChange={handlerInput}
-                      openModal={handlerTimerToggle}
-                      cardType="quest"
-                      updateMode={updateMode}
-                    />
-                  ) : (
-                    <Info
-                      calendar={calendar}
-                      title={title}
-                      updatedTime={updatedTime}
-                      cardType="quest"
-                    />
-                  )}
+            <Level
+              level={level}
+              onClick={handlerLevelToggle}
+              createMode={createMode}
+              updateMode={updateMode}
+              endQuest={completeQuest}
+            />
 
-                  {activityToggle ? (
-                    <ModalActivity onClick={handlerChangeActivity} />
-                  ) : null}
+            <div>
+              {createMode || updateMode ? (
+                <Form
+                  calendar={calendar}
+                  title={title}
+                  onChange={handlerInput}
+                  openModal={handlerTimerToggle}
+                  cardType="quest"
+                  updateMode={updateMode}
+                />
+              ) : (
+                <Info
+                  calendar={calendar}
+                  title={title}
+                  updatedTime={updatedTime}
+                  cardType="quest"
+                />
+              )}
 
-                  <Activities
-                    activity={activity}
-                    onClick={handlerActivityToggle}
-                    onCreate={handlerCreate}
-                    onDelete={handlerDelete}
-                    onAccept={handlerEndUpdate}
-                    createMode={createMode}
-                    updateMode={updateMode}
-                  />
-                </div>
-              </div>
-            </Animated>
-          )}
-          {isCompleted && (
-            <Animated>
-              <div className={styles.cardComplete}>
-                <CompleteTask></CompleteTask>
-              </div>
-            </Animated>
-          )}
-        </div>
+              {activityToggle ? (
+                <ModalActivity onClick={handlerChangeActivity} />
+              ) : null}
+
+              <Activities
+                activity={activity}
+                onClick={handlerActivityToggle}
+                onCreate={handlerCreate}
+                onDelete={handlerDelete}
+                onAccept={handlerEndUpdate}
+                createMode={createMode}
+                updateMode={updateMode}
+              />
+            </div>
+          </div>
+        </Animated>
+      )}
+      {isCompleted && (
+        <Animated>
+          <div className={styles.cardComplete}>
+            <CompleteTask></CompleteTask>
+          </div>
+        </Animated>
       )}
     </div>
   );
