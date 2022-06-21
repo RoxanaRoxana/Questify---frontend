@@ -93,14 +93,7 @@ export const editCard = createAsyncThunk(
   async ({ accessToken, cardData, cardId }, { rejectWithValue }) => {
     try {
       axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
-      const { data } = await axios.patch(`${apiURL}/card/${cardId}`, {
-        title: cardData.title,
-        difficulty: cardData.difficulty,
-        category: cardData.category,
-        date: cardData.date,
-        time: cardData.time,
-        type: cardData.type,
-      });
+      const { data } = await axios.patch(`${apiURL}/card/${cardId}`, cardData);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
