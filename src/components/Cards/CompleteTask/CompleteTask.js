@@ -7,14 +7,14 @@ import { ReactComponent as Clouds } from "../../../images/completeTask/clouds.sv
 import { ReactComponent as Trophy } from "../../../images/completeTask/trophy.svg";
 import { Animated } from "react-animated-css";
 
-function CompleteTask({ type }) {
+function CompleteTask({ type,title }) {
   return (
     <div className={styles.completeWrap}>
       <div className={styles.complete}>
         <Animated animationIn="fadeInLeft">
           <p
             className={
-              type === "Challange"
+              type === "Challenge"
                 ? styles.completeInfo_challange
                 : styles.completeInfo
             }
@@ -24,13 +24,13 @@ function CompleteTask({ type }) {
         </Animated>
         <Animated animationInDelay={1500} animationIn={"lightSpeedIn"}>
           <Animated animationInDelay={2500} animationIn={"rubberBand"}>
-            <span className={styles.questName}>Visit the dentist</span>
+            <span className={styles.questName}>{title}</span>
           </Animated>
         </Animated>
       </div>
       <div className={styles.award}>
         <Animated animationInDelay={1000} animationIn="fadeInDown">
-          {type === "Challange" ? (
+          {type === "Challenge" ? (
             <Animated animationInDelay={2000} animationIn="tada">
               <Trophy className={styles.trophy}></Trophy>
             </Animated>
@@ -41,14 +41,14 @@ function CompleteTask({ type }) {
         <Animated animationInDelay={1000} animationIn={"fadeInUp"}>
           <Platform
             className={
-              type === "Challange" ? styles.platform_challange : styles.platform
+              type === "Challenge" ? styles.platform_challange : styles.platform
             }
           ></Platform>
         </Animated>
-        {type === "Challange" ? null : <Dart className={styles.dart}></Dart>}
+        {type === "Challenge" ? null : <Dart className={styles.dart}></Dart>}
         <Clouds
           className={
-            type === "Challange" ? styles.clouds_challange : styles.clouds
+            type === "Challenge" ? styles.clouds_challange : styles.clouds
           }
         ></Clouds>
       </div>
@@ -56,7 +56,7 @@ function CompleteTask({ type }) {
         <Animated animationInDelay={3200} animationIn="fadeInUp">
           <button
             className={
-              type === "Challange" ? styles.button_challange : styles.button
+              type === "Challenge" ? styles.button_challange : styles.button
             }
           >
             Continue <Arrow className={styles.arrow}></Arrow>

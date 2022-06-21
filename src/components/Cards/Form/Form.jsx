@@ -56,7 +56,7 @@ const Form = ({
             />
           )}
         </label>
-        <p className={stylesQuest.card_time}>
+        <p className={cardType !== "quest"? stylesQuest.challenge_time : stylesQuest.card_time}>
           {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
           <button
             type="button"

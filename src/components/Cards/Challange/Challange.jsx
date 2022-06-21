@@ -248,7 +248,7 @@ function Challange({cardId,type}) {
                   calendar={calendar}
                   title={title}
                   updatedTime={updatedTime}
-                  cardType="quest"
+                  cardType={type}
                 />
               )}
 
@@ -272,7 +272,7 @@ function Challange({cardId,type}) {
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask></CompleteTask>
+            <CompleteTask title={title} type={type}></CompleteTask>
           </div>
         </Animated>
       )}

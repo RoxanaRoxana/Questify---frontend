@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Info.module.css";
 
 const Info = ({ cardType, calendar, title, updatedTime }) => {
-  
   const deadlineRange = 1000 * 60 * 60 * 3; // 3 Hours
   const checkIfDeadline = () => {
     if (updatedTime) {
@@ -12,10 +11,15 @@ const Info = ({ cardType, calendar, title, updatedTime }) => {
     }
     return false;
   };
-
   return (
     <div className={styles.quest_info}>
-      <p className={styles.quest_task}>{title}</p>
+      <p
+        className={
+          cardType !== "quest" ? styles.challenge_task : styles.quest_task 
+        }
+      >
+        {title}
+      </p>
       <div className={styles.quest_row}>
         <p className={styles.quest_time}>
           {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
