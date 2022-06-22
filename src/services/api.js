@@ -127,3 +127,14 @@ export const updateCardStatus = createAsyncThunk(
     }
   }
 );
+
+export const createEmptyCard = createAsyncThunk(
+  "createEmptyCard",
+  async (cardData, { rejectWithValue }) => {
+    try {
+      return cardData;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);

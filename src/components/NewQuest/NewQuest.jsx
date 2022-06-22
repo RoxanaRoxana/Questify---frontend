@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styles from "./NewQuest.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { createCard } from "../../services/api";
+import { createCard, createEmptyCard } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
 const NewQuest = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.users);
-  
 
   const handleClick = () => {
     setShow(!show);
@@ -19,12 +18,12 @@ const NewQuest = () => {
       title: "injk",
       difficulty: "Easy",
       category: "Stuff",
-      date: "2022-06-21",
+      date: "2022-06-22",
       time: "22:00",
       type: "Task",
     };
 
-    dispatch(createCard({ accessToken, cardData }));
+    dispatch(createEmptyCard(cardData));
   };
 
   const addChallenge = () => {
@@ -32,7 +31,7 @@ const NewQuest = () => {
       title: "Enter title 2",
       difficulty: "Easy",
       category: "Stuff",
-      date: "2022-06-20",
+      date: "2022-06-22",
       time: "20:00",
       type: "Challenge",
     };
