@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TodayContainer.module.css";
 import { CardQuest } from "../../components/Cards/CardQuest";
 import { useSelector, useDispatch } from "react-redux/es/exports";
@@ -13,6 +13,8 @@ const TodayContainer = () => {
   const dayOfMonth = new Date(today).getDate();
   let dayOfMonthWithZero = 0;
   let todayCards = [];
+  const { newCardData } = useSelector((state) => state.newCard);
+  console.log(newCardData);
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
@@ -32,9 +34,19 @@ const TodayContainer = () => {
   }
 
   if (cardsList === null) {
-    return;
+    void 0;
   } else {
     for (let card of cardsList.cards) {
+      if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
+        todayCards.push(card);
+      }
+    }
+  }
+
+  if (newCardData === null) {
+    void 0;
+  } else {
+    for (let card of newCardData) {
       if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
         todayCards.push(card);
       }
