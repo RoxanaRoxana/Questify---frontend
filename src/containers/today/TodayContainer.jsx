@@ -34,7 +34,7 @@ const TodayContainer = () => {
   }
 
   if (cardsList === null) {
-    return;
+    void 0;
   } else {
     for (let card of cardsList.cards) {
       if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
@@ -44,7 +44,7 @@ const TodayContainer = () => {
   }
 
   if (newCardData === null) {
-    console.log("bzzz");
+    void 0;
   } else {
     for (let card of newCardData) {
       if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
