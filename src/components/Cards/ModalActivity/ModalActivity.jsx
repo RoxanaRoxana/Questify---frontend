@@ -1,14 +1,25 @@
 import React from "react";
 import styles from "./ModalActivity.module.css";
+import {motion, AnimatePresence} from 'framer-motion';
 
-const ModalActivity = ({ onClick }) => {
-//   const handleMissClick = (e) =>{
-//     if(e.currentTarget !== e.target) {
-
-//     }
-//   }
+const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
   return (
-    <div className={styles.modal}>
+    <AnimatePresence>
+    {activityToggle ? <motion.div 
+    onMouseLeave={onMouseLeave}
+    animate={{
+      bottom: "-20px",
+      opacity: 1,
+    }}
+    initial={{
+      opacity: 0,
+      bottom: 0,
+    }}
+    exit={{
+      opacity: 0,
+      bottom: 0,
+    }}
+    className={styles.modal}>
       <div className={styles.select}>
       <button
         type="button"
@@ -58,7 +69,8 @@ const ModalActivity = ({ onClick }) => {
         WORK
       </button>
       </div>
-    </div>
+    </motion.div> : null}
+    </AnimatePresence>
   );
 };
 

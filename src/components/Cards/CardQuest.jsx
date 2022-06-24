@@ -20,32 +20,32 @@ const setDay = (now, selectedDay) => {
 };
 
 const setMonth = (monthNumber) => {
-  if(monthNumber === 0) {
-    return 'January'
+  if (monthNumber === 0) {
+    return "January";
   } else if (monthNumber === 1) {
-    return 'February'
+    return "February";
   } else if (monthNumber === 2) {
-    return 'March'
+    return "March";
   } else if (monthNumber === 3) {
-    return 'April'
+    return "April";
   } else if (monthNumber === 4) {
-    return 'May'
+    return "May";
   } else if (monthNumber === 5) {
-    return 'June'
+    return "June";
   } else if (monthNumber === 6) {
-    return 'July'
+    return "July";
   } else if (monthNumber === 7) {
-    return 'August'
+    return "August";
   } else if (monthNumber === 8) {
-    return 'September'
+    return "September";
   } else if (monthNumber === 9) {
-    return 'October'
+    return "October";
   } else if (monthNumber === 10) {
-    return 'November'
+    return "November";
   } else {
-    return 'December'
+    return "December";
   }
-}
+};
 
 const CardQuest = ({ onCreate, cardId }) => {
   Notiflix.Notify.init({ timeout: 6000 });
@@ -62,11 +62,11 @@ const CardQuest = ({ onCreate, cardId }) => {
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(false);
+  const [createMode, setCreateMode] = useState(true);
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
-  const [updatedTime, setUpdatedTime] = useState('');
+  const [updatedTime, setUpdatedTime] = useState("");
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
@@ -82,10 +82,10 @@ const CardQuest = ({ onCreate, cardId }) => {
 
   const handlerStartUpdate = (e) => {
     if (
-      e.target.nodeName !== "path"
-       && e.target.nodeName !== "svg" &&
+      e.target.nodeName !== "path" &&
+      e.target.nodeName !== "svg" &&
       e.target.nodeName !== "BUTTON"
-      ) {
+    ) {
       setUpdateMode(true);
     } else {
     }
@@ -142,6 +142,13 @@ const CardQuest = ({ onCreate, cardId }) => {
     handlerLevelToggle();
   };
 
+  const onMouseLeaveLevel = () => {
+    handlerLevelToggle();
+  };
+  const onMouseLeaveActivity = () => {
+    handlerActivityToggle();
+  };
+
   const handlerChangeCalendar = ([date]) => {
     if (!date) {
       return Notiflix.Notify.failure(
@@ -162,9 +169,9 @@ const CardQuest = ({ onCreate, cardId }) => {
     // Updated time for auto-rendering actual time on calendar
     setUpdatedTime(date);
     // Estimated time string to display on "done" cards
-    const timeMonth=date.getMonth()
-    const timeDay=date.getDate()
-    const timeString=`${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
+    const timeMonth = date.getMonth();
+    const timeDay = date.getDate();
+    const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
   };
 
@@ -179,28 +186,32 @@ const CardQuest = ({ onCreate, cardId }) => {
 
   return (
     <div
-      className={!createMode && !updateMode ? `${styles.card} ${styles.pointer_on}` : styles.card}
+      className={
+        !createMode && !updateMode
+          ? `${styles.card} ${styles.pointer_on}`
+          : styles.card
+      }
       onClick={!createMode && !updateMode ? handlerStartUpdate : null}>
-      {deleteToggle ? (
-        <Backdrop>
-          <AskQuestion
-            question="Delete this Quest?"
-            onApproval={handlerDelete}
-            onCancel={handlerCancel}
-            cardId={cardId}
-          />
-        </Backdrop>
-      ) : null}
-      {modalTimerToggle ? (
-        <Backdrop>
-          <ModalTimer
-            setTime={handlerChangeCalendar}
-            onClose={handlerTimerToggle}
-            cardType="quest"
-          />
-        </Backdrop>
-      ) : null}
-      {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
+      <Backdrop toggle={deleteToggle}>
+        <AskQuestion
+          question="Delete this Quest?"
+          onApproval={handlerDelete}
+          onCancel={handlerCancel}
+          cardId={cardId}
+        />
+      </Backdrop>
+      <Backdrop toggle={modalTimerToggle}>
+        <ModalTimer
+          setTime={handlerChangeCalendar}
+          onClose={handlerTimerToggle}
+          cardType="quest"
+        />
+      </Backdrop>
+      <ModalLevel
+        levelToggle={levelToggle}
+        onMouseLeave={onMouseLeaveLevel}
+        onClick={handlerChangeLevel}
+      />
 
       <Level
         level={level}
@@ -210,20 +221,29 @@ const CardQuest = ({ onCreate, cardId }) => {
       />
 
       <div>
-        {createMode || updateMode ? (<Form
-          calendar={calendar}
-          title={title}
-          onChange={handlerInput}
-          openModal={handlerTimerToggle}
-          cardType="quest"
-          updateMode={updateMode}
-        />) : (
-        <Info calendar={calendar} title={title} updatedTime={updatedTime} cardType='quest' />
-      )}
+        {createMode || updateMode ? (
+          <Form
+            calendar={calendar}
+            title={title}
+            onChange={handlerInput}
+            openModal={handlerTimerToggle}
+            cardType="quest"
+            updateMode={updateMode}
+          />
+        ) : (
+          <Info
+            calendar={calendar}
+            title={title}
+            updatedTime={updatedTime}
+            cardType="quest"
+          />
+        )}
 
-        {activityToggle ? (
-          <ModalActivity onClick={handlerChangeActivity} />
-        ) : null}
+        <ModalActivity
+          activityToggle={activityToggle}
+          onMouseLeave={onMouseLeaveActivity}
+          onClick={handlerChangeActivity}
+        />
 
         <Activities
           activity={activity}
