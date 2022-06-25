@@ -34,6 +34,7 @@ export const usersSlice = createSlice({
         usersEmails.push(user.email);
       }
       state.allUsers = usersEmails;
+      state.error = null;
     },
     [getAllUsers.rejected]: (state) => {
       state.loading = false;
@@ -46,6 +47,7 @@ export const usersSlice = createSlice({
       const { userData } = action.payload;
       const userEmail = userData.email;
       state.allUsers.push(userEmail);
+      state.error = null;
     },
     [registerUser.rejected]: (state, action) => {
       state.loading = false;
@@ -62,6 +64,7 @@ export const usersSlice = createSlice({
       state.userData = userData;
       state.loading = false;
       state.isLoggedIn = true;
+      state.error = null;
     },
     [loginUser.rejected]: (state, action) => {
       state.loading = false;
@@ -77,6 +80,7 @@ export const usersSlice = createSlice({
       state.refreshToken = null;
       state.sid = null;
       state.userData = {};
+      state.error = null;
     },
     [logoutUser.rejected]: (state, action) => {
       state.loading = false;
