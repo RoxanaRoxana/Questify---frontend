@@ -81,7 +81,7 @@
   width: 19px;
   height: 18px;
   fill: #00d7ff;
-  transition: 1s;
+  transition: 0.5s;
 }
 
 .arrow_icon {
@@ -92,6 +92,13 @@
 
 .pointer_off{
   cursor: auto;
+}
+
+.shadow_star:focus{
+  filter: drop-shadow(0px 3px 4px rgba(0, 215, 255, 0.25));
+}
+.shadow_star:hover{
+  filter: drop-shadow(0px 3px 4px rgba(0, 215, 255, 0.25));
 }
 
 .star_off{
