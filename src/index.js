@@ -8,7 +8,6 @@ import store from "./redux/store/store";
 import { BrowserRouter } from "react-router-dom";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import {CardQuest} from './components/Cards/CardQuest'
 
 let persistor = persistStore(store);
 
@@ -18,7 +17,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <CardQuest />
+          <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>

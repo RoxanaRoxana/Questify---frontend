@@ -14,7 +14,6 @@ const TodayContainer = () => {
   let dayOfMonthWithZero = 0;
   let todayCards = [];
   const { newCardData } = useSelector((state) => state.newCard);
-  console.log(newCardData);
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));

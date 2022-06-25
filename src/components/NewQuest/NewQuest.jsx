@@ -13,13 +13,21 @@ const NewQuest = () => {
     setShow(!show);
   };
 
+  const currentLocalDate = () => {
+    return new Date().toISOString().slice(0, 10);
+  };
+
+  const currentLocalHour = () => {
+    return new Date().toTimeString().split(" ")[0].slice(0, 5);
+  };
+
   const addQuest = () => {
     const cardData = {
-      title: "injk",
+      title: "Enter title",
       difficulty: "Easy",
       category: "Stuff",
-      date: "2022-06-22",
-      time: "22:00",
+      date: currentLocalDate(),
+      time: currentLocalHour(),
       type: "Task",
     };
 
@@ -28,11 +36,11 @@ const NewQuest = () => {
 
   const addChallenge = () => {
     const cardData = {
-      title: "Enter title 2",
+      title: "Enter title",
       difficulty: "Easy",
       category: "Stuff",
-      date: "2022-06-22",
-      time: "20:00",
+      date: currentLocalDate(),
+      time: currentLocalHour(),
       type: "Challenge",
     };
 
