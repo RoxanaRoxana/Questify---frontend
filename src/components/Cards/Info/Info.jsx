@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Info.module.css";
 
 const Info = ({ cardType, calendar, title, updatedTime }) => {
-  
   const deadlineRange = 1000 * 60 * 60 * 3; // 3 Hours
   const checkIfDeadline = () => {
     if (updatedTime) {

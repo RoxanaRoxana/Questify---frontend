@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NewQuest.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { createCard, createEmptyCard } from "../../services/api";
+import { createCard } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
 const NewQuest = () => {
@@ -23,25 +23,25 @@ const NewQuest = () => {
 
   const addQuest = () => {
     const cardData = {
-      title: "Enter title",
+      title: "Enter quest title",
       difficulty: "Easy",
       category: "Stuff",
       date: currentLocalDate(),
       time: currentLocalHour(),
-      type: "Task",
+      type: "quest",
     };
 
-    dispatch(createEmptyCard(cardData));
+    dispatch(createCard({ accessToken, cardData }));
   };
 
   const addChallenge = () => {
     const cardData = {
-      title: "Enter title",
+      title: "Enter challenge title",
       difficulty: "Easy",
       category: "Stuff",
       date: currentLocalDate(),
       time: currentLocalHour(),
-      type: "Challenge",
+      type: "challenge",
     };
 
     dispatch(createCard({ accessToken, cardData }));
