@@ -25,7 +25,7 @@ const NewQuest = () => {
     const cardData = {
       title: "Enter quest title",
       difficulty: "Easy",
-      category: "Stuff",
+      category: "STUFF",
       date: currentLocalDate(),
       time: currentLocalHour(),
       type: "quest",
@@ -38,7 +38,7 @@ const NewQuest = () => {
     const cardData = {
       title: "Enter challenge title",
       difficulty: "Easy",
-      category: "Stuff",
+      category: "STUFF",
       date: currentLocalDate(),
       time: currentLocalHour(),
       type: "challenge",

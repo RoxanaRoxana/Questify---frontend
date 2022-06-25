@@ -19,15 +19,15 @@ const Activities = ({
             type="button"
             onClick={onClick}
             className={
-              activity === "Stuff"
+              activity === "STUFF"
                 ? styles.card_stuff
-                : activity === "Family"
+                : activity === "FAMILY"
                 ? styles.card_family
-                : activity === "Health"
+                : activity === "HEALTH"
                 ? styles.card_health
-                : activity === "Learning"
+                : activity === "LEARNING"
                 ? styles.card_learning
-                : activity === "Leisure"
+                : activity === "LEISURE"
                 ? styles.card_leisure
                 : styles.card_work
             }
@@ -44,15 +44,15 @@ const Activities = ({
         ) : (
           <div
             className={
-              activity === "Stuff"
+              activity === "STUFF"
                 ? `${styles.card_stuff} ${styles.pointer_off}`
-                : activity === "Family"
+                : activity === "FAMILY"
                 ? `${styles.card_family} ${styles.pointer_off}`
-                : activity === "Health"
+                : activity === "HEALTH"
                 ? `${styles.card_health} ${styles.pointer_off}`
-                : activity === "Learning"
+                : activity === "LEARNING"
                 ? `${styles.card_learning} ${styles.pointer_off}`
-                : activity === "Leisure"
+                : activity === "LEISURE"
                 ? `${styles.card_leisure} ${styles.pointer_off}`
                 : `${styles.card_work} ${styles.pointer_off}`
             }

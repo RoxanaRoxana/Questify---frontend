@@ -25,7 +25,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
           <div className={styles.select}>
             <button
               type="button"
-              value="Stuff"
+              value="STUFF"
               className={styles.modal_button}
               onClick={onClick}
             >
@@ -34,7 +34,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
 
             <button
               type="button"
-              value="Family"
+              value="FAMILY"
               className={styles.modal_button}
               onClick={onClick}
             >
@@ -43,7 +43,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
 
             <button
               type="button"
-              value="Health"
+              value="HEALTH"
               className={styles.modal_button}
               onClick={onClick}
             >
@@ -52,7 +52,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
 
             <button
               type="button"
-              value="Learning"
+              value="LEARNING"
               className={styles.modal_button}
               onClick={onClick}
             >
@@ -61,7 +61,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
 
             <button
               type="button"
-              value="Leisure"
+              value="LEISURE"
               className={styles.modal_button}
               onClick={onClick}
             >
@@ -70,7 +70,7 @@ const ModalActivity = ({ onClick, onMouseLeave, activityToggle }) => {
 
             <button
               type="button"
-              value="Work"
+              value="WORK"
               className={styles.modal_button}
               onClick={onClick}
             >
