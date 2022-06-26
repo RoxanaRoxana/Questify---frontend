@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./ModalTimer.module.css";
 import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/flatpickr.css";
+import styles from "./ModalTimer.module.css";
 
 const ModalTimer = ({ onClose, setTime, cardType }) => {
   return (
@@ -12,12 +13,12 @@ const ModalTimer = ({ onClose, setTime, cardType }) => {
             ? {
                 enableTime: true,
                 minDate: new Date(),
-                maxDate: new Date().fp_incr(2),
+                maxDate: new Date().fp_incr(1),
               }
             : {
                 enableTime: true,
                 minDate: new Date(),
-                maxDate: new Date().fp_incr(7),
+                maxDate: new Date().fp_incr(6),
               }
         }
         onChange={(date) => setTime(date)}
