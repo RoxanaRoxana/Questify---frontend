@@ -1,6 +1,6 @@
 import React from "react";
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/flatpickr.css";
+import 'flatpickr/dist/themes/airbnb.css';
 import styles from "./ModalTimer.module.css";
 
 const ModalTimer = ({ onClose, setTime, cardType }) => {
