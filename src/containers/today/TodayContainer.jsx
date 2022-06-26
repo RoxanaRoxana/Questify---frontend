@@ -45,7 +45,7 @@ const TodayContainer = () => {
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
       <div className={styles.cart_container}>
-        {cardsList && cardsList.status === undefined ? (
+        {cardsList && !cardsList.status ? (
           <ul>
             {todayCards.map(
               ({
