@@ -45,7 +45,7 @@ const TomorrowContainer = () => {
     <div className={styles.container}>
       <h1 className={styles.title_container}>Tomorrow</h1>
       <div className={styles.cart_container}>
-        {cardsList && cardsList.status === undefined ? (
+        {cardsList && !cardsList.status ? (
           <ul>
             {tomorrowCards.map(
               ({
@@ -61,12 +61,12 @@ const TomorrowContainer = () => {
                 <li key={_id}>
                   <CardQuest
                     cardId={_id}
-                    title={title}
-                    difficulty={difficulty}
-                    category={category}
-                    date={date}
-                    time={time}
-                    type={type}
+                    cardTitle={title}
+                    cardDifficulty={difficulty}
+                    cardCategory={category}
+                    cardDate={date}
+                    cardTime={time}
+                    cardType={type}
                     owner={owner}
                   />
                 </li>

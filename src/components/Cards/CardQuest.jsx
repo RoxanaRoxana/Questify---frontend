@@ -64,8 +64,8 @@ const CardQuest = ({
   // STORE
 
   const [title, setTitle] = useState(cardTitle);
-  const [calendar, setCalendar] = useState("Today");
   const [level, setLevel] = useState(cardDifficulty);
+  const [calendar, setCalendar] = useState("Today");
   const [activity, setActivity] = useState(cardCategory);
   const [doneDate, setDoneDate] = useState("no date");
   const { accessToken } = useSelector((state) => state.users);
@@ -83,6 +83,11 @@ const CardQuest = ({
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
   const [updatedTime, setUpdatedTime] = useState("");
+  const [hourForBackend, setHourForBackend] = useState("");
+  const [dateForBackend, setDateForBackend] = useState("");
+
+  const timeAndDateFromCard = `${cardDate} ${cardTime}:00`;
+  const timeForFront = new Date(timeAndDateFromCard);
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
@@ -111,7 +116,7 @@ const CardQuest = ({
     setTitle(cardTitle);
     setLevel(cardDifficulty);
     setActivity(cardCategory);
-    setCalendar("Today");
+    handlerChangeCalendar([timeForFront]);
   };
 
   const handlerEndUpdate = (e) => {
@@ -145,14 +150,6 @@ const CardQuest = ({
     setActivityToggle(!activityToggle);
   };
 
-  const currentLocalDate = () => {
-    return new Date().toISOString().slice(0, 10);
-  };
-
-  const currentLocalHour = () => {
-    return new Date().toTimeString().split(" ")[0].slice(0, 5);
-  };
-
   const handlerCreate = () => {
     if (calendar === "Today") {
       return Notiflix.Notify.info(
@@ -168,8 +165,8 @@ const CardQuest = ({
       title: title,
       difficulty: level,
       category: activity,
-      date: currentLocalDate(),
-      time: currentLocalHour(),
+      date: dateForBackend,
+      time: hourForBackend,
       type: cardType,
     };
 
@@ -219,7 +216,13 @@ const CardQuest = ({
     const timeDay = date.getDate();
     const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
+    setHourForBackend(selectedTime);
+    setDateForBackend(new Date(date).toISOString().slice(0, 10));
   };
+
+  useEffect(() => {
+    handlerChangeCalendar([timeForFront]);
+  }, []);
 
   const handlerChangeActivity = (e) => {
     setActivity(e.target.value);
