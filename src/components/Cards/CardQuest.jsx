@@ -52,7 +52,7 @@ const setMonth = (monthNumber) => {
 };
 
 const CardQuest = ({
-  onCreate=false,
+  onCreate = false,
   cardId,
   cardTitle,
   cardDifficulty,
@@ -261,26 +261,26 @@ const CardQuest = ({
             }
             onClick={!createMode && !updateMode ? handlerStartUpdate : null}
           >
-            {deleteToggle ? (
-              <Backdrop>
-                <AskQuestion
-                  question="Delete this Quest?"
-                  onApproval={handlerDelete}
-                  onCancel={handlerCancel}
-                  cardId={cardId}
-                />
-              </Backdrop>
-            ) : null}
-            {modalTimerToggle ? (
-              <Backdrop>
-                <ModalTimer
-                  setTime={handlerChangeCalendar}
-                  onClose={handlerTimerToggle}
-                  cardType="quest"
-                />
-              </Backdrop>
-            ) : null}
-            {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
+            <Backdrop toggle={deleteToggle}>
+              <AskQuestion
+                question="Delete this Quest?"
+                onApproval={handlerDelete}
+                onCancel={handlerCancel}
+                cardId={cardId}
+              />
+            </Backdrop>
+            <Backdrop toggle={modalTimerToggle}>
+              <ModalTimer
+                setTime={handlerChangeCalendar}
+                onClose={handlerTimerToggle}
+                cardType="quest"
+              />
+            </Backdrop>
+            <ModalLevel
+              levelToggle={levelToggle}
+              onMouseLeave={onMouseLeaveLevel}
+              onClick={handlerChangeLevel}
+            />
 
             <Level
               level={level}
@@ -309,9 +309,11 @@ const CardQuest = ({
                 />
               )}
 
-              {activityToggle ? (
-                <ModalActivity onClick={handlerChangeActivity} />
-              ) : null}
+              <ModalActivity
+                activityToggle={activityToggle}
+                onMouseLeave={onMouseLeaveActivity}
+                onClick={handlerChangeActivity}
+              />
 
               <Activities
                 activity={activity}
