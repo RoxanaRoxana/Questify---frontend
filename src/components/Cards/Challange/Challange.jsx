@@ -18,8 +18,31 @@ import { editCard } from "../../../services/api";
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
     return "Today";
-  } else {
+  } else if (Number(now) + 1 === Number(selectedDay)) {
     return "Tomorrow";
+  } else {
+    console.log(`in setDay func `, setWeekDay(selectedDay.toString()));
+    return setWeekDay(selectedDay.toString());
+  }
+};
+
+const setWeekDay = (selectedDay) => {
+  if (selectedDay === "1") {
+    return "Monday";
+  } else if (selectedDay === "2") {
+    return "Tuesday";
+  } else if (selectedDay === "3") {
+    return "Wednesday";
+  } else if (selectedDay === "4") {
+    return "Thursday";
+  } else if (selectedDay === "5") {
+    return "Friday";
+  } else if (selectedDay === "6") {
+    return "Saturday";
+  } else if (selectedDay === "0") {
+    return "Sunday";
+  } else {
+    console.log(`in setWeekDay func`);
   }
 };
 
@@ -267,7 +290,7 @@ const Challange = ({
               <ModalTimer
                 setTime={handlerChangeCalendar}
                 onClose={handlerTimerToggle}
-                cardType="quest"
+                cardType="challenge"
               />
             </Backdrop>
             <ModalLevel
