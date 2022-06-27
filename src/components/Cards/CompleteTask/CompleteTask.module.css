@@ -138,3 +138,17 @@
     top: 6px;
   }
 }
+
+@media screen and (min-width: 768px){
+  .completeInfo_challange {
+    margin-right: 5px;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  .questName {
+    margin-top: 3px;
+    max-width: 85px;
+    font-size: 12px;
+  }
+}
