@@ -24,7 +24,13 @@ const Form = ({
               : "create new challenge"
           }
         >
-          <p className={stylesQuest.card_title}>
+          <p
+            className={
+              cardType !== "quest"
+                ? stylesQuest.challenge_title
+                : stylesQuest.card_title
+            }
+          >
             {cardType === "quest"
               ? updateMode
                 ? "EDIT QUEST"
@@ -33,15 +39,24 @@ const Form = ({
               ? "EDIT CHALLENGE"
               : "CREATE NEW CHALLENGE"}
           </p>
-          <input
-            className={stylesQuest.card_task}
-            type="text"
-            value={title}
-            onChange={onChange}
-            maxLength={40}
-          />
+          {cardType !== "quest" ? (
+            <textarea
+              onChange={onChange}
+              value={title}
+              className={stylesQuest.challenge_text}
+              maxLength={40}
+            ></textarea>
+          ) : (
+            <input
+              className={stylesQuest.card_task}
+              type="text"
+              value={title}
+              onChange={onChange}
+              maxLength={40}
+            />
+          )}
         </label>
-        <p className={stylesQuest.card_time}>
+        <p className={cardType !== "quest"? stylesQuest.challenge_time : stylesQuest.card_time}>
           {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
           <button
             type="button"

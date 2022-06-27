@@ -22,6 +22,15 @@
   line-height: 1;
 }
 
+.challenge_title {
+  color: #b9c3c8;
+  margin: 0;
+  margin-bottom: 19px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .card_task {
   border: none;
   border-bottom: 1px solid #00d7ff;
@@ -35,10 +44,24 @@
   transition: 1s;
 }
 
+.challenge_text {
+  border: none;
+  margin-bottom: 15px;
+  resize: none;
+  background-color: #15395a;
+  outline: none;
+  max-width: 200px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  color: #fff;
+  text-align: center;
+}
+
 .card_task:focus {
   outline: none;
   caret-color: #00d7ff;
-  font-size: 20px
+  font-size: 20px;
 }
 
 .card_time {
@@ -46,6 +69,14 @@
   font-size: 16px;
   line-height: 1;
   letter-spacing: 0.02em;
+}
+
+.challenge_time {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #b9c3c8;
 }
 
 .calendar_icon {
@@ -64,17 +95,16 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 768px){
-  
+@media screen and (min-width: 768px) {
   .card_title {
     margin-bottom: 10px;
   }
-  
+
   .card_task {
     margin-bottom: 12px;
     width: 163px;
   }
-  
+
   .card_time {
     font-size: 14px;
   }

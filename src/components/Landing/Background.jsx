@@ -19,7 +19,7 @@ function Background(props) {
   if (windowWidth >= 768 && windowWidth<1020) {
     image1 = SVGTV1;
     image2 = SVGTV2;
-  } else if (windowWidth >= 1020 && windowWidth < 1999) {
+  } else if (windowWidth >= 1020 && windowWidth < 1199) {
     image1 = SVGTH1;
     image2 = SVGTH2;
   } else if (windowWidth >= 1200) {

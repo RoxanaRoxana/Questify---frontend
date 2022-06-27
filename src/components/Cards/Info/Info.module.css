@@ -24,6 +24,19 @@
   transition: 1s;
 }
 
+.challenge_task{
+  width: 200px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  margin-top: 10px;
+}
+
 .quest_time {
   font-size: 18px;
   line-height: 1;

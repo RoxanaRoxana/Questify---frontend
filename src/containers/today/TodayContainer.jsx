@@ -3,6 +3,7 @@ import styles from "./TodayContainer.module.css";
 import { CardQuest } from "../../components/Cards/CardQuest";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { getAllCards } from "../../services/api";
+import Challange from "../../components/Cards/Challange/Challange";
 
 const TodayContainer = () => {
   const { accessToken } = useSelector((state) => state.users);
@@ -59,16 +60,29 @@ const TodayContainer = () => {
                 owner,
               }) => (
                 <li key={_id}>
-                  <CardQuest
-                    cardId={_id}
-                    cardTitle={title}
-                    cardDifficulty={difficulty}
-                    cardCategory={category}
-                    cardDate={date}
-                    cardTime={time}
-                    cardType={type}
-                    owner={owner}
-                  />
+                  {type === "Challenge" ? (
+                    <Challange
+                      cardId={_id}
+                      title={title}
+                      difficulty={difficulty}
+                      category={category}
+                      date={date}
+                      time={time}
+                      type={type}
+                      owner={owner}
+                    />
+                  ) : (
+                    <CardQuest
+                      cardId={_id}
+                      cardTitle={title}
+                      cardDifficulty={difficulty}
+                      cardCategory={category}
+                      cardDate={date}
+                      cardTime={time}
+                      cardType={type}
+                      owner={owner}
+                    />
+                  )}
                 </li>
               )
             )}
