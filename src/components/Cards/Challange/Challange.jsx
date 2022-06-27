@@ -12,6 +12,8 @@ import { ModalTimer } from "../ModalTimer/ModalTimer";
 import { Info } from "../Info/Info";
 import CompleteTask from "../CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
+import { useDispatch, useSelector } from "react-redux";
+import { editCard } from "../../../services/api";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -49,14 +51,28 @@ const setMonth = (monthNumber) => {
   }
 };
 
-function Challange({cardId,type}) {
+const Challange = ({
+  onCreate = false,
+  cardId,
+  cardTitle,
+  cardDifficulty,
+  cardCategory,
+  cardDate,
+  cardTime,
+  cardType,
+}) => {
   // STORE
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(cardTitle);
   const [calendar, setCalendar] = useState("Today");
-  const [level, setLevel] = useState("Normal");
-  const [activity, setActivity] = useState("STUFF");
+  const [level, setLevel] = useState(cardDifficulty);
+  const [activity, setActivity] = useState(cardCategory);
   const [doneDate, setDoneDate] = useState("no date");
+  const { accessToken } = useSelector((state) => state.users);
+  const { loading: isCardLoading, error: cardError } = useSelector(
+    (state) => state.cards
+  );
+  const dispatch = useDispatch();
 
   // LOCAL STATE
 
@@ -69,6 +85,11 @@ function Challange({cardId,type}) {
   const [updatedTime, setUpdatedTime] = useState("");
   const [isCompleted, setCompleted] = useState(false);
   const [visable, setVisable] = useState(true);
+  const [hourForBackend, setHourForBackend] = useState("");
+  const [dateForBackend, setDateForBackend] = useState("");
+
+  const timeAndDateFromCard = `${cardDate} ${cardTime}:00`;
+  const timeForFront = new Date(timeAndDateFromCard);
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
@@ -101,13 +122,20 @@ function Challange({cardId,type}) {
     }
   };
 
+  const setDefaultCardData = () => {
+    setTitle(cardTitle);
+    setLevel(cardDifficulty);
+    setActivity(cardCategory);
+    handlerChangeCalendar([timeForFront]);
+  };
+
   const handlerEndUpdate = (e) => {
+    setDefaultCardData();
     setUpdateMode(false);
   };
 
   const handlerIsTomorrow = () => {
     const check = calendar.split(",").includes("Tomorrow");
-    console.log(check);
   };
 
   useEffect(() => {
@@ -132,6 +160,13 @@ function Challange({cardId,type}) {
     setActivityToggle(!activityToggle);
   };
 
+  const onMouseLeaveLevel = () => {
+    handlerLevelToggle();
+  };
+  const onMouseLeaveActivity = () => {
+    handlerActivityToggle();
+  };
+
   const handlerCreate = () => {
     if (calendar === "Today") {
       return Notiflix.Notify.info(
@@ -143,6 +178,17 @@ function Challange({cardId,type}) {
     } else if (!title) {
       return Notiflix.Notify.info(`Enter quest name`);
     }
+    const cardData = {
+      title: title,
+      difficulty: level,
+      category: activity,
+      date: dateForBackend,
+      time: hourForBackend,
+      type: cardType,
+    };
+
+    dispatch(editCard({ accessToken, cardData, cardId }));
+
     setCreateMode(false);
     setUpdateMode(false);
   };
@@ -176,7 +222,13 @@ function Challange({cardId,type}) {
     const timeDay = date.getDate();
     const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
+    setHourForBackend(selectedTime);
+    setDateForBackend(new Date(date).toISOString().slice(0, 10));
   };
+
+  useEffect(() => {
+    handlerChangeCalendar([timeForFront]);
+  }, []);
 
   const handlerChangeActivity = (e) => {
     setActivity(e.target.value);
@@ -203,26 +255,26 @@ function Challange({cardId,type}) {
             }
             onClick={!createMode && !updateMode ? handlerStartUpdate : null}
           >
-            {deleteToggle ? (
-              <Backdrop>
-                <AskQuestion
-                  question="Delete this Quest?"
-                  onApproval={handlerDelete}
-                  onCancel={handlerCancel}
-                  cardId={cardId}
-                />
-              </Backdrop>
-            ) : null}
-            {modalTimerToggle ? (
-              <Backdrop>
-                <ModalTimer
-                  setTime={handlerChangeCalendar}
-                  onClose={handlerTimerToggle}
-                  cardType="quest"
-                />
-              </Backdrop>
-            ) : null}
-            {levelToggle ? <ModalLevel onClick={handlerChangeLevel} /> : null}
+            <Backdrop toggle={deleteToggle}>
+              <AskQuestion
+                question="Delete this Quest?"
+                onApproval={handlerDelete}
+                onCancel={handlerCancel}
+                cardId={cardId}
+              />
+            </Backdrop>
+            <Backdrop toggle={modalTimerToggle}>
+              <ModalTimer
+                setTime={handlerChangeCalendar}
+                onClose={handlerTimerToggle}
+                cardType="quest"
+              />
+            </Backdrop>
+            <ModalLevel
+              levelToggle={levelToggle}
+              onMouseLeave={onMouseLeaveLevel}
+              onClick={handlerChangeLevel}
+            />
 
             <Level
               level={level}
@@ -230,7 +282,7 @@ function Challange({cardId,type}) {
               createMode={createMode}
               updateMode={updateMode}
               endQuest={completeQuest}
-              type={type}
+              type={cardType}
             />
 
             <div>
@@ -240,7 +292,7 @@ function Challange({cardId,type}) {
                   title={title}
                   onChange={handlerInput}
                   openModal={handlerTimerToggle}
-                  cardType={type}
+                  cardType={cardType}
                   updateMode={updateMode}
                 />
               ) : (
@@ -248,13 +300,15 @@ function Challange({cardId,type}) {
                   calendar={calendar}
                   title={title}
                   updatedTime={updatedTime}
-                  cardType={type}
+                  cardType={cardType}
                 />
               )}
 
-              {activityToggle ? (
-                <ModalActivity onClick={handlerChangeActivity} />
-              ) : null}
+              <ModalActivity
+                activityToggle={activityToggle}
+                onMouseLeave={onMouseLeaveActivity}
+                onClick={handlerChangeActivity}
+              />
 
               <Activities
                 activity={activity}
@@ -272,12 +326,12 @@ function Challange({cardId,type}) {
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask title={title} type={type}></CompleteTask>
+            <CompleteTask title={title} type={cardType}></CompleteTask>
           </div>
         </Animated>
       )}
     </div>
   );
-}
+};
 
 export default Challange;
