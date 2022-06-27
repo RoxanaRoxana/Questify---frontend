@@ -55,7 +55,7 @@ const DoneContainer = () => {
         {show && (
           <div className={styles.card_container}>
             {cardsList && cardsList.status === undefined ? (
-              <ul>
+              <ul className={styles.list}>
                 {doneCards.map(
                   ({
                     _id,

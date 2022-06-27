@@ -55,12 +55,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    padding-top: 60px;
-  }
-  .card_container {
+  .cart_container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
   }
+  .list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+ 
 }

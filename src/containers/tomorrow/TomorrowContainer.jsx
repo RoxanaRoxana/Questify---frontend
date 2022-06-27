@@ -46,7 +46,7 @@ const TomorrowContainer = () => {
       <h1 className={styles.title_container}>Tomorrow</h1>
       <div className={styles.cart_container}>
         {cardsList && !cardsList.status ? (
-          <ul>
+          <ul className={styles.list}>
             {tomorrowCards.map(
               ({
                 _id,
