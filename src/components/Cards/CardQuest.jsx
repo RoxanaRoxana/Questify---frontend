@@ -50,7 +50,7 @@ const setMonth = (monthNumber) => {
 };
 
 const CardQuest = ({
-  onCreate,
+  onCreate=false,
   cardId,
   cardTitle,
   cardDifficulty,
@@ -78,7 +78,7 @@ const CardQuest = ({
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(false);
+  const [createMode, setCreateMode] = useState(onCreate);
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
