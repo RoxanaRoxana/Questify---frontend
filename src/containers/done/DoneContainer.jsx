@@ -3,6 +3,7 @@ import { CardQuest } from "../../components/Cards/CardQuest";
 import styles from "./DoneContainer.module.css";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { getAllCards } from "../../services/api";
+import Challange from "../../components/Cards/Challange/Challange";
 
 const DoneContainer = () => {
   const dispatch = useDispatch();
@@ -68,16 +69,29 @@ const DoneContainer = () => {
                     owner,
                   }) => (
                     <li key={_id}>
-                      <CardQuest
-                        cardId={_id}
-                        title={title}
-                        difficulty={difficulty}
-                        category={category}
-                        date={date}
-                        time={time}
-                        type={type}
-                        owner={owner}
-                      />
+             {type === "challenge" ? (
+                    <Challange
+                      cardId={_id}
+                      cardTitle={title}
+                      cardDifficulty={difficulty}
+                      cardCategory={category}
+                      cardDate={date}
+                      cardTime={time}
+                      cardType={type}
+                      owner={owner}
+                    />
+                  ) : (
+                    <CardQuest
+                      cardId={_id}
+                      cardTitle={title}
+                      cardDifficulty={difficulty}
+                      cardCategory={category}
+                      cardDate={date}
+                      cardTime={time}
+                      cardType={type}
+                      owner={owner}
+                    />
+                  )}
                     </li>
                   )
                 )}

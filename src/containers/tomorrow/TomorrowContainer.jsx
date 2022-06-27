@@ -35,7 +35,7 @@ const TomorrowContainer = () => {
     return;
   } else {
     for (let card of cardsList.cards) {
-      if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
+      if ((card.date.slice(8) === dayOfMonthWithZero.toString()) && (card.isCompleted === false)) {
         tomorrowCards.push(card);
       }
     }
