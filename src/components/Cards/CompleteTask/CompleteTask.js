@@ -8,7 +8,6 @@ import { ReactComponent as Trophy } from "../../../images/completeTask/trophy.sv
 import { Animated } from "react-animated-css";
 
 function CompleteTask({ type, title }) {
-  console.log(title)
   return (
     <div className={styles.completeWrap}>
       <div className={styles.complete}>

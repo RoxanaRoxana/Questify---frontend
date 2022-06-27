@@ -176,4 +176,21 @@
     width: 15px;
     height: 14px;
   }
+
+  .challenge_topEdit {
+    padding-top: 19px;
+    margin-bottom: 20px;
+  }
+
+  .challenge_top {
+    padding-top: 19px;
+    margin-bottom: 20px;
+  }
+
+  .cardType{
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    transition: 1s;
+  }
 }
