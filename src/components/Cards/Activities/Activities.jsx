@@ -30,12 +30,14 @@ const Activities = ({
                 : activity === "LEISURE"
                 ? styles.card_leisure
                 : styles.card_work
-            }>
+            }
+          >
             <p className={styles.card_activity}>{activity}</p>
             <svg
               className={styles.arrow_icon}
               viewBox="0 0 85 32"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path d="M42.667 32l-36.95-32h73.901l-36.95 32z"></path>
             </svg>
           </button>
@@ -53,11 +55,18 @@ const Activities = ({
                 : activity === "LEISURE"
                 ? `${styles.card_leisure} ${styles.pointer_off}`
                 : `${styles.card_work} ${styles.pointer_off}`
-            }>
+            }
+          >
             <p className={styles.card_activity}>{activity}</p>
           </div>
         )}
-        <ButtonsMain createMode={createMode} updateMode={updateMode} onCreate={onCreate} onDelete={onDelete} onAccept={onAccept} />
+        <ButtonsMain
+          createMode={createMode}
+          updateMode={updateMode}
+          onCreate={onCreate}
+          onDelete={onDelete}
+          onAccept={onAccept}
+        />
       </div>
     </>
   );

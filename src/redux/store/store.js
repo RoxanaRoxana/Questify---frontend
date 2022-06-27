@@ -23,7 +23,7 @@ const reducers = (state, action) => {
 const persistConfig = getPersistConfig({
   key: "root",
   storage: localStorage,
-  blacklist: ["users.loading", "cards.loading"],
+  blacklist: ["users.loading"],
   rootReducer: reducers,
 });
 

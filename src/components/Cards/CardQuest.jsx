@@ -12,6 +12,8 @@ import { ModalTimer } from "./ModalTimer/ModalTimer";
 import { Info } from "./Info/Info";
 import CompleteTask from "./CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
+import { useDispatch, useSelector } from "react-redux";
+import { editCard, getAllCards } from "../../services/api";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -49,28 +51,47 @@ const setMonth = (monthNumber) => {
   }
 };
 
-const CardQuest = ({ onCreate, cardId, type }) => {
+const CardQuest = ({
+  onCreate=false,
+  cardId,
+  cardTitle,
+  cardDifficulty,
+  cardCategory,
+  cardDate,
+  cardTime,
+  cardType,
+}) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
   // STORE
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(cardTitle);
+  const [level, setLevel] = useState(cardDifficulty);
   const [calendar, setCalendar] = useState("Today");
-  const [level, setLevel] = useState("Normal");
-  const [activity, setActivity] = useState("STUFF");
+  const [activity, setActivity] = useState(cardCategory);
   const [doneDate, setDoneDate] = useState("no date");
+  const { accessToken } = useSelector((state) => state.users);
+  const { loading: isCardLoading, error: cardError } = useSelector(
+    (state) => state.cards
+  );
+  const dispatch = useDispatch();
 
   // LOCAL STATE
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(false);
+  const [createMode, setCreateMode] = useState(onCreate);
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
   const [updatedTime, setUpdatedTime] = useState("");
   const [isCompleted, setCompleted] = useState(false);
   const [visable, setVisable] = useState(true);
+  const [hourForBackend, setHourForBackend] = useState("");
+  const [dateForBackend, setDateForBackend] = useState("");
+
+  const timeAndDateFromCard = `${cardDate} ${cardTime}:00`;
+  const timeForFront = new Date(timeAndDateFromCard);
 
   const handlerTimerToggle = () => {
     setModalTimerToggle(!modalTimerToggle);
@@ -103,13 +124,20 @@ const CardQuest = ({ onCreate, cardId, type }) => {
     }
   };
 
+  const setDefaultCardData = () => {
+    setTitle(cardTitle);
+    setLevel(cardDifficulty);
+    setActivity(cardCategory);
+    handlerChangeCalendar([timeForFront]);
+  };
+
   const handlerEndUpdate = (e) => {
+    setDefaultCardData();
     setUpdateMode(false);
   };
 
   const handlerIsTomorrow = () => {
     const check = calendar.split(",").includes("Tomorrow");
-    console.log(check);
   };
 
   useEffect(() => {
@@ -145,13 +173,35 @@ const CardQuest = ({ onCreate, cardId, type }) => {
     } else if (!title) {
       return Notiflix.Notify.info(`Enter quest name`);
     }
+    const cardData = {
+      title: title,
+      difficulty: level,
+      category: activity,
+      date: dateForBackend,
+      time: hourForBackend,
+      type: cardType,
+    };
+
+    dispatch(editCard({ accessToken, cardData, cardId }));
+
     setCreateMode(false);
     setUpdateMode(false);
   };
 
+  if (isCardLoading === "editCard/fulfilled") {
+    dispatch(getAllCards(accessToken));
+  }
+
   const handlerChangeLevel = (e) => {
     setLevel(e.target.value);
     handlerLevelToggle();
+  };
+
+  const onMouseLeaveLevel = () => {
+    handlerLevelToggle();
+  };
+  const onMouseLeaveActivity = () => {
+    handlerActivityToggle();
   };
 
   const handlerChangeCalendar = ([date]) => {
@@ -178,7 +228,13 @@ const CardQuest = ({ onCreate, cardId, type }) => {
     const timeDay = date.getDate();
     const timeString = `${setMonth(timeMonth)} ${timeDay}, ${selectedTime}`;
     setDoneDate(timeString);
+    setHourForBackend(selectedTime);
+    setDateForBackend(new Date(date).toISOString().slice(0, 10));
   };
+
+  useEffect(() => {
+    handlerChangeCalendar([timeForFront]);
+  }, []);
 
   const handlerChangeActivity = (e) => {
     setActivity(e.target.value);

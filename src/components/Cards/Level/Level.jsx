@@ -8,7 +8,7 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
       {createMode || updateMode ? (
         <div
           className={
-            type === "Challenge" ? styles.challenge_topEdit : styles.card_top
+            type === "challenge" ? styles.challenge_topEdit : styles.card_top
           }
         >
           <button type="button" className={styles.card_row} onClick={onClick}>
@@ -31,7 +31,7 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
             </svg>
           </button>
           <button className={styles.card_button} type="button">
-            {type === "Challenge" ? (
+            {type === "challenge" ? (
               <Trophy />
             ) : (
               <svg
@@ -48,7 +48,7 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
         <div className={styles.challenge_container}>
           <div
             className={
-              type === "Challenge" ? styles.challenge_top : styles.card_top_edit
+              type === "challenge" ? styles.challenge_top : styles.card_top_edit
             }
           >
             <div className={`${styles.card_row} ${styles.pointer_off}`}>
@@ -68,7 +68,7 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
               onClick={endQuest}
               type="button"
             >
-              {type === "Challenge" ? (
+              {type === "challenge" ? (
                 <Trophy />
               ) : (
                 <svg
@@ -81,7 +81,7 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
               )}
             </button>
             </div>
-            {type==="Challenge" ? <p className={styles.cardType}>CHALLENGE</p> : null}
+            {type==="challenge" ? <p className={styles.cardType}>CHALLENGE</p> : null}
           
         </div>
       )}

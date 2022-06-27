@@ -25,6 +25,7 @@
   color: #282828;
   border: none;
   background-color: #fff;
+  transition: 0.5s;
 }
 
 .modal_button:hover {

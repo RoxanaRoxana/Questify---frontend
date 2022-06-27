@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, NewQuest } from "../components";
 
-const UserPage = () => {
+const UserPage = (cardData) => {
   return (
     <>
       <Layout />

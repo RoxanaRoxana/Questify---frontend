@@ -9,6 +9,15 @@ const TodayContainer = () => {
   const { accessToken } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const { cardsList } = useSelector((state) => state.cards);
+  const date = new Date();
+  const today = date.setDate(new Date(date).getDate());
+  const dayOfMonth = new Date(today).getDate();
+  let dayOfMonthWithZero = 0;
+  let todayCards = [];
+
+  useEffect(() => {
+    dispatch(getAllCards(accessToken));
+  }, [dispatch, accessToken]);
 
   let errorMessage;
   if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
@@ -17,17 +26,29 @@ const TodayContainer = () => {
     errorMessage = "Your session has expired";
   }
 
-  useEffect(() => {
-    dispatch(getAllCards(accessToken));
-  }, [dispatch, accessToken]);
+  if (dayOfMonth >= 1 && dayOfMonth <= 9) {
+    dayOfMonthWithZero = "0" + dayOfMonth;
+  } else if (dayOfMonth >= 10 && dayOfMonth <= 31) {
+    dayOfMonthWithZero = dayOfMonth;
+  }
+
+  if (cardsList === null) {
+    void 0;
+  } else {
+    for (let card of cardsList.cards) {
+      if (card.date.slice(8) === dayOfMonthWithZero.toString()) {
+        todayCards.push(card);
+      }
+    }
+  }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
       <div className={styles.cart_container}>
-        {cardsList && cardsList.status === undefined ? (
+        {cardsList && !cardsList.status ? (
           <ul>
-            {cardsList.cards.map(
+            {todayCards.map(
               ({
                 _id,
                 title,
@@ -53,12 +74,12 @@ const TodayContainer = () => {
                   ) : (
                     <CardQuest
                       cardId={_id}
-                      title={title}
-                      difficulty={difficulty}
-                      category={category}
-                      date={date}
-                      time={time}
-                      type={type}
+                      cardTitle={title}
+                      cardDifficulty={difficulty}
+                      cardCategory={category}
+                      cardDate={date}
+                      cardTime={time}
+                      cardType={type}
                       owner={owner}
                     />
                   )}

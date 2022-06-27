@@ -1,58 +1,84 @@
 .card_buttons {
   display: flex;
-  align-items: center;
   padding-right: 21px;
+  height: 16px;
 }
 
 .card_save{
   background-color: transparent;
   padding: 0;
-  padding-top: 2px;
   border: none;
-  max-width: 19px;
-  max-height: 18px;
+  width: 12px;
+  height: 12px;
   cursor: pointer;
   margin-right: 7px;
+  transition: 1s;
+  align-self: center;
+}
+.card_save:hover{
+ width: 14px;
+ height: 14px;
+}
+.card_save:focus{
+ width: 14px;
+ height: 14px;
 }
 
 .save_icon{
- width: 12px;
- height: 12px;
+ width: 100%;
+ height: auto;
  fill: #00D7FF;
 }
 
 .card_clear {
   background-color: transparent;
   padding: 0;
-  padding-top: 2px;
   border: none;
-  max-width: 19px;
-  max-height: 18px;
+  width: 12px;
+  height: 12px;
   cursor: pointer;
+  margin-right: 7px;
+  transition: 1s;
+  align-self: center;
+}
+.card_clear:hover {
+  width: 14px;
+  height: 14px;
+}
+.card_clear:focus {
+  width: 14px;
+  height: 14px;
 }
 
 .clear_icon {
-  width: 12px;
-  height: 12px;
+  width: 100%;
+ height: auto;
   fill: #db0837;
-  margin-right: 7px;
 }
 
 .card_accept {
   background-color: transparent;
   padding: 0;
-  padding-top: 2px;
   border: none;
-  max-width: 19px;
-  max-height: 18px;
+  width: 14px;
+  height: 10px;
   cursor: pointer;
+  transition: 1s;
+  align-self: baseline;
+}
+.card_accept:hover {
+  width: 17px;
+  height: 12px;
+}
+.card_accept:focus {
+  width: 17px;
+  height: 12px;
 }
 
 .accept_icon {
-  width: 14px;
-  height: 10px;
+  width: 100%;
+  height: auto;
   fill: #24D40C;
-  margin-right: 7px;
 }
 
 
@@ -76,13 +102,19 @@
 
 @media screen and (min-width: 768px) {
   
-  .save_icon{
+  .card_save{
    width: 10px;
    height: 10px;
+   align-self:flex-start;
   }
   
-  .clear_icon {
+  .card_clear {
     width: 10px;
     height: 10px;
+    align-self:flex-start;
+  }
+
+  .card_accept{
+    align-self:flex-start;
   }
 }

@@ -93,14 +93,7 @@ export const editCard = createAsyncThunk(
   async ({ accessToken, cardData, cardId }, { rejectWithValue }) => {
     try {
       axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
-      const { data } = await axios.patch(`${apiURL}/card/${cardId}`, {
-        title: cardData.title,
-        difficulty: cardData.difficulty,
-        category: cardData.category,
-        date: cardData.date,
-        time: cardData.time,
-        type: cardData.type,
-      });
+      const { data } = await axios.patch(`${apiURL}/card/${cardId}`, cardData);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -115,6 +108,19 @@ export const deleteCard = createAsyncThunk(
       axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
       await axios.delete(`${apiURL}/card/${cardId}`);
       const { data } = await axios.get(`${apiURL}/card`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateCardStatus = createAsyncThunk(
+  "updateCardStatus",
+  async ({ accessToken, cardId }, { rejectWithValue }) => {
+    try {
+      axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
+      const { data } = await axios.patch(`${apiURL}/card/complete/${cardId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -31,6 +31,14 @@
   outline: none;
   background: #fff;
   border: none;
+  cursor: pointer;
+  transition: 1s;
+}
+.cancel:hover{
+  font-size: 12px;
+}
+.cancel:focus{
+  font-size: 12px;
 }
 
 .wall {
@@ -49,4 +57,12 @@
   outline: none;
   background: #fff;
   border: none;
+  cursor: pointer;
+  transition: 1s;
+}
+.delete:hover{
+  font-size: 12px;
+}
+.delete:focus{
+  font-size: 12px;
 }
