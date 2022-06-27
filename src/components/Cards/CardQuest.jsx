@@ -63,6 +63,7 @@ const CardQuest = ({
 }) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
+
   // STORE
 
   const [title, setTitle] = useState(cardTitle);

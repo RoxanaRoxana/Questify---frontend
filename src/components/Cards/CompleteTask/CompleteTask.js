@@ -15,7 +15,7 @@ function CompleteTask({ type, title }) {
         <Animated animationIn="fadeInLeft">
           <p
             className={
-              type === "Challenge"
+              type === "challenge"
                 ? styles.completeInfo_challange
                 : styles.completeInfo
             }
@@ -31,7 +31,7 @@ function CompleteTask({ type, title }) {
       </div>
       <div className={styles.award}>
         <Animated animationInDelay={1000} animationIn="fadeInDown">
-          {type === "Challenge" ? (
+          {type === "challenge" ? (
             <Animated animationInDelay={2000} animationIn="tada">
               <Trophy className={styles.trophy}></Trophy>
             </Animated>
@@ -42,14 +42,14 @@ function CompleteTask({ type, title }) {
         <Animated animationInDelay={1000} animationIn={"fadeInUp"}>
           <Platform
             className={
-              type === "Challenge" ? styles.platform_challange : styles.platform
+              type === "challenge" ? styles.platform_challange : styles.platform
             }
           ></Platform>
         </Animated>
-        {type === "Challenge" ? null : <Dart className={styles.dart}></Dart>}
+        {type === "challenge" ? null : <Dart className={styles.dart}></Dart>}
         <Clouds
           className={
-            type === "Challenge" ? styles.clouds_challange : styles.clouds
+            type === "challenge" ? styles.clouds_challange : styles.clouds
           }
         ></Clouds>
       </div>
@@ -57,7 +57,7 @@ function CompleteTask({ type, title }) {
         <Animated animationInDelay={3200} animationIn="fadeInUp">
           <button
             className={
-              type === "Challenge" ? styles.button_challange : styles.button
+              type === "challenge" ? styles.button_challange : styles.button
             }
           >
             Continue <Arrow className={styles.arrow}></Arrow>

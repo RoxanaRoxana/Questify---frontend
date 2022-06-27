@@ -58,9 +58,10 @@ const TodayContainer = () => {
                 time,
                 type,
                 owner,
-              }) => (
+              }) => 
+             (
                 <li key={_id}>
-                  {type === "Challenge" ? (
+                  {type === "challenge" ? (
                     <Challange
                       cardId={_id}
                       title={title}
