@@ -13,7 +13,7 @@ import { Info } from "../Info/Info";
 import CompleteTask from "../CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
 import { useDispatch, useSelector } from "react-redux";
-import { editCard } from "../../../services/api";
+import { editCard, getAllCards, updateCardStatus } from "../../../services/api";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -239,6 +239,14 @@ const Challange = ({
     setTitle(e.target.value);
   };
 
+  const handleCompleted = () => {
+    dispatch(updateCardStatus({ accessToken, cardId }));
+  };
+
+  if (isCardLoading === "updateCardStatus/fulfilled") {
+    dispatch(getAllCards(accessToken));
+  }
+
   return (
     <div>
       {!isCompleted && (
@@ -326,7 +334,11 @@ const Challange = ({
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask title={title} type={cardType}></CompleteTask>
+            <CompleteTask
+              title={title}
+              type={cardType}
+              onClick={handleCompleted}
+            ></CompleteTask>
           </div>
         </Animated>
       )}
