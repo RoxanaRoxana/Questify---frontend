@@ -30,12 +30,12 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
               <path d="M42.667 32l-36.95-32h73.901l-36.95 32z"></path>
             </svg>
           </button>
-          <button className={styles.card_button} type="button">
+          <button className={`${styles.card_button} ${styles.pointer_off}`} type="button">
             {type === "challenge" ? (
               <Trophy />
             ) : (
               <svg
-                className={styles.star_icon}
+                className={`${styles.star_icon} ${styles.star_off}`}
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
               >
