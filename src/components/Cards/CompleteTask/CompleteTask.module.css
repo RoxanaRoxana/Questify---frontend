@@ -45,10 +45,10 @@
 }
 
 .platform_challange {
-  width: 100px;
+  width: 90px;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50px;
+  top: 36px;
 }
 
 .dart {
@@ -122,10 +122,10 @@
 }
 
 .trophy {
-  width: 120px;
+  width: 100px;
   position: absolute;
   transform: translate(-50%, -50%) rotate(15deg);
-  top: -20px;
+  top: -25px;
 }
 
 @keyframes dartAnimation {
