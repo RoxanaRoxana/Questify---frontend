@@ -13,7 +13,7 @@ import { Info } from "../Info/Info";
 import CompleteTask from "../CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
 import { useDispatch, useSelector } from "react-redux";
-import { editCard } from "../../../services/api";
+import { editCard, getAllCards, updateCardStatus } from "../../../services/api";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -21,7 +21,6 @@ const setDay = (now, selectedDay) => {
   } else if (Number(now) + 1 === Number(selectedDay)) {
     return "Tomorrow";
   } else {
-    console.log(`in setDay func `, setWeekDay(selectedDay.toString()));
     return setWeekDay(selectedDay.toString());
   }
 };
@@ -75,7 +74,6 @@ const setMonth = (monthNumber) => {
 };
 
 const Challange = ({
-  onCreate = false,
   cardId,
   cardTitle,
   cardDifficulty,
@@ -120,7 +118,6 @@ const Challange = ({
 
   const completeQuest = () => {
     setVisable(false);
-    // let type = cardsList.cards[cardsList.cards.length - 1].type;
     setInterval(() => {
       setCompleted(true);
     }, 1000);
@@ -174,6 +171,13 @@ const Challange = ({
     }
     handlerChangeCalendar([updatedTime]);
   });
+
+  useEffect(() => {
+    dispatch(getAllCards(accessToken));
+  }, [
+    isCardLoading === "editCard/fulfilled",
+    isCardLoading === "updateCardStatus/fulfilled",
+  ]);
 
   const handlerLevelToggle = () => {
     setLevelToggle(!levelToggle);
@@ -260,6 +264,10 @@ const Challange = ({
 
   const handlerInput = (e) => {
     setTitle(e.target.value);
+  };
+
+  const handleCompleted = () => {
+    dispatch(updateCardStatus({ accessToken, cardId }));
   };
 
   return (
@@ -349,7 +357,11 @@ const Challange = ({
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask title={title} type={cardType}></CompleteTask>
+            <CompleteTask
+              title={title}
+              type={cardType}
+              onClick={handleCompleted}
+            ></CompleteTask>
           </div>
         </Animated>
       )}

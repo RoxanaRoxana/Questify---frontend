@@ -45,10 +45,10 @@
 }
 
 .platform_challange {
-  width: 100px;
+  width: 90px;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50px;
+  top: 36px;
 }
 
 .dart {
@@ -63,7 +63,7 @@
 
 .clouds {
   position: absolute;
-  top: -20px;
+  top: -5px;
   width: 170px;
 }
 
@@ -83,12 +83,12 @@
   cursor: pointer;
 }
 
-.button_challange{
+.button_challange {
   margin: 0;
   font-size: 16px;
   margin-bottom: 3px;
   color: #b9c3c8;
-  background-color: #15395A;
+  background-color: #15395a;
   border: none;
   cursor: pointer;
 }
@@ -122,10 +122,10 @@
 }
 
 .trophy {
-  width: 120px;
+  width: 100px;
   position: absolute;
   transform: translate(-50%, -50%) rotate(15deg);
-  top: -20px;
+  top: -25px;
 }
 
 @keyframes dartAnimation {
@@ -139,7 +139,7 @@
   }
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
   .completeInfo_challange {
     margin-right: 5px;
     font-size: 12px;

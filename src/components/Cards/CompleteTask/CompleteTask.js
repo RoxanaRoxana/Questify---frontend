@@ -7,7 +7,7 @@ import { ReactComponent as Clouds } from "../../../images/completeTask/clouds.sv
 import { ReactComponent as Trophy } from "../../../images/completeTask/trophy.svg";
 import { Animated } from "react-animated-css";
 
-function CompleteTask({ type, title }) {
+function CompleteTask({ type, title, onClick }) {
   return (
     <div className={styles.completeWrap}>
       <div className={styles.complete}>
@@ -57,7 +57,7 @@ function CompleteTask({ type, title }) {
           <button
             className={
               type === "challenge" ? styles.button_challange : styles.button
-            }
+            } onClick={onClick}
           >
             Continue <Arrow className={styles.arrow}></Arrow>
           </button>

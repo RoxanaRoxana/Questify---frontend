@@ -13,17 +13,12 @@ const TomorrowContainer = () => {
   const dayOfMonth = new Date(tomorrow).getDate();
   let dayOfMonthWithZero = 0;
   let tomorrowCards = [];
+  let sortedByDate;
+  let errorMessage;
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
   }, [dispatch, accessToken]);
-
-  let errorMessage;
-  if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
-    errorMessage = "No cards in database";
-  } else {
-    errorMessage = "Your session has expired";
-  }
 
   if (dayOfMonth >= 1 && dayOfMonth <= 9) {
     dayOfMonthWithZero = "0" + dayOfMonth;
@@ -35,19 +30,35 @@ const TomorrowContainer = () => {
     return;
   } else {
     for (let card of cardsList.cards) {
-      if ((card.date.slice(8) === dayOfMonthWithZero.toString()) && (card.isCompleted === false)) {
+      if (
+        card.type === "quest" &&
+        card.date.slice(8) === dayOfMonthWithZero.toString() &&
+        card.isCompleted === false
+      ) {
         tomorrowCards.push(card);
       }
     }
   }
 
+  
+  const sortedCards = () => {
+    sortedByDate = tomorrowCards.sort(function (a, b) {
+      return (
+        new Date(`${a.date} ${a.time}:00`).getTime() -
+        new Date(`${b.date} ${b.time}:00`).getTime()
+      );
+    });
+  };
+
+  sortedCards();
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title_container}>Tomorrow</h1>
       <div className={styles.cart_container}>
-        {cardsList && !cardsList.status ? (
+        {cardsList ? (
           <ul className={styles.list}>
-            {tomorrowCards.map(
+            {sortedByDate.map(
               ({
                 _id,
                 title,
