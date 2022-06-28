@@ -9,6 +9,7 @@ const TodayContainer = () => {
   const { accessToken } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const { cardsList } = useSelector((state) => state.cards);
+  const { error } = useSelector((state) => state.cards);
   const date = new Date();
   const today = date.setDate(new Date(date).getDate());
   const dayOfMonth = new Date(today).getDate();
@@ -20,10 +21,13 @@ const TodayContainer = () => {
   }, [dispatch, accessToken]);
 
   let errorMessage;
-  if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
+
+  if (error) {
+    errorMessage = error;
+  }
+
+  if (!error && cardsList !== null && !cardsList.hasOwnProperty("status")) {
     errorMessage = "No cards in database";
-  } else {
-    errorMessage = "Your session has expired";
   }
 
   if (dayOfMonth >= 1 && dayOfMonth <= 9) {
