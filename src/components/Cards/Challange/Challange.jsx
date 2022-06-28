@@ -216,6 +216,10 @@ const Challange = ({
     setUpdateMode(false);
   };
 
+  if (isCardLoading === "editCard/fulfilled") {
+    dispatch(getAllCards(accessToken));
+  }
+
   const handlerChangeLevel = (e) => {
     setLevel(e.target.value);
     handlerLevelToggle();
