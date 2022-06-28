@@ -14,17 +14,11 @@ const TomorrowContainer = () => {
   let dayOfMonthWithZero = 0;
   let tomorrowCards = [];
   let sortedByDate;
+  let errorMessage;
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
   }, [dispatch, accessToken]);
-
-  let errorMessage;
-  if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
-    errorMessage = "No cards in database";
-  } else {
-    errorMessage = "Your session has expired";
-  }
 
   if (dayOfMonth >= 1 && dayOfMonth <= 9) {
     dayOfMonthWithZero = "0" + dayOfMonth;
@@ -62,7 +56,7 @@ const TomorrowContainer = () => {
     <div className={styles.container}>
       <h1 className={styles.title_container}>Tomorrow</h1>
       <div className={styles.cart_container}>
-        {cardsList && !cardsList.status ? (
+        {cardsList ? (
           <ul className={styles.list}>
             {sortedByDate.map(
               ({

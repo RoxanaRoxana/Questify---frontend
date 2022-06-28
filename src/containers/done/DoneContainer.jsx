@@ -13,6 +13,7 @@ const DoneContainer = () => {
   const { accessToken } = useSelector((state) => state.users);
   let doneCards = [];
   let sortedByDate;
+  let errorMessage;
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
@@ -22,13 +23,6 @@ const DoneContainer = () => {
     setIsActive(!isActive);
     setShow(!show);
   };
-
-  let errorMessage;
-  if (cardsList !== null && !cardsList.hasOwnProperty("status")) {
-    errorMessage = "No cards in database";
-  } else {
-    errorMessage = "Your session has expired";
-  }
 
   if (cardsList === null) {
     return;
@@ -67,7 +61,7 @@ const DoneContainer = () => {
         </div>
         {show && (
           <div className={styles.card_container}>
-            {cardsList && cardsList.status === undefined ? (
+            {cardsList ? (
               <ul className={styles.list}>
                 {sortedByDate.map(
                   ({
