@@ -14,6 +14,7 @@ const TodayContainer = () => {
   const dayOfMonth = new Date(today).getDate();
   let dayOfMonthWithZero = 0;
   let todayCards = [];
+  let sortedByDate;
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
@@ -48,13 +49,24 @@ const TodayContainer = () => {
     }
   }
 
+  const sortedCards = () => {
+    sortedByDate = todayCards.sort(function (a, b) {
+      return (
+        new Date(`${a.date} ${a.time}:00`).getTime() -
+        new Date(`${b.date} ${b.time}:00`).getTime()
+      );
+    });
+  };
+
+  sortedCards();
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
       <div className={styles.cart_container}>
         {cardsList && !cardsList.status ? (
           <ul className={styles.list}>
-            {todayCards.map(
+            {sortedByDate.map(
               ({
                 _id,
                 title,

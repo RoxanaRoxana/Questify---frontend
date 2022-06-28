@@ -12,6 +12,7 @@ const DoneContainer = () => {
   const { cardsList } = useSelector((state) => state.cards);
   const { accessToken } = useSelector((state) => state.users);
   let doneCards = [];
+  let sortedByDate;
 
   useEffect(() => {
     dispatch(getAllCards(accessToken));
@@ -39,6 +40,17 @@ const DoneContainer = () => {
     }
   }
 
+  const sortedCards = () => {
+    sortedByDate = doneCards.sort(function (a, b) {
+      return (
+        new Date(`${a.date} ${a.time}:00`).getTime() -
+        new Date(`${b.date} ${b.time}:00`).getTime()
+      );
+    });
+  };
+
+  sortedCards();
+
   return (
     <>
       <div className={styles.container}>
@@ -57,7 +69,7 @@ const DoneContainer = () => {
           <div className={styles.card_container}>
             {cardsList && cardsList.status === undefined ? (
               <ul className={styles.list}>
-                {doneCards.map(
+                {sortedByDate.map(
                   ({
                     _id,
                     title,
@@ -69,29 +81,29 @@ const DoneContainer = () => {
                     owner,
                   }) => (
                     <li key={_id}>
-             {type === "challenge" ? (
-                    <Challange
-                      cardId={_id}
-                      cardTitle={title}
-                      cardDifficulty={difficulty}
-                      cardCategory={category}
-                      cardDate={date}
-                      cardTime={time}
-                      cardType={type}
-                      owner={owner}
-                    />
-                  ) : (
-                    <CardQuest
-                      cardId={_id}
-                      cardTitle={title}
-                      cardDifficulty={difficulty}
-                      cardCategory={category}
-                      cardDate={date}
-                      cardTime={time}
-                      cardType={type}
-                      owner={owner}
-                    />
-                  )}
+                      {type === "challenge" ? (
+                        <Challange
+                          cardId={_id}
+                          cardTitle={title}
+                          cardDifficulty={difficulty}
+                          cardCategory={category}
+                          cardDate={date}
+                          cardTime={time}
+                          cardType={type}
+                          owner={owner}
+                        />
+                      ) : (
+                        <CardQuest
+                          cardId={_id}
+                          cardTitle={title}
+                          cardDifficulty={difficulty}
+                          cardCategory={category}
+                          cardDate={date}
+                          cardTime={time}
+                          cardType={type}
+                          owner={owner}
+                        />
+                      )}
                     </li>
                   )
                 )}

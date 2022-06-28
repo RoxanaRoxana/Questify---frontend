@@ -21,7 +21,6 @@ const setDay = (now, selectedDay) => {
   } else if (Number(now) + 1 === Number(selectedDay)) {
     return "Tomorrow";
   } else {
-    console.log(`in setDay func `, setWeekDay(selectedDay.toString()));
     return setWeekDay(selectedDay.toString());
   }
 };
