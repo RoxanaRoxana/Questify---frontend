@@ -14,11 +14,13 @@ const ModalTimer = ({ onClose, setTime, cardType }) => {
                 enableTime: true,
                 minDate: new Date(),
                 maxDate: new Date().fp_incr(1),
+                disableMobile: true,
               }
             : {
                 enableTime: true,
                 minDate: new Date(),
                 maxDate: new Date().fp_incr(6),
+                disableMobile: true
               }
         }
         onChange={(date) => setTime(date)}
@@ -26,6 +28,6 @@ const ModalTimer = ({ onClose, setTime, cardType }) => {
       />
     </div>
   );
-};
+};;
 
 export { ModalTimer };
