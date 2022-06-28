@@ -74,7 +74,6 @@ const setMonth = (monthNumber) => {
 };
 
 const Challange = ({
-  onCreate = false,
   cardId,
   cardTitle,
   cardDifficulty,
@@ -119,7 +118,6 @@ const Challange = ({
 
   const completeQuest = () => {
     setVisable(false);
-    // let type = cardsList.cards[cardsList.cards.length - 1].type;
     setInterval(() => {
       setCompleted(true);
     }, 1000);
@@ -174,6 +172,13 @@ const Challange = ({
     handlerChangeCalendar([updatedTime]);
   });
 
+  useEffect(() => {
+    dispatch(getAllCards(accessToken));
+  }, [
+    isCardLoading === "editCard/fulfilled",
+    isCardLoading === "updateCardStatus/fulfilled",
+  ]);
+
   const handlerLevelToggle = () => {
     setLevelToggle(!levelToggle);
   };
@@ -214,10 +219,6 @@ const Challange = ({
     setCreateMode(false);
     setUpdateMode(false);
   };
-
-  if (isCardLoading === "editCard/fulfilled") {
-    dispatch(getAllCards(accessToken));
-  }
 
   const handlerChangeLevel = (e) => {
     setLevel(e.target.value);
@@ -268,10 +269,6 @@ const Challange = ({
   const handleCompleted = () => {
     dispatch(updateCardStatus({ accessToken, cardId }));
   };
-
-  if (isCardLoading === "updateCardStatus/fulfilled") {
-    dispatch(getAllCards(accessToken));
-  }
 
   return (
     <div>
