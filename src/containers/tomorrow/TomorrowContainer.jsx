@@ -13,6 +13,7 @@ const TomorrowContainer = () => {
   const dayOfMonth = new Date(tomorrow).getDate();
   let dayOfMonthWithZero = 0;
   let tomorrowCards = [];
+  let sortedByDate;
   let errorMessage;
 
   useEffect(() => {
@@ -39,13 +40,25 @@ const TomorrowContainer = () => {
     }
   }
 
+  
+  const sortedCards = () => {
+    sortedByDate = tomorrowCards.sort(function (a, b) {
+      return (
+        new Date(`${a.date} ${a.time}:00`).getTime() -
+        new Date(`${b.date} ${b.time}:00`).getTime()
+      );
+    });
+  };
+
+  sortedCards();
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title_container}>Tomorrow</h1>
       <div className={styles.cart_container}>
         {cardsList ? (
           <ul className={styles.list}>
-            {tomorrowCards.map(
+            {sortedByDate.map(
               ({
                 _id,
                 title,

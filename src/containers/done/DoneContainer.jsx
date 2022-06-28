@@ -12,6 +12,7 @@ const DoneContainer = () => {
   const { cardsList } = useSelector((state) => state.cards);
   const { accessToken } = useSelector((state) => state.users);
   let doneCards = [];
+  let sortedByDate;
   let errorMessage;
 
   useEffect(() => {
@@ -33,6 +34,17 @@ const DoneContainer = () => {
     }
   }
 
+  const sortedCards = () => {
+    sortedByDate = doneCards.sort(function (a, b) {
+      return (
+        new Date(`${a.date} ${a.time}:00`).getTime() -
+        new Date(`${b.date} ${b.time}:00`).getTime()
+      );
+    });
+  };
+
+  sortedCards();
+
   return (
     <>
       <div className={styles.container}>
@@ -51,7 +63,7 @@ const DoneContainer = () => {
           <div className={styles.card_container}>
             {cardsList ? (
               <ul className={styles.list}>
-                {doneCards.map(
+                {sortedByDate.map(
                   ({
                     _id,
                     title,
