@@ -36,7 +36,7 @@ const TodayContainer = () => {
     void 0;
   } else {
     for (let card of cardsList.cards) {
-      if (card.type === "challenge") {
+      if (card.type === "challenge" && card.isCompleted === false) {
         todayCards.push(card);
       } else if (
         card.type === "quest" &&
