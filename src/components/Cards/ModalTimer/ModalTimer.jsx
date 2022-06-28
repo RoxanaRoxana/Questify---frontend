@@ -1,6 +1,6 @@
 import React from "react";
 import Flatpickr from "react-flatpickr";
-import 'flatpickr/dist/themes/airbnb.css';
+import "flatpickr/dist/themes/airbnb.css";
 import styles from "./ModalTimer.module.css";
 
 const ModalTimer = ({ onClose, setTime, cardType }) => {
@@ -14,11 +14,13 @@ const ModalTimer = ({ onClose, setTime, cardType }) => {
                 enableTime: true,
                 minDate: new Date(),
                 maxDate: new Date().fp_incr(1),
+                disableMobile: true,
               }
             : {
                 enableTime: true,
                 minDate: new Date(),
                 maxDate: new Date().fp_incr(6),
+                disableMobile: true,
               }
         }
         onChange={(date) => setTime(date)}
