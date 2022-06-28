@@ -52,7 +52,9 @@ const TodayContainer = () => {
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
       <div className={styles.cart_container}>
-        {cardsList && !cardsList.status ? (
+        {cardsList !== null &&
+        cardsList.cards.length > 0 &&
+        !cardsList.status ? (
           <ul className={styles.list}>
             {todayCards.map(
               ({
