@@ -54,12 +54,16 @@ const TodayContainer = () => {
   }
 
   const sortedCards = () => {
-    sortedByDate = todayCards.sort(function (a, b) {
-      return (
-        new Date(`${a.date} ${a.time}:00`).getTime() -
-        new Date(`${b.date} ${b.time}:00`).getTime()
-      );
-    });
+    sortedByDate = todayCards
+      .sort(function (a, b) {
+        return (
+          new Date(`${a.date} ${a.time}:00`).getTime() -
+          new Date(`${b.date} ${b.time}:00`).getTime()
+        );
+      })
+      .sort(function (a, b) {
+        return a.type.length - b.type.length;
+      });
   };
 
   sortedCards();
