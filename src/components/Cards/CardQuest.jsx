@@ -98,7 +98,6 @@ const CardQuest = ({
 
   const completeQuest = () => {
     setVisable(false);
-    // let type = cardsList.cards[cardsList.cards.length - 1].type;
     setInterval(() => {
       setCompleted(true);
     }, 1000);
