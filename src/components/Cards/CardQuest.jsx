@@ -52,7 +52,6 @@ const setMonth = (monthNumber) => {
 };
 
 const CardQuest = ({
-  onCreate = false,
   cardId,
   cardTitle,
   cardDifficulty,
@@ -80,7 +79,7 @@ const CardQuest = ({
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(onCreate);
+  const [createMode, setCreateMode] = useState(false);
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
@@ -154,6 +153,13 @@ const CardQuest = ({
     handlerChangeCalendar([updatedTime]);
   });
 
+  useEffect(() => {
+    dispatch(getAllCards(accessToken));
+  }, [
+    isCardLoading === "editCard/fulfilled",
+    isCardLoading === "updateCardStatus/fulfilled",
+  ]);
+
   const handlerLevelToggle = () => {
     setLevelToggle(!levelToggle);
   };
@@ -187,10 +193,6 @@ const CardQuest = ({
     setCreateMode(false);
     setUpdateMode(false);
   };
-
-  if (isCardLoading === "editCard/fulfilled") {
-    dispatch(getAllCards(accessToken));
-  }
 
   const handlerChangeLevel = (e) => {
     setLevel(e.target.value);
@@ -248,10 +250,6 @@ const CardQuest = ({
   const handleCompleted = () => {
     dispatch(updateCardStatus({ accessToken, cardId }));
   };
-
-  if (isCardLoading === "updateCardStatus/fulfilled") {
-    dispatch(getAllCards(accessToken));
-  }
 
   return (
     <div>
