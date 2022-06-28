@@ -13,7 +13,7 @@ import { Info } from "./Info/Info";
 import CompleteTask from "./CompleteTask/CompleteTask";
 import { Animated } from "react-animated-css";
 import { useDispatch, useSelector } from "react-redux";
-import { editCard, getAllCards } from "../../services/api";
+import { editCard, getAllCards, updateCardStatus } from "../../services/api";
 
 const setDay = (now, selectedDay) => {
   if (now === selectedDay) {
@@ -62,7 +62,6 @@ const CardQuest = ({
   cardType,
 }) => {
   Notiflix.Notify.init({ timeout: 6000 });
-
 
   // STORE
 
@@ -246,6 +245,14 @@ const CardQuest = ({
     setTitle(e.target.value);
   };
 
+  const handleCompleted = () => {
+    dispatch(updateCardStatus({ accessToken, cardId }));
+  };
+
+  if (isCardLoading === "updateCardStatus/fulfilled") {
+    dispatch(getAllCards(accessToken));
+  }
+
   return (
     <div>
       {!isCompleted && (
@@ -332,7 +339,10 @@ const CardQuest = ({
       {isCompleted && (
         <Animated>
           <div className={styles.cardComplete}>
-            <CompleteTask title={title}></CompleteTask>
+            <CompleteTask
+              title={title}
+              onClick={handleCompleted}
+            ></CompleteTask>
           </div>
         </Animated>
       )}
