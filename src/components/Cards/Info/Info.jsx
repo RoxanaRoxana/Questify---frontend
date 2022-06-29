@@ -30,7 +30,7 @@ const Info = ({ cardType, calendar, title, updatedTime, isDone, doneDate }) => {
      className={styles.quest_info}>
       <p
         className={
-          cardType !== "quest" ? styles.challenge_task : styles.quest_task 
+          cardType !== "quest" ? styles.challenge_task : styles.quest_task
         }
       >
         {title}

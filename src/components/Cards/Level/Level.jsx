@@ -80,9 +80,10 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type, isDone 
                 </svg>
               )}
             </button>
-            </div>
-            {type==="challenge" ? <p className={styles.cardType}>CHALLENGE</p> : null}
-          
+          </div>
+          {type === "challenge" ? (
+            <p className={styles.cardType}>CHALLENGE</p>
+          ) : null}
         </div>
       )}
     </>
