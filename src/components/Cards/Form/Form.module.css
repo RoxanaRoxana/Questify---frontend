@@ -43,6 +43,7 @@
   text-align: center;
   transition: 1s;
   word-wrap: break-word;
+  overflow: hidden;
 }
 
 .challenge_text {
@@ -57,6 +58,7 @@
   background-color: #15395a;
   color: #fff;
   word-wrap: break-word;
+  overflow: hidden;
 }
 
 .challenge_text:focus {
