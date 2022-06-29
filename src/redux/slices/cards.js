@@ -28,6 +28,7 @@ export const cardsSlice = createSlice({
     [getAllCards.rejected]: (state, action) => {
       state.loading = action.type;
       state.error = action.payload.message;
+      state.cardsList = null;
     },
     [createCard.pending]: (state, action) => {
       state.loading = action.type;
@@ -40,6 +41,7 @@ export const cardsSlice = createSlice({
     [createCard.rejected]: (state, action) => {
       state.loading = action.type;
       state.error = action.payload.message;
+      state.cardsList = null;
     },
     [editCard.pending]: (state, action) => {
       state.loading = action.type;
@@ -51,6 +53,7 @@ export const cardsSlice = createSlice({
     [editCard.rejected]: (state, action) => {
       state.loading = action.type;
       state.error = action.payload.message;
+      state.cardsList = null;
     },
     [deleteCard.pending]: (state, action) => {
       state.loading = action.type;
@@ -63,6 +66,7 @@ export const cardsSlice = createSlice({
     [deleteCard.rejected]: (state, action) => {
       state.loading = action.type;
       state.error = action.payload.message;
+      state.cardsList = null;
     },
     [updateCardStatus.pending]: (state, action) => {
       state.loading = action.type;
@@ -74,6 +78,7 @@ export const cardsSlice = createSlice({
     [updateCardStatus.rejected]: (state, action) => {
       state.loading = action.type;
       state.error = action.payload.message;
+      state.cardsList = null;
     },
   },
 });
