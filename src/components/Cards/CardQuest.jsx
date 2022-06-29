@@ -98,7 +98,7 @@ const CardQuest = ({
 
   const completeQuest = () => {
     setVisable(false);
-    setInterval(() => {
+    setTimeout(() => {
       setCompleted(true);
     }, 1000);
   };
