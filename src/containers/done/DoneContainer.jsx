@@ -89,6 +89,7 @@ const DoneContainer = () => {
                           cardTime={time}
                           cardType={type}
                           owner={owner}
+                          isDone={true}
                         />
                       ) : (
                         <CardQuest
