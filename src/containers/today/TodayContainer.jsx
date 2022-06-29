@@ -52,7 +52,7 @@ const TodayContainer = () => {
         card.type === "quest" &&
         card.date.slice(8) === dayOfMonthWithZero.toString() &&
         card.isCompleted === false
-        ) {
+      ) {
         todayCards.push(card);
       }
     }
@@ -80,7 +80,7 @@ const TodayContainer = () => {
         cardsList.cards.length > 0 &&
         !cardsList.status ? (
           <ul className={styles.list}>
-            {todayCards.map(
+            {sortedByDate.map(
               ({
                 _id,
                 title,
