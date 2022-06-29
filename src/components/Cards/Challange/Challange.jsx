@@ -81,6 +81,7 @@ const Challange = ({
   cardDate,
   cardTime,
   cardType,
+  isDone,
 }) => {
   // STORE
 
@@ -281,10 +282,18 @@ const Challange = ({
           <div
             className={
               !createMode && !updateMode
-                ? `${styles.card} ${styles.pointer_on}`
+                ? isDone
+                  ? styles.card
+                  : `${styles.card} ${styles.pointer_on}`
                 : styles.card
             }
-            onClick={!createMode && !updateMode ? handlerStartUpdate : null}
+            onClick={
+              !createMode && !updateMode
+                ? !isDone
+                  ? handlerStartUpdate
+                  : null
+                : null
+            }
           >
             <Backdrop toggle={deleteToggle}>
               <AskQuestion
@@ -314,6 +323,7 @@ const Challange = ({
               updateMode={updateMode}
               endQuest={completeQuest}
               type={cardType}
+              isDone={isDone}
             />
 
             <div>
@@ -332,6 +342,8 @@ const Challange = ({
                   title={title}
                   updatedTime={updatedTime}
                   cardType={cardType}
+                  isDone={isDone}
+                  doneDate={doneDate}
                 />
               )}
 
