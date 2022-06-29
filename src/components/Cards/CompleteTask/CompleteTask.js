@@ -1,10 +1,10 @@
 import styles from "./CompleteTask.module.css";
-import { ReactComponent as Arrow } from "../../../images/completeTask/arrow.svg";
-import { ReactComponent as Platform } from "../../../images/completeTask/platform.svg";
-import { ReactComponent as Shield } from "../../../images/completeTask/shield.svg";
-import { ReactComponent as Dart } from "../../../images/completeTask/dart.svg";
-import { ReactComponent as Clouds } from "../../../images/completeTask/clouds.svg";
-import { ReactComponent as Trophy } from "../../../images/completeTask/trophy.svg";
+import { ReactComponent as Arrow } from "../../../assets/completeTask/arrow.svg";
+import { ReactComponent as Platform } from "../../../assets/completeTask/platform.svg";
+import { ReactComponent as Shield } from "../../../assets/completeTask/shield.svg";
+import { ReactComponent as Dart } from "../../../assets/completeTask/dart.svg";
+import { ReactComponent as Clouds } from "../../../assets/completeTask/clouds.svg";
+import { ReactComponent as Trophy } from "../../../assets/completeTask/trophy.svg";
 import { Animated } from "react-animated-css";
 
 function CompleteTask({ type, title, onClick }) {
@@ -57,7 +57,8 @@ function CompleteTask({ type, title, onClick }) {
           <button
             className={
               type === "challenge" ? styles.button_challange : styles.button
-            } onClick={onClick}
+            }
+            onClick={onClick}
           >
             Continue <Arrow className={styles.arrow}></Arrow>
           </button>
