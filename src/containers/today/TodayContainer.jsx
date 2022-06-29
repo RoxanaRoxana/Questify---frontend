@@ -47,7 +47,7 @@ const TodayContainer = () => {
         card.type === "quest" &&
         card.date.slice(8) === dayOfMonthWithZero.toString() &&
         card.isCompleted === false
-      ) {
+        ) {
         todayCards.push(card);
       }
     }
@@ -67,7 +67,6 @@ const TodayContainer = () => {
   };
 
   sortedCards();
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title_container}>Today</h1>
@@ -76,7 +75,7 @@ const TodayContainer = () => {
         cardsList.cards.length > 0 &&
         !cardsList.status ? (
           <ul className={styles.list}>
-            {sortedByDate.map(
+            {todayCards.map(
               ({
                 _id,
                 title,

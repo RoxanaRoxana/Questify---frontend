@@ -59,6 +59,7 @@ const CardQuest = ({
   cardDate,
   cardTime,
   cardType,
+  isDone,
 }) => {
   Notiflix.Notify.init({ timeout: 6000 });
 
@@ -71,7 +72,7 @@ const CardQuest = ({
   const [doneDate, setDoneDate] = useState("no date");
   const { accessToken } = useSelector((state) => state.users);
   const { loading: isCardLoading, error: cardError } = useSelector(
-    (state) => state.cards
+    (state) => state.cards,
   );
   const dispatch = useDispatch();
 
@@ -98,7 +99,7 @@ const CardQuest = ({
 
   const completeQuest = () => {
     setVisable(false);
-    setInterval(() => {
+    setTimeout(() => {
       setCompleted(true);
     }, 1000);
   };
@@ -134,17 +135,6 @@ const CardQuest = ({
     setUpdateMode(false);
   };
 
-  const handlerIsTomorrow = () => {
-    const check = calendar.split(",").includes("Tomorrow");
-  };
-
-  useEffect(() => {
-    if (calendar === "Today") {
-      return;
-    }
-    handlerIsTomorrow();
-  }, [calendar]);
-
   useEffect(() => {
     if (calendar === "Today") {
       return;
@@ -173,7 +163,7 @@ const CardQuest = ({
         `Select date in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`
+          .toLocaleString()}`,
       );
     } else if (!title) {
       return Notiflix.Notify.info(`Enter quest name`);
@@ -211,7 +201,7 @@ const CardQuest = ({
         `Ensure, that the time you have chosen is in range:
          ${new Date().toLocaleString()} to ${new Date()
           .fp_incr(2)
-          .toLocaleString()}`
+          .toLocaleString()}`,
       );
     }
     const now = new Date().getDay();
@@ -256,16 +246,22 @@ const CardQuest = ({
         <Animated
           animationIn="fadeIn"
           animationOut="fadeOut"
-          isVisible={visable}
-        >
+          isVisible={visable}>
           <div
             className={
               !createMode && !updateMode
-                ? `${styles.card} ${styles.pointer_on}`
+                ? isDone
+                  ? styles.card
+                  : `${styles.card} ${styles.pointer_on}`
                 : styles.card
             }
-            onClick={!createMode && !updateMode ? handlerStartUpdate : null}
-          >
+            onClick={
+              !createMode && !updateMode
+                ? !isDone
+                  ? handlerStartUpdate
+                  : null
+                : null
+            }>
             <Backdrop toggle={deleteToggle}>
               <AskQuestion
                 question="Delete this Quest?"
@@ -293,6 +289,7 @@ const CardQuest = ({
               createMode={createMode}
               updateMode={updateMode}
               endQuest={completeQuest}
+              isDone={isDone}
             />
 
             <div>
@@ -311,6 +308,8 @@ const CardQuest = ({
                   title={title}
                   updatedTime={updatedTime}
                   cardType="quest"
+                  isDone={isDone}
+                  doneDate={doneDate}
                 />
               )}
 
@@ -338,8 +337,7 @@ const CardQuest = ({
           <div className={styles.cardComplete}>
             <CompleteTask
               title={title}
-              onClick={handleCompleted}
-            ></CompleteTask>
+              onClick={handleCompleted}></CompleteTask>
           </div>
         </Animated>
       )}

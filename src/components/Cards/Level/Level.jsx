@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Level.module.css";
 import { ReactComponent as Trophy } from "../../../images/challange/trophy.svg";
 
-const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
+const Level = ({ level, onClick, createMode, updateMode, endQuest, type, isDone }) => {
   return (
     <>
       {createMode || updateMode ? (
@@ -64,8 +64,8 @@ const Level = ({ level, onClick, createMode, updateMode, endQuest, type }) => {
               <p className={styles.card_text}>{level}</p>
             </div>
             <button
-              className={styles.card_button}
-              onClick={endQuest}
+              className={isDone ? `${styles.card_button} ${styles.pointer_off}` : styles.card_button}
+              onClick={!isDone ? endQuest : null}
               type="button"
             >
               {type === "challenge" ? (
