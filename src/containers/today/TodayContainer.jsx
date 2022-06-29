@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./TodayContainer.module.css";
 import { CardQuest } from "../../components/Cards/CardQuest";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { getAllCards } from "../../services/api";
+import { deleteCard, getAllCards } from "../../services/api";
 import Challange from "../../components/Cards/Challange/Challange";
 
 const TodayContainer = () => {
@@ -41,6 +41,11 @@ const TodayContainer = () => {
     void 0;
   } else {
     for (let card of cardsList.cards) {
+      let cardId = card._id;
+      if (new Date(`${card.date} 23:59:59`) < date) {
+        dispatch(deleteCard({ accessToken, cardId }));
+      }
+
       if (card.type === "challenge" && card.isCompleted === false) {
         todayCards.push(card);
       } else if (
