@@ -91,16 +91,16 @@ const Challange = ({
   const [activity, setActivity] = useState(cardCategory);
   const [doneDate, setDoneDate] = useState("no date");
   const { accessToken } = useSelector((state) => state.users);
-  const { loading: isCardLoading, error: cardError } = useSelector(
-    (state) => state.cards
-  );
+  const { loading: isCardLoading } = useSelector((state) => state.cards);
   const dispatch = useDispatch();
 
   // LOCAL STATE
 
   const [levelToggle, setLevelToggle] = useState(false);
   const [activityToggle, setActivityToggle] = useState(false);
-  const [createMode, setCreateMode] = useState(false);
+  const [createMode, setCreateMode] = useState(
+    cardTitle === "Enter challenge title" ? true : false
+  );
   const [updateMode, setUpdateMode] = useState(false);
   const [deleteToggle, setDeleteToggle] = useState(false);
   const [modalTimerToggle, setModalTimerToggle] = useState(false);
@@ -196,16 +196,12 @@ const Challange = ({
   };
 
   const handlerCreate = () => {
-    if (calendar === "Today") {
-      return Notiflix.Notify.info(
-        `Select date in range:
-         ${new Date().toLocaleString()} to ${new Date()
-          .fp_incr(2)
-          .toLocaleString()}`
-      );
+    if (title === "Enter challenge title") {
+      return;
     } else if (!title) {
-      return Notiflix.Notify.info(`Enter quest name`);
+      return Notiflix.Notify.info(`Enter challenge name`);
     }
+
     const cardData = {
       title: title,
       difficulty: level,
