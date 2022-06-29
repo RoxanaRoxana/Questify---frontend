@@ -21,7 +21,6 @@
   margin: 0;
   margin-bottom: 10px;
   word-wrap: break-word;
-  transition: 1s;
 }
 
 .challenge_task{
@@ -43,7 +42,6 @@
   letter-spacing: 0.02em;
   color: #b9c3c8;
   margin: 0;
-  transition: 1s;
 }
 
 .icon_fire {

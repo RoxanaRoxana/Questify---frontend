@@ -116,7 +116,7 @@
   width: 19px;
   height: 18px;
   fill: #00d7ff;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .arrow_icon {
@@ -138,7 +138,6 @@
 
 .star_off{
   fill: #B9C3C8;
-  transition: 1s;
 }
 
 @media screen and (min-width: 768px){

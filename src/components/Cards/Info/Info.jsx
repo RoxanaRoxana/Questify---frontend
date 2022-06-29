@@ -1,7 +1,9 @@
 import React from "react";
+import { Form } from "../Form/Form";
 import styles from "./Info.module.css";
+import {motion, AnimatePresence} from 'framer-motion';
 
-const Info = ({ cardType, calendar, title, updatedTime }) => {
+const Info = ({ cardType, calendar, title, updatedTime, isDone, doneDate }) => {
   const deadlineRange = 1000 * 60 * 60 * 3; // 3 Hours
   const checkIfDeadline = () => {
     if (updatedTime) {
@@ -12,7 +14,20 @@ const Info = ({ cardType, calendar, title, updatedTime }) => {
     return false;
   };
   return (
-    <div className={styles.quest_info}>
+    <AnimatePresence>
+    <motion.div
+    animate={{
+      y: 0
+    }}
+    initial={{
+      y: '-20px'
+    }}
+    transition={{
+      type: 'spring',
+      duration: 1,
+      bounce: 0.4
+    }}
+     className={styles.quest_info}>
       <p
         className={
           cardType !== "quest" ? styles.challenge_task : styles.quest_task
@@ -22,7 +37,7 @@ const Info = ({ cardType, calendar, title, updatedTime }) => {
       </p>
       <div className={styles.quest_row}>
         <p className={styles.quest_time}>
-          {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
+          {isDone ? `${doneDate}` : cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
         </p>
         {checkIfDeadline() ? (
           <svg className={styles.icon_fire} viewBox="0 0 45 32">
@@ -30,7 +45,8 @@ const Info = ({ cardType, calendar, title, updatedTime }) => {
           </svg>
         ) : null}
       </div>
-    </div>
+    </motion.div>
+  </AnimatePresence>
   );
 };
 
