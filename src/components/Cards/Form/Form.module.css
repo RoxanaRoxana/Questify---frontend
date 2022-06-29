@@ -42,21 +42,26 @@
   color: #282828;
   text-align: center;
   transition: 1s;
+  word-wrap: break-word;
 }
 
 .challenge_text {
   border: none;
   margin-bottom: 15px;
-  resize: none;
-  background-color: #15395a;
-  outline: none;
-  max-width: 220px;
-  max-height: 44px;
+  width: 248px;
   font-weight: 700;
   font-size: 20px;
-  line-height: 22px;
-  color: #fff;
+  line-height: 1.1;
   text-align: center;
+  transition: 1s;
+  background-color: #15395a;
+  color: #fff;
+  word-wrap: break-word;
+}
+
+.challenge_text:focus {
+  outline: none;
+  font-size: 24px;
 }
 
 .card_task:focus {
@@ -113,8 +118,12 @@
   .challenge_text {
     line-height: 19px;
     max-width: 160px;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
+  }
+  .challenge_text:focus {
+    outline: none;
+    font-size: 16px;
   }
 
   .challenge_title {

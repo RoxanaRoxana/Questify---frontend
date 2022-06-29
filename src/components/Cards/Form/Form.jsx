@@ -47,16 +47,22 @@ const Form = ({
               maxLength={40}
             ></textarea>
           ) : (
-            <input
+            <textarea
               className={stylesQuest.card_task}
               type="text"
               value={title}
               onChange={onChange}
               maxLength={40}
-            />
+            ></textarea>
           )}
         </label>
-        <p className={cardType !== "quest"? stylesQuest.challenge_time : stylesQuest.card_time}>
+        <p
+          className={
+            cardType !== "quest"
+              ? stylesQuest.challenge_time
+              : stylesQuest.card_time
+          }
+        >
           {cardType === "quest" ? `${calendar} ` : `by ${calendar} `}
           <button
             type="button"
