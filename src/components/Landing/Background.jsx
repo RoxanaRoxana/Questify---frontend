@@ -16,13 +16,15 @@ function Background(props) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   let image1 = SVGM1;
   let image2 = SVGM2;
-  if (windowWidth >= 768 && windowWidth<1020) {
+  if (windowWidth >= 768 && windowWidth<1200) {
     image1 = SVGTV1;
     image2 = SVGTV2;
-  } else if (windowWidth >= 1020 && windowWidth < 1199) {
-    image1 = SVGTH1;
-    image2 = SVGTH2;
-  } else if (windowWidth >= 1200) {
+  }
+  //  else if (windowWidth >= 1020 && windowWidth < 1200) {
+  //   image1 = SVGTH1;
+  //   image2 = SVGTH2;
+  // }
+   else if (windowWidth >= 1200) {
     image1 = SVGD1;
     image2 = SVGD2;
   }
@@ -40,7 +42,9 @@ function Background(props) {
   }, []);
 
   return (
-    <div>
+    <div
+     className={styles.landing_bottom}
+     >
       <img src={`${image1}`} alt="line" className={styles.landingBgImage1} />
       <img src={`${image2}`} alt="line" className={styles.landingBgImage2} />
     </div>
