@@ -6,12 +6,17 @@
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 230px;
+  font-family: 'HelveticaNeueCyr';
 }
 
 .wrap {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .info {
@@ -31,7 +36,7 @@
 .landingParagraph {
   text-align: left;
   font-size: 18px;
-  line-height: 29px;
+  line-height: 1.25;
   letter-spacing: 0.015em;
   font-weight: 700;
   margin-top: 0px;
@@ -52,7 +57,7 @@
 }
 
 .landingFormInput {
-  width: 100%;
+  width: 290px;
   margin-bottom: 20px;
   border-top: hidden;
   border-right: hidden;
@@ -79,7 +84,14 @@
   background-color: var(--color-button);
   box-shadow: 0 0px 5px 0px var(--color-button);
   border: none;
-  box-shadow: 0 0px 5px 0px var(--color-button);}
+  box-shadow: 0 0px 5px 0px var(--color-button);
+  cursor: pointer;
+}
+
+.landing_bottom{
+  position: relative;
+  height: 100%;
+}
 
 .landingBgImage1 {
   position: absolute;
@@ -93,339 +105,28 @@
   bottom: -290px;
 }
 
-/*----------------------MOBILE VERTICAL------------------------- */
-
-@media screen and (min-width: 650px) and (max-width: 767px) {
-
-  .wrap {
-    height: auto;
-  }
-
-  .landingFormButton{
-    margin-bottom: 181px;
-  }
-}
-
-
-/*----------------------TABLET VERTICAL------------------------- */
-
-@media screen and (min-width: 768px) and (max-width: 819px) {
- .wrap {
-    height: auto;
-  }
-
+@media screen and (min-width: 768px){
   .container {
-    max-width: 375px;
+    width: 375px;
     padding: 0;
     margin-left: 50px;
+    margin-right: auto;
+    margin-top: 312px;
+    margin-bottom: 330px;
   }
-
-  .landingHeader {
-    font-size: 20px;
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 33px;
-    font-size: 24px;
-  }
-
-  .landingParagraphForm {
-    font-size: 18px;
-    padding-bottom: 30px;
-  }
-
-  .info {
-    max-width: 375px;
-    padding-top: 312px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 351px;
-  }
-
-  .landingFormInput {
-    width: 193px;
-  }
-
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
-  .landingBgImage1 {
-    top: 0;
-    right: 0;
-  }
-
-  .landingBgImage2 {
-    bottom: 0;
-    right: 0;
-  }
-}
-/*----------------------TABLET VERTICAL2------------------------- */
-
-@media screen and (min-width: 820px){
-  .wrap {
-    height: 100vh;
-  }
-
-  .container {
-    max-width: 375px;
-    padding: 0;
-    margin-left: 50px;
-  }
-
-  .landingHeader {
-    font-size: 20px;
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 33px;
-    font-size: 24px;
-  }
-
-  .landingParagraphForm {
-    font-size: 18px;
-    padding-bottom: 30px;
-  }
-
-  .info {
-    max-width: 375px;
-    padding-top: 312px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 351px;
-  }
-
-  .landingFormInput {
-    width: 193px;
-  }
-
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
-  .landingBgImage1 {
-    top: 0;
-    right: 0;
-  }
-
-  .landingBgImage2 {
-    bottom: 0;
-    right: 0;
-  }
-}
-@media screen and (min-width: 821px) and (max-width: 911px) {
- .wrap {
-    height: auto;
-  }
-
-  .container {
-    max-width: 375px;
-    padding: 0;
-    margin-left: 50px;
-  }
-
-  .landingHeader {
-    font-size: 20px;
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 33px;
-    font-size: 24px;
-  }
-
-  .landingParagraphForm {
-    font-size: 18px;
-    padding-bottom: 30px;
-  }
-
-  .info {
-    max-width: 375px;
-    padding-top: 312px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 351px;
-  }
-
-  .landingFormInput {
-    width: 193px;
-  }
-
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
-  .landingBgImage1 {
-    top: 0;
-    right: 0;
-  }
-
-  .landingBgImage2 {
-    bottom: 0;
-    right: 0;
-  }
-}
-
-
-
-@media screen and (min-width: 912px) and (max-width: 913px){
 
   .wrap {
     height: 100vh;
+    overflow: hidden;
+    position: relative;
   }
 
-  .container {
-    max-width: 375px;
-    padding: 0;
-    margin-left: 50px;
+  .info{
+    padding-top: 0;
   }
 
-  .landingHeader {
-    font-size: 20px;
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 33px;
-    font-size: 24px;
-  }
-
-  .landingParagraphForm {
-    font-size: 18px;
-    padding-bottom: 30px;
-  }
-
-  .info {
-    max-width: 375px;
-    padding-top: 312px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 351px;
-  }
-
-  .landingFormInput {
-    width: 193px;
-  }
-
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
-  .landingBgImage1 {
-    top: 0;
-    right: 0;
-  }
-
-  .landingBgImage2 {
-    bottom: 0;
-    right: 0;
-  }
-}
-
-@media screen and (min-width: 914px) and (max-width: 1019px){
-  .wrap {
-    height: auto;
-  }
-
-  .container {
-    max-width: 375px;
-    padding: 0;
-    margin-left: 50px;
-  }
-
-  .landingHeader {
-    font-size: 20px;
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 33px;
-    font-size: 24px;
-  }
-
-  .landingParagraphForm {
-    font-size: 18px;
-    padding-bottom: 30px;
-  }
-
-  .info {
-    max-width: 375px;
-    padding-top: 312px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 351px;
-  }
-
-  .landingFormInput {
-    width: 193px;
-  }
-
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
-  .landingBgImage1 {
-    top: 0;
-    right: 0;
-  }
-
-  .landingBgImage2 {
-    bottom: 0;
-    right: 0;
-  }
-}
-
-/*----------------------TABLET HORIZONTAL------------------------- */
-
-@media screen and (min-width: 1020px) and (max-width: 1999px) {
-.wrap {
-    height: 100vh;
-  }
-
-  .container {
-    max-width: 515px;
-    margin-left: 99px;
-    padding: 0;
-  }
-
-  .info {
-    max-width: 515px;
-  }
-
-  .landingHeader {
-    padding-bottom: 50px;
-  }
-
-  .landingParagraph {
-    line-height: 45px;
-    font-size: 33px;
-    max-width: 515px;
-  }
-
-  .landingParagraphForm {
-    font-size: 24px;
-    padding-bottom: 36px;
-  }
-
-  .info {
-    padding-top: 161px;
-    padding-bottom: 25px;
-  }
-
-  .landingFormContainer {
-    margin-bottom: 201px;
+  .landingParagraph{
+    padding-right: 30px;
   }
 
   .landingFormInput {
@@ -433,37 +134,34 @@
     width: 193px;
   }
 
-  .landingFormButton {
-    margin-left: 141px;
-  }
-
   .landingBgImage1 {
-    top: 0;
+    position: absolute;
     right: 0;
+    bottom: 0;
+    top: -1028px;
   }
-
+  
   .landingBgImage2 {
     bottom: 0;
     right: 0;
   }
 }
 
-
-
 /*----------------------DESKTOP------------------------- */
 
 @media screen and (min-width: 1200px) {
-.wrap {
+/* .wrap {
     height: 100vh;
-  }
+  } */
 
   .container {
     max-width: 562px;
     margin-left: 229px;
+    margin-top: 193px;
+    margin-bottom: 175px;
   }
 
   .info {
-    padding-top: 193px;
     padding-bottom: 35px;
     max-width: 562px;
   }
@@ -473,9 +171,11 @@
   }
 
   .landingParagraph {
-    max-width: 100%;
-
+    min-width: 562px;
+    height: 135px;
     font-size: 36px;
+    line-height: 1.25;
+    padding-right: 2px;
   }
 
   .landingParagraphForm {
@@ -483,18 +183,14 @@
     padding-bottom: 23px;
   }
 
-  .landingFormInput {
-    display: block;
-    width: 196px;
-  }
-
   .landingFormButton {
     margin-left: 144px;
   }
 
   .landingBgImage1 {
-    right: 0;
-    bottom: auto;
+    right: -5;
+    bottom: 0;
+    top: -850px;
   }
 
   .landingBgImage2 {
